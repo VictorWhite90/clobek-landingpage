@@ -135,7 +135,8 @@ function FeatureCard({
   description: string;
 }) {
   return (
-    <div className="h-full border-l border-ink/15 bg-white/70 p-7 shadow-sm shadow-ink/5 backdrop-blur transition duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-xl hover:shadow-brand/10">
+    <div className="group relative h-full overflow-hidden border border-ink/10 bg-sand/50 p-7 shadow-sm shadow-ink/5 transition duration-300 hover:-translate-y-1 hover:bg-sand hover:shadow-xl hover:shadow-brand/10">
+      <span className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand to-grove" />
       <div className="flex h-12 w-12 items-center justify-center rounded-full bg-grove text-white">
         <Icon className="h-6 w-6 text-brand" strokeWidth={1.5} />
       </div>
@@ -166,7 +167,7 @@ export default function Home() {
           </div>
           <a
             href={PHONE_TEL}
-            className="rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand/20 transition hover:bg-brand-dark"
+            className="hidden rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand/20 transition hover:bg-brand-dark sm:inline-flex"
           >
             Call Now
           </a>
@@ -187,42 +188,30 @@ export default function Home() {
 
           <div className="relative mx-auto flex min-h-[calc(100vh-73px)] max-w-7xl flex-col justify-end px-6 py-14 sm:py-18 lg:py-16">
             <Reveal>
-              <div className="grid gap-10 lg:grid-cols-[0.9fr_0.72fr] lg:items-end">
-                <div className="max-w-4xl">
-                  <span className="inline-flex border-y border-white/45 py-2 text-xs font-bold tracking-[0.32em] text-white uppercase">
-                    Sabon-Lugbe East Extension Layout
-                  </span>
-                  <h1 className="mt-8 font-serif text-6xl leading-[0.94] text-white sm:text-7xl lg:text-8xl">
-                    Live in Lugbe&apos;s most refined gated estate.
-                  </h1>
-                  <div className="mt-9 flex flex-wrap items-center gap-4">
-                    <a
-                      href={PHONE_TEL}
-                      className="inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3.5 text-sm font-semibold text-white shadow-xl shadow-brand/30 transition hover:bg-brand-dark"
-                    >
-                      Call Us Now
-                      <Phone className="h-4 w-4" />
-                    </a>
-                    <a
-                      href={WHATSAPP_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-white/35 bg-white/12 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-black/10 backdrop-blur transition hover:bg-white/20"
-                    >
-                      Chat on WhatsApp
-                      <ArrowUpRight className="h-4 w-4" />
-                    </a>
-                  </div>
-                </div>
-
-                <div className="lg:flex lg:justify-end">
-                  <div className="max-w-sm bg-brand/95 p-7 text-white shadow-2xl shadow-black/20 backdrop-blur">
-                    <p className="text-xs font-bold tracking-[0.24em] uppercase">Properties from</p>
-                    <p className="mt-2 font-serif text-5xl">{formatNaira(startingPrice)}</p>
-                    <p className="mt-2 text-sm font-semibold uppercase tracking-wide text-white/75">
-                      Land + DPC
-                    </p>
-                  </div>
+              <div className="max-w-4xl">
+                <span className="inline-flex border-y border-white/45 py-2 text-xs font-bold tracking-[0.32em] text-white uppercase">
+                  Sabon-Lugbe East Extension Layout
+                </span>
+                <h1 className="mt-8 font-serif text-4xl leading-[1.05] text-white sm:text-6xl sm:leading-[0.94] lg:text-8xl">
+                  Live in Lugbe&apos;s most refined gated estate.
+                </h1>
+                <div className="mt-9 flex flex-wrap items-center gap-4">
+                  <a
+                    href={PHONE_TEL}
+                    className="inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3.5 text-sm font-semibold text-white shadow-xl shadow-brand/30 transition hover:bg-brand-dark"
+                  >
+                    Call Us Now
+                    <Phone className="h-4 w-4" />
+                  </a>
+                  <a
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/35 bg-white/12 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-black/10 backdrop-blur transition hover:bg-white/20"
+                  >
+                    Chat on WhatsApp
+                    <ArrowUpRight className="h-4 w-4" />
+                  </a>
                 </div>
               </div>
             </Reveal>
@@ -237,7 +226,7 @@ export default function Home() {
                 <span className="text-xs font-semibold tracking-[0.3em] text-brand uppercase">
                   The Estate
                 </span>
-                <h2 className="mt-4 max-w-xl font-serif text-5xl leading-tight text-ink sm:text-6xl">
+                <h2 className="mt-4 max-w-xl font-serif text-3xl leading-tight text-ink sm:text-5xl lg:text-6xl">
                   Everything you want in a property, planned into one estate.
                 </h2>
                 </div>
@@ -260,27 +249,20 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="amenities" className="relative overflow-hidden bg-grove py-20 text-white sm:py-24">
-          <div className="absolute inset-y-0 left-0 hidden w-1/2 opacity-20 lg:block">
-            <Image
-              src="/images/clobek-exterior-1.jpg"
-              alt=""
-              fill
-              className="object-cover"
-            />
-          </div>
+        <section id="amenities" className="relative overflow-hidden bg-white py-20 sm:py-24">
           <Reveal>
             <div className="relative mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[0.85fr_1fr] lg:items-center">
               <div>
               <span className="text-xs font-semibold tracking-[0.3em] text-brand uppercase">
                 Pricing
               </span>
-              <h2 className="mt-4 max-w-xl font-serif text-5xl leading-tight text-white sm:text-6xl">
+              <h2 className="mt-4 max-w-xl font-serif text-3xl leading-tight text-ink sm:text-5xl lg:text-6xl">
                 Premium estate living with a clear, honest entry price.
               </h2>
               </div>
-              <div className="bg-champagne px-7 py-10 text-ink shadow-2xl shadow-black/20 sm:px-10">
-                <h3 className="font-serif text-4xl text-ink sm:text-5xl">
+              <div className="relative overflow-hidden border border-ink/10 bg-champagne px-7 py-10 text-ink shadow-xl shadow-ink/5 sm:px-10">
+                <span className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand to-grove" />
+                <h3 className="font-serif text-3xl text-ink sm:text-5xl">
                   Properties from{" "}
                   <span className="text-brand italic">
                     ₦{startingPrice} million
@@ -304,7 +286,7 @@ export default function Home() {
                 <span className="text-xs font-semibold tracking-[0.3em] text-brand uppercase">
                   Property Types
                 </span>
-                <h2 className="mt-4 max-w-2xl font-serif text-5xl leading-tight text-ink sm:text-6xl">
+                <h2 className="mt-4 max-w-2xl font-serif text-3xl leading-tight text-ink sm:text-5xl lg:text-6xl">
                   Choose the property that fits{" "}
                   <span className="text-brand italic">your family.</span>
                 </h2>
@@ -318,7 +300,8 @@ export default function Home() {
             <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {houseTypes.map((house, i) => (
                 <Reveal key={house.id} delay={(i % 3) * 80}>
-                  <div className="group h-full overflow-hidden bg-white shadow-xl shadow-ink/5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-brand/10">
+                  <div className="group h-full overflow-hidden border border-ink/10 bg-white shadow-lg shadow-ink/5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-brand/10">
+                    <div className="h-1.5 bg-gradient-to-r from-brand to-grove" />
                     <div className="relative h-72 w-full overflow-hidden">
                       <Image
                         src={house.image}
@@ -368,7 +351,7 @@ export default function Home() {
                 <span className="text-xs font-semibold tracking-[0.3em] text-brand uppercase">
                   Why Clobek Heritage Place
                 </span>
-                <h2 className="mt-4 max-w-xl font-serif text-5xl leading-tight text-ink sm:text-6xl">
+                <h2 className="mt-4 max-w-xl font-serif text-3xl leading-tight text-ink sm:text-5xl lg:text-6xl">
                   The estate that sets the standard in Lugbe.
                 </h2>
                 <p className="mt-5 max-w-md text-muted">
@@ -381,10 +364,11 @@ export default function Home() {
                   {whyUs.map((item, i) => (
                     <div
                       key={item.title}
-                      className={`bg-white p-8 shadow-xl shadow-ink/5 ${
-                        i % 2 === 1 ? "lg:mt-10" : ""
+                      className={`relative overflow-hidden border border-ink/10 p-8 shadow-xl shadow-ink/5 ${
+                        i % 2 === 1 ? "bg-grove-light lg:mt-10" : "bg-sand"
                       }`}
                     >
+                      <span className="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-brand to-grove" />
                       <p className="font-serif text-4xl text-brand">0{i + 1}</p>
                       <h3 className="mt-8 font-serif text-2xl text-ink">{item.title}</h3>
                       <p className="mt-3 text-sm leading-6 text-muted">{item.description}</p>
@@ -396,25 +380,19 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden bg-ink py-24 text-white sm:py-28">
-          <Image
-            src="/images/clobek-exterior-2.jpg"
-            alt=""
-            fill
-            className="object-cover opacity-25"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/90 to-grove/75" />
+        <section className="relative overflow-hidden bg-white py-24 sm:py-28">
           <Reveal>
             <div className="relative mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[1fr_0.72fr] lg:items-end">
               <div>
                 <span className="text-xs font-semibold tracking-[0.3em] text-brand uppercase">
                   Inspection & Availability
                 </span>
-                <h2 className="mt-4 max-w-4xl font-serif text-5xl leading-tight text-white sm:text-7xl">
+                <h2 className="mt-4 max-w-4xl font-serif text-3xl leading-tight text-ink sm:text-6xl lg:text-7xl">
                   Your address in Lugbe&apos;s finest estate is waiting.
                 </h2>
               </div>
-              <div className="bg-white p-7 text-ink shadow-2xl shadow-black/30">
+              <div className="relative overflow-hidden border border-ink/10 bg-champagne p-7 text-ink shadow-xl shadow-ink/5">
+                <span className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand to-grove" />
                 <p className="font-serif text-3xl text-ink">
                   Ready to own at <span className="text-brand italic">Clobek Heritage Place?</span>
                 </p>

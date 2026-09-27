@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fffaf3;
+  --background: #ffffff; /* was #fffaf3 (warm cream) */
   --foreground: #1f2119;
 }
 
@@ -24,9 +24,12 @@
 }
 
 body {
-  background:
-    radial-gradient(circle at top left, rgba(218, 119, 86, 0.12), transparent 28rem),
-    linear-gradient(180deg, #fffaf3 0%, #fbf3e8 48%, #fffaf3 100%);
+  /* Trying a plain white body per request. Previous warm-cream version:
+     background:
+       radial-gradient(circle at top left, rgba(218, 119, 86, 0.12), transparent 28rem),
+       linear-gradient(180deg, #fffaf3 0%, #fbf3e8 48%, #fffaf3 100%);
+     Restore that block (and --background: #fffaf3 above) to go back. */
+  background: #ffffff;
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
