@@ -148,13 +148,20 @@ function FeatureCard({
 
 export default function Home() {
   return (
-    <div className="flex-1 pb-16 sm:pb-0">
-      <header className="sticky top-0 z-40 border-b border-ink/10 bg-champagne/85 backdrop-blur">
+    <div className="flex-1">
+      <header className="sticky top-0 z-40 border-b border-white/10 bg-grove/95 backdrop-blur">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <Link href="#home" className="font-serif text-xl text-ink sm:text-2xl">
-            Clobek <span className="text-brand italic">Heritage</span> Place
+          <Link href="#home" className="flex items-center">
+            <Image
+              src="/images/clobek_Nigeria_Limited_logo.jpg"
+              alt="Clobek Nigeria Limited"
+              width={466}
+              height={98}
+              priority
+              className="h-9 w-auto sm:h-11"
+            />
           </Link>
-          <div className="hidden items-center gap-10 text-sm font-medium text-ink/70 md:flex">
+          <div className="hidden items-center gap-10 text-sm font-medium text-white/70 md:flex">
             <Link href="#house-types" className="transition hover:text-brand">
               Property Types
             </Link>
@@ -467,23 +474,6 @@ export default function Home() {
           Clobek Heritage Place before purchase.
         </p>
       </footer>
-
-      <div className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-2 sm:hidden">
-        <a
-          href={PHONE_TEL}
-          className="flex items-center justify-center bg-grove py-4 text-sm font-semibold text-white"
-        >
-          Call Now
-        </a>
-        <a
-          href={WHATSAPP_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-center bg-brand py-4 text-sm font-semibold text-white"
-        >
-          WhatsApp
-        </a>
-      </div>
     </div>
   );
 }
