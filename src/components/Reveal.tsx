@@ -1,43 +1,13 @@
-"use client";
+import type { ReactNode } from "react";
 
-import { useEffect, useRef, type ReactNode } from "react";
-
+// Fade-in is pure CSS (scroll-driven animation in globals.css), so content is
+// visible even before JavaScript loads.
 export default function Reveal({
   children,
-  delay = 0,
   className = "",
 }: {
   children: ReactNode;
-  delay?: number;
   className?: string;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          node.classList.add("is-visible");
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15 },
-    );
-
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div
-      ref={ref}
-      className={`reveal ${className}`}
-      style={{ transitionDelay: `${delay}ms` }}
-    >
-      {children}
-    </div>
-  );
+  return <div className={`reveal ${className}`}>{children}</div>;
 }

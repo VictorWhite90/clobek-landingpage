@@ -184,7 +184,7 @@ export default function Home() {
       <main>
         <section id="home" className="relative min-h-[calc(100vh-73px)] overflow-hidden bg-ink text-white">
           <Image
-            src="/images/newbgimage.png"
+            src="/images/newbgimage.jpg"
             alt="Clobek Heritage Place properties"
             fill
             priority
@@ -247,8 +247,8 @@ export default function Home() {
             </Reveal>
 
             <div className="mt-16 grid gap-px overflow-hidden bg-ink/10 md:grid-cols-2 lg:grid-cols-3">
-              {amenities.map((item, i) => (
-                <Reveal key={item.title} delay={i * 60}>
+              {amenities.map((item) => (
+                <Reveal key={item.title}>
                   <FeatureCard {...item} />
                 </Reveal>
               ))}
@@ -305,8 +305,8 @@ export default function Home() {
             </Reveal>
 
             <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {houseTypes.map((house, i) => (
-                <Reveal key={house.id} delay={(i % 3) * 80}>
+              {houseTypes.map((house) => (
+                <Reveal key={house.id}>
                   <div className="group h-full overflow-hidden border border-ink/10 bg-white shadow-lg shadow-ink/5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-brand/10">
                     <div className="h-1.5 bg-gradient-to-r from-brand to-grove" />
                     <div className="relative h-72 w-full overflow-hidden">
