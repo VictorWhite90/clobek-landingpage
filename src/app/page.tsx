@@ -200,7 +200,7 @@ export default function Home() {
                   Sabon-Lugbe East Extension Layout
                 </span>
                 <h1 className="mt-8 font-serif text-4xl leading-[1.05] text-white sm:text-6xl sm:leading-[0.94] lg:text-8xl">
-                  Live in Lugbe&apos;s most refined gated estate.
+                  Live in Lugbe&apos;s most premium gated estate.
                 </h1>
                 <div className="mt-9 flex flex-wrap items-center gap-4">
                   <a
@@ -225,7 +225,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden py-24 sm:py-28">
+        <section className="relative overflow-hidden py-12 sm:py-16">
           <div className="mx-auto max-w-7xl px-6">
             <Reveal>
               <div className="grid gap-10 lg:grid-cols-[0.7fr_1fr] lg:items-end">
@@ -246,7 +246,7 @@ export default function Home() {
               </div>
             </Reveal>
 
-            <div className="mt-16 grid gap-px overflow-hidden bg-ink/10 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-12 grid gap-px overflow-hidden bg-ink/10 md:grid-cols-2 lg:grid-cols-3">
               {amenities.map((item) => (
                 <Reveal key={item.title}>
                   <FeatureCard {...item} />
@@ -256,7 +256,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="amenities" className="relative overflow-hidden bg-white py-20 sm:py-24">
+        <section id="amenities" className="relative overflow-hidden bg-white py-12 sm:py-16">
           <Reveal>
             <div className="relative mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[0.85fr_1fr] lg:items-center">
               <div>
@@ -285,7 +285,7 @@ export default function Home() {
           </Reveal>
         </section>
 
-        <section id="house-types" className="py-24 sm:py-28">
+        <section id="house-types" className="py-12 sm:py-16">
           <div className="mx-auto max-w-7xl px-6">
             <Reveal>
               <div className="flex flex-col justify-between gap-6 border-b border-ink/10 pb-10 lg:flex-row lg:items-end">
@@ -307,7 +307,13 @@ export default function Home() {
             <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {houseTypes.map((house) => (
                 <Reveal key={house.id}>
-                  <div className="group h-full overflow-hidden border border-ink/10 bg-white shadow-lg shadow-ink/5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-brand/10">
+                  <a
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Enquire about ${house.name} on WhatsApp`}
+                    className="group block h-full overflow-hidden border border-ink/10 bg-white shadow-lg shadow-ink/5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-brand/10"
+                  >
                     <div className="h-1.5 bg-gradient-to-r from-brand to-grove" />
                     <div className="relative h-72 w-full overflow-hidden">
                       <Image
@@ -317,40 +323,31 @@ export default function Home() {
                         className="object-cover transition duration-500 group-hover:scale-105"
                       />
                     </div>
-                    <div className="p-7">
-                      <h3 className="font-serif text-2xl leading-tight text-ink">{house.name}</h3>
-                      <p className="mt-2 text-sm font-medium text-muted">{house.size}</p>
-                      <div className="mt-6 flex items-end justify-between border-t border-ink/10 pt-5">
-                        <div>
-                          <p className="font-serif text-2xl text-brand">
-                            {formatNaira(house.price)}
-                          </p>
-                          <p className="mt-1 text-xs font-bold tracking-wide text-ink uppercase">
-                            Land + DPC
-                          </p>
-                          <p className="mt-0.5 text-[11px] text-muted">
-                            T&amp;Cs apply
-                          </p>
-                        </div>
-                        <a
-                          href={WHATSAPP_URL}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-grove text-white transition group-hover:bg-brand"
-                          aria-label={`Enquire about ${house.name}`}
-                        >
-                          <ArrowUpRight className="h-4 w-4" />
-                        </a>
+                    <div className="flex items-start justify-between gap-4 p-7">
+                      <div>
+                        <h3 className="font-serif text-2xl leading-tight text-ink">{house.name}</h3>
+                        <p className="mt-2 text-sm font-medium text-muted">{house.size}</p>
+                      </div>
+                      <div className="shrink-0 text-right">
+                        <p className="font-serif text-2xl text-brand">
+                          {formatNaira(house.price)}
+                        </p>
+                        <p className="mt-1 text-xs font-bold tracking-wide text-ink uppercase">
+                          Land + DPC
+                        </p>
+                        <p className="mt-0.5 text-[11px] text-muted">
+                          T&amp;Cs apply
+                        </p>
                       </div>
                     </div>
-                  </div>
+                  </a>
                 </Reveal>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="bg-champagne py-24 sm:py-28">
+        <section className="bg-champagne py-16 sm:py-20">
           <div className="mx-auto max-w-7xl px-6">
             <Reveal>
               <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
@@ -387,7 +384,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden bg-white py-24 sm:py-28">
+        <section className="relative overflow-hidden bg-white py-12 sm:py-16">
           <Reveal>
             <div className="relative mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[1fr_0.72fr] lg:items-end">
               <div>
@@ -429,7 +426,7 @@ export default function Home() {
           </Reveal>
         </section>
 
-        <section id="contact" className="py-24 sm:py-28">
+        <section id="contact" className="py-12 sm:py-16">
           <div className="mx-auto max-w-xl px-6 text-center">
             <h2 className="font-serif text-3xl text-ink sm:text-4xl">
               Contact Clobek Heritage Place
