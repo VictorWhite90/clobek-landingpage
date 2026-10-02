@@ -307,13 +307,7 @@ export default function Home() {
             <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {houseTypes.map((house) => (
                 <Reveal key={house.id}>
-                  <a
-                    href={WHATSAPP_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Enquire about ${house.name} on WhatsApp`}
-                    className="group block h-full overflow-hidden border border-ink/10 bg-white shadow-lg shadow-ink/5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-brand/10"
-                  >
+                  <div className="group h-full overflow-hidden border border-ink/10 bg-white shadow-lg shadow-ink/5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-brand/10">
                     <div className="h-1.5 bg-gradient-to-r from-brand to-grove" />
                     <div className="relative h-72 w-full overflow-hidden">
                       <Image
@@ -338,9 +332,18 @@ export default function Home() {
                         <p className="mt-0.5 text-[11px] text-muted">
                           T&amp;Cs apply
                         </p>
+                        <a
+                          href={WHATSAPP_URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Enquire about ${house.name} on WhatsApp`}
+                          className="mt-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-grove text-white transition group-hover:bg-brand"
+                        >
+                          <ArrowUpRight className="h-4 w-4" />
+                        </a>
                       </div>
                     </div>
-                  </a>
+                  </div>
                 </Reveal>
               ))}
             </div>
