@@ -47,6 +47,20 @@ body {
   animation: marquee 28s linear infinite;
 }
 
+.marquee-track.marquee-reverse {
+  animation-direction: reverse;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
 @keyframes reveal-in {
   from {
     opacity: 0;
