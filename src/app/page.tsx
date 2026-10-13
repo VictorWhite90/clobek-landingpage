@@ -187,6 +187,7 @@ export default function Home() {
               alt="Clobek Nigeria Limited"
               width={466}
               height={98}
+                sizes="(min-width: 640px) 200px, 160px"
               priority
               className="h-9 w-auto sm:h-11"
             />
@@ -361,6 +362,7 @@ export default function Home() {
                         src={house.image}
                         alt={`${house.name} artist's impression`}
                         fill
+                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                         className="object-cover transition duration-500 group-hover:scale-105"
                       />
                     </div>

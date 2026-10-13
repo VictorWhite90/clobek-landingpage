@@ -14,6 +14,7 @@ export default function ImageSlideshow({
   interval?: number;
 }) {
   const [active, setActive] = useState(0);
+  const activeSlide = slides[active];
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -23,26 +24,20 @@ export default function ImageSlideshow({
 
   return (
     <figure className="relative aspect-[3/2] overflow-hidden border border-ink/10 shadow-lg shadow-ink/5">
-      {slides.map((slide, i) => (
-        <div
-          key={slide.src}
-          aria-hidden={i !== active}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            i === active ? "opacity-100" : "opacity-0"
-          }`}
-        >
+      {activeSlide && (
+        <div className="absolute inset-0">
           <Image
-            src={slide.src}
-            alt={slide.alt}
+            src={activeSlide.src}
+            alt={activeSlide.alt}
             fill
             sizes="(min-width: 1024px) 40vw, 100vw"
             className="object-cover"
           />
           <figcaption className="absolute bottom-0 left-0 bg-ink/70 px-3 py-1.5 text-[11px] font-semibold tracking-wide text-white uppercase">
-            {slide.label}
+            {activeSlide.label}
           </figcaption>
         </div>
-      ))}
+      )}
     </figure>
   );
 }
