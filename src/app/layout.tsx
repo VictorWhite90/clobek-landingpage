@@ -19,8 +19,9 @@ const fraunces = Fraunces({
   axes: ["opsz", "SOFT", "WONK"],
 });
 
+const SHARE_TITLE = "Clobek Heritage Place | Lugbe, Off Airport Road, Abuja";
 const SHARE_DESCRIPTION =
-  "Gated, master-planned estate in Sabon-Lugbe, Abuja. 6 property types from 3-bedroom terraces to 5-bedroom detached duplexes. From ₦25M (Land + DPC). Call +234 802 982 3593.";
+  "When security, proximity to the city centre and the airport, world-class infrastructure, awe-inspiring greenery and eco-friendliness matter. Plots with DPC from ₦25M. Call +234 802 982 3593.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://clobekheritageplace.live"),
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
   description:
     "Clobek Heritage Place is a gated, master-planned estate in Lugbe, Abuja FCT, with 6 property types from 3-bedroom terraces to 5-bedroom detached duplexes, green parks, and a community center.",
   openGraph: {
-    title: "Clobek Heritage Place | Gated Estate in Lugbe, Abuja",
+    title: SHARE_TITLE,
     description: SHARE_DESCRIPTION,
     url: "/",
     siteName: "Clobek Heritage Place",
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Clobek Heritage Place | Gated Estate in Lugbe, Abuja",
+    title: SHARE_TITLE,
     description: SHARE_DESCRIPTION,
   },
 };

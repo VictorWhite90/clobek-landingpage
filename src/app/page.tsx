@@ -1,12 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
-  ShieldCheck,
-  PartyPopper,
-  Trees,
-  Droplets,
-  Route,
-  LayoutGrid,
   MapPin,
   Phone,
   MessageCircle,
@@ -76,58 +70,6 @@ const houseTypes = [
 ];
 
 const startingPrice = Math.min(...houseTypes.map((h) => h.price));
-
-const amenities = [
-  {
-    icon: ShieldCheck,
-    title: "Gated & Secured",
-    description: "A manned gate house and perimeter fencing protect your family and keep the estate private.",
-  },
-  {
-    icon: PartyPopper,
-    title: "The Heritage Center",
-    description: "A dedicated event center for celebrations and gatherings, right inside the estate.",
-  },
-  {
-    icon: Trees,
-    title: "Green Parks",
-    description: "Landscaped parks and green spaces for evening walks, play, and fresh air.",
-  },
-  {
-    icon: Droplets,
-    title: "Reliable Water Supply",
-    description: "Dedicated on-site water sources serving every property, so the taps keep running.",
-  },
-  {
-    icon: Route,
-    title: "Tarred Access Roads",
-    description: "A fully networked, tarred internal road system with easy access to every block.",
-  },
-  {
-    icon: LayoutGrid,
-    title: "6 Property Types",
-    description: "From 3-bedroom terraces to 5-bedroom detached duplexes, a property for every stage of life.",
-  },
-];
-
-const whyUs = [
-  {
-    title: "Prime Lugbe Location",
-    description: "Set in Sabon-Lugbe East Extension Layout, a sought-after residential corridor in Abuja FCT.",
-  },
-  {
-    title: "Professionally Designed",
-    description: "Architectural drawings and site planning by Spacemerge Designs, so every property and street is planned with intent.",
-  },
-  {
-    title: "Flexible Property Types",
-    description: "Six property types across a range of sizes and budgets. Choose the one that fits, all within one estate.",
-  },
-  {
-    title: "Planned Community",
-    description: "Security, green parks, and shared amenities are built into the master plan, not added as an afterthought.",
-  },
-];
 
 const sitePhotos = [
   {
@@ -233,27 +175,6 @@ const investReasons = [
     imageLabel: "Pleasant Places, Apo",
   },
 ];
-
-function FeatureCard({
-  icon: Icon,
-  title,
-  description,
-}: {
-  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
-  title: string;
-  description: string;
-}) {
-  return (
-    <div className="group relative h-full overflow-hidden border border-ink/10 bg-sand/50 p-7 shadow-sm shadow-ink/5 transition duration-300 hover:-translate-y-1 hover:bg-sand hover:shadow-xl hover:shadow-brand/10">
-      <span className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand to-grove" />
-      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-grove text-white">
-        <Icon className="h-6 w-6 text-brand" strokeWidth={1.5} />
-      </div>
-      <h3 className="mt-8 font-serif text-xl text-ink">{title}</h3>
-      <p className="mt-2 text-sm text-muted">{description}</p>
-    </div>
-  );
-}
 
 export default function Home() {
   return (
@@ -361,14 +282,17 @@ export default function Home() {
                 <p className="max-w-4xl font-serif text-2xl leading-snug text-ink sm:text-3xl">
                   Away from the hustle and bustle of the city centre, yet close
                   enough to the city and the airport.{" "}
-                  <span className="text-brand italic">This is it.</span>
+                  <span className="text-brand italic">
+                    This is the estate that sets the standard in Lugbe.
+                  </span>
                 </p>
                 <p className="mt-6 max-w-4xl text-lg leading-8 text-muted">
-                  A quiet, peaceful and welcoming environment, with a
-                  captivating ambience and awe-inspiring greenery. Clobek
-                  Heritage Place comes from the developers of Clobek Crown
-                  Estate, known as one of the most premium residential estates
-                  on the Lugbe and Airport Road axis.
+                  Set in Sabon-Lugbe East Extension Layout, a sought-after
+                  residential corridor in Abuja FCT, Clobek Heritage Place offers
+                  a quiet, peaceful and welcoming environment, with a captivating
+                  ambience and awe-inspiring greenery. It comes from the
+                  developers of Clobek Crown Estate, known as one of the most
+                  premium residential estates on the Lugbe and Airport Road axis.
                 </p>
                 <p className="mt-6 text-base font-semibold text-grove sm:text-lg">
                   Experienced. Trusted. Beyond expectations.
@@ -376,13 +300,6 @@ export default function Home() {
               </div>
             </Reveal>
 
-            <div className="mt-12 grid gap-px overflow-hidden bg-ink/10 md:grid-cols-2 lg:grid-cols-3">
-              {amenities.map((item) => (
-                <Reveal key={item.title}>
-                  <FeatureCard {...item} />
-                </Reveal>
-              ))}
-            </div>
           </div>
         </section>
 
@@ -394,7 +311,7 @@ export default function Home() {
                 Pricing
               </span>
               <h2 className="mt-4 max-w-xl font-serif text-3xl leading-tight text-ink sm:text-5xl lg:text-6xl">
-                Premium estate living with a clear, honest entry price.
+                Premium estate living at a price that fits comfortably.
               </h2>
               </div>
               <div className="relative overflow-hidden border border-ink/10 bg-champagne px-7 py-10 text-ink shadow-xl shadow-ink/5 sm:px-10">
@@ -477,43 +394,6 @@ export default function Home() {
                 </Reveal>
               ))}
             </div>
-          </div>
-        </section>
-
-        <section className="bg-champagne py-16 sm:py-20">
-          <div className="mx-auto max-w-7xl px-6">
-            <Reveal>
-              <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-                <div className="lg:sticky lg:top-28">
-                <span className="text-xs font-semibold tracking-[0.3em] text-brand uppercase">
-                  Why Clobek Heritage Place
-                </span>
-                <h2 className="mt-4 max-w-xl font-serif text-3xl leading-tight text-ink sm:text-5xl lg:text-6xl">
-                  The estate that sets the standard in Lugbe.
-                </h2>
-                <p className="mt-5 max-w-md text-muted">
-                  Access, security, documentation, shared spaces, and room to grow:
-                  we planned the practical things so that living here feels
-                  effortless.
-                </p>
-                </div>
-                <div className="grid gap-4 sm:grid-cols-2">
-                  {whyUs.map((item, i) => (
-                    <div
-                      key={item.title}
-                      className={`relative overflow-hidden border border-ink/10 p-8 shadow-xl shadow-ink/5 ${
-                        i % 2 === 1 ? "bg-grove-light lg:mt-10" : "bg-sand"
-                      }`}
-                    >
-                      <span className="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-brand to-grove" />
-                      <p className="font-serif text-4xl text-brand">0{i + 1}</p>
-                      <h3 className="mt-8 font-serif text-2xl text-ink">{item.title}</h3>
-                      <p className="mt-3 text-sm leading-6 text-muted">{item.description}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </Reveal>
           </div>
         </section>
 
