@@ -13,6 +13,7 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import ImageSlideshow from "@/components/ImageSlideshow";
 import { formatNaira } from "@/lib/format";
 
 const PHONE_DISPLAY = "+234 802 982 3593";
@@ -193,17 +194,19 @@ const investReasons = [
     title: "Table Land in a Fully Built-Up Area",
     body: "This isn't land in a remote location that will take five to ten years to become habitable. Clobek Heritage Place sits inside a fully developed, fully inhabited environment, on firm table land: no sand-filling, no hills, no surprises. Build today and move in.",
     proof: "Come and verify it yourself. If you're not satisfied, don't pay a kobo.",
-    image: "/images/clobeck1/clobek-phase1-frontage.jpg",
-    imageAlt: "Homes, roads and fencing at Clobek Crown Estate, Lugbe",
-    imageLabel: "Clobek Crown Estate, Lugbe",
+    image: "/images/clobeck1/heritage-table-land.jpg",
+    imageAlt: "Aerial view of the flat Clobek Heritage Place site, surrounded by a built-up neighbourhood",
+    imageLabel: "Clobek Heritage Place · aerial view",
   },
   {
     title: "Premium Infrastructure, Built to Last",
     body: "We invest heavily in estate infrastructure because it is what drives the value of your property. More than 14 years after construction, the infrastructure in our earlier estates remains solid, and our subscribers have seen strong value growth in every neighbourhood we build in.",
     proof: "See it for yourself at Clobek Crown Estate, Lugbe; Pleasant Places, Apo; and TFP Vintage Homes, Wuye.",
-    image: "/images/tfp/tfp-vintage-homes-hedges.jpg",
-    imageAlt: "Well-kept road, kerbs, street lights and landscaping at TFP Vintage Homes, Wuye",
-    imageLabel: "TFP Vintage Homes, Wuye",
+    slides: [
+      { src: "/images/tfp/tfp-vintage-homes-home.jpg", alt: "Completed home with landscaped frontage at TFP Vintage Homes, Wuye", label: "TFP Vintage Homes, Wuye" },
+      { src: "/images/pleasant-places/pleasant-places-duplexes.jpg", alt: "Completed duplexes with gated driveways at Pleasant Places, Apo", label: "Pleasant Places, Apo" },
+      { src: "/images/clobeck1/clobek-phase1-street.jpg", alt: "Tarred road, street lights and kerbs at Clobek Crown Estate, Lugbe", label: "Clobek Crown Estate, Lugbe" },
+    ],
   },
   {
     title: "More Than a Plot: DPC Included",
@@ -348,6 +351,27 @@ export default function Home() {
                   parks, tarred roads, dependable water, and a community center
                   together in one master-planned estate in Lugbe, Abuja, with six
                   property types to match your family and your budget.
+                </p>
+              </div>
+            </Reveal>
+
+            <Reveal>
+              <div className="relative mt-12 overflow-hidden border border-ink/10 bg-champagne p-8 sm:p-12">
+                <span className="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-brand to-grove" />
+                <p className="max-w-4xl font-serif text-2xl leading-snug text-ink sm:text-3xl">
+                  Away from the hustle and bustle of the city centre, yet close
+                  enough to the city and the airport.{" "}
+                  <span className="text-brand italic">This is it.</span>
+                </p>
+                <p className="mt-6 max-w-4xl text-lg leading-8 text-muted">
+                  A quiet, peaceful and welcoming environment, with a
+                  captivating ambience and awe-inspiring greenery. Clobek
+                  Heritage Place comes from the developers of Clobek Crown
+                  Estate, known as one of the most premium residential estates
+                  on the Lugbe and Airport Road axis.
+                </p>
+                <p className="mt-6 text-base font-semibold text-grove sm:text-lg">
+                  Experienced. Trusted. Beyond expectations.
                 </p>
               </div>
             </Reveal>
@@ -518,7 +542,7 @@ export default function Home() {
                 <Reveal key={reason.title}>
                   <div
                     className={`grid gap-6 py-8 md:py-10 ${
-                      reason.image ? "lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-12" : ""
+                      reason.image || reason.slides ? "lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-12" : ""
                     }`}
                   >
                     <div className="grid gap-4 md:grid-cols-[5rem_1fr] md:gap-10">
@@ -538,6 +562,7 @@ export default function Home() {
                         </a>
                       </div>
                     </div>
+                    {reason.slides && <ImageSlideshow slides={reason.slides} />}
                     {reason.image && (
                       <figure className="relative aspect-[3/2] overflow-hidden border border-ink/10 shadow-lg shadow-ink/5">
                         <Image
@@ -630,14 +655,14 @@ export default function Home() {
             <Reveal>
               <figure className="relative aspect-video overflow-hidden border border-ink/10 bg-ink shadow-xl shadow-ink/10">
                 <video
-                  src="/videos/clobek-heritage-site-progress.mp4"
-                  poster="/videos/clobek-heritage-site-progress-poster.jpg"
+                  src="/videos/clobek-heritage-dpc-aerial.mp4"
+                  poster="/videos/clobek-heritage-dpc-aerial-poster.jpg"
                   autoPlay
                   muted
                   loop
                   playsInline
                   preload="metadata"
-                  aria-label="Footage of DPC foundation works on the Clobek Heritage Place site"
+                  aria-label="Aerial drone footage of DPC works on the Clobek Heritage Place site"
                   className="h-full w-full object-cover"
                 />
                 <figcaption className="absolute bottom-0 left-0 flex items-center gap-2 bg-ink/70 px-3 py-1.5 text-[11px] font-semibold tracking-wide text-white uppercase">
