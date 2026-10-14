@@ -7,7 +7,6 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
-import ImageSlideshow from "@/components/ImageSlideshow";
 import { formatNaira } from "@/lib/format";
 
 const PHONE_DISPLAY = "+234 802 982 3593";
@@ -135,7 +134,7 @@ const investReasons = [
   {
     title: "Table Land in a Fully Built-Up Area",
     body: "This isn't land in a remote location that will take five to ten years to become habitable. Clobek Heritage Place sits inside a fully developed, fully inhabited environment, on firm table land: no sand-filling, no hills, no surprises. Build today and move in.",
-    proof: "Come and verify it yourself. If you're not satisfied, don't pay a kobo.",
+    proof: "Come and verify it yourself. If you're not satisfied, don't commit your money.",
     image: "/images/clobeck1/heritage-table-land.jpg",
     imageAlt: "Aerial view of the flat Clobek Heritage Place site, surrounded by a built-up neighbourhood",
     imageLabel: "Clobek Heritage Place · aerial view",
@@ -144,11 +143,6 @@ const investReasons = [
     title: "Premium Infrastructure, Built to Last",
     body: "We invest heavily in estate infrastructure because it is what drives the value of your property. More than 14 years after construction, the infrastructure in our earlier estates remains solid, and our subscribers have seen strong value growth in every neighbourhood we build in.",
     proof: "See it for yourself at Clobek Crown Estate, Lugbe; Pleasant Places, Apo; and TFP Vintage Homes, Wuye.",
-    slides: [
-      { src: "/images/tfp/tfp-vintage-homes-home.jpg", alt: "Completed home with landscaped frontage at TFP Vintage Homes, Wuye", label: "TFP Vintage Homes, Wuye" },
-      { src: "/images/pleasant-places/pleasant-places-duplexes.jpg", alt: "Completed duplexes with gated driveways at Pleasant Places, Apo", label: "Pleasant Places, Apo" },
-      { src: "/images/clobeck1/clobek-phase1-street.jpg", alt: "Tarred road, street lights and kerbs at Clobek Crown Estate, Lugbe", label: "Clobek Crown Estate, Lugbe" },
-    ],
   },
   {
     title: "More Than a Plot: DPC Included",
@@ -256,7 +250,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden py-12 sm:py-16">
+        <section className="relative overflow-hidden py-6 sm:py-16">
           <div className="mx-auto max-w-7xl px-6">
             <Reveal>
               <div className="grid gap-10 lg:grid-cols-[0.7fr_1fr] lg:items-end">
@@ -278,7 +272,7 @@ export default function Home() {
             </Reveal>
 
             <Reveal>
-              <div className="relative mt-12 overflow-hidden border border-ink/10 bg-champagne p-8 sm:p-12">
+              <div className="relative mt-8 sm:mt-12 overflow-hidden border border-ink/10 bg-champagne p-8 sm:p-12">
                 <span className="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-brand to-grove" />
                 <p className="max-w-4xl font-serif text-2xl leading-snug text-ink sm:text-3xl">
                   Away from the hustle and bustle of the city centre, yet close
@@ -304,7 +298,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="amenities" className="relative overflow-hidden bg-white py-12 sm:py-16">
+        <section id="amenities" className="relative overflow-hidden bg-white py-6 sm:py-16">
           <Reveal>
             <div className="relative mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[0.85fr_1fr] lg:items-center">
               <div>
@@ -333,7 +327,7 @@ export default function Home() {
           </Reveal>
         </section>
 
-        <section id="house-types" className="py-12 sm:py-16">
+        <section id="house-types" className="py-6 sm:py-16">
           <div className="mx-auto max-w-7xl px-6">
             <Reveal>
               <div className="flex flex-col justify-between gap-6 border-b border-ink/10 pb-10 lg:flex-row lg:items-end">
@@ -352,7 +346,7 @@ export default function Home() {
               </div>
             </Reveal>
 
-            <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-8 sm:mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {houseTypes.map((house) => (
                 <Reveal key={house.id}>
                   <div className="group h-full overflow-hidden border border-ink/10 bg-white shadow-lg shadow-ink/5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-brand/10">
@@ -399,7 +393,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="why-invest" className="bg-white py-12 sm:py-16">
+        <section id="why-invest" className="bg-white py-6 sm:py-16">
           <div className="mx-auto max-w-7xl px-6">
             <Reveal>
               <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
@@ -419,12 +413,12 @@ export default function Home() {
               </div>
             </Reveal>
 
-            <div className="mt-12 divide-y divide-ink/10 border-y border-ink/10">
+            <div className="mt-8 sm:mt-12 divide-y divide-ink/10 border-y border-ink/10">
               {investReasons.map((reason, i) => (
                 <Reveal key={reason.title}>
                   <div
-                    className={`grid gap-6 py-8 md:py-10 ${
-                      reason.image || reason.slides ? "lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-12" : ""
+                    className={`grid gap-6 py-6 md:py-10 ${
+                      reason.image ? "lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-12" : ""
                     }`}
                   >
                     <div className="grid gap-4 md:grid-cols-[5rem_1fr] md:gap-10">
@@ -444,7 +438,6 @@ export default function Home() {
                         </a>
                       </div>
                     </div>
-                    {reason.slides && <ImageSlideshow slides={reason.slides} />}
                     {reason.image && (
                       <figure className="relative aspect-[3/2] overflow-hidden border border-ink/10 shadow-lg shadow-ink/5">
                         <Image
@@ -465,7 +458,7 @@ export default function Home() {
             </div>
 
             <Reveal>
-              <div className="mt-10 flex flex-col items-start justify-between gap-6 bg-champagne p-7 sm:flex-row sm:items-center sm:p-10">
+              <div className="mt-8 sm:mt-10 flex flex-col items-start justify-between gap-6 bg-champagne p-7 sm:flex-row sm:items-center sm:p-10">
                 <p className="max-w-xl font-serif text-2xl text-ink sm:text-3xl">
                   Seeing is believing. <span className="text-brand italic">Book a site visit.</span>
                 </p>
@@ -492,7 +485,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="site-progress" className="bg-white py-12 sm:py-16">
+        <section id="site-progress" className="bg-white py-6 sm:py-16">
           <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
             <Reveal>
               <div>
@@ -575,7 +568,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="our-estates" className="bg-champagne py-12 sm:py-16">
+        <section id="our-estates" className="bg-champagne py-6 sm:py-16">
           <div className="mx-auto max-w-7xl px-6">
             <Reveal>
               <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
@@ -595,7 +588,7 @@ export default function Home() {
             </Reveal>
           </div>
 
-          <div className="mt-12 space-y-14">
+          <div className="mt-8 sm:mt-12 space-y-10 sm:space-y-14">
             {pastProjects
               .filter((project) => project.images.length > 0)
               .map((project, i) => (
@@ -638,7 +631,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden bg-white py-12 sm:py-16">
+        <section className="relative overflow-hidden bg-white py-6 sm:py-16">
           <Reveal>
             <div className="relative mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[1fr_0.72fr] lg:items-end">
               <div>
@@ -680,7 +673,7 @@ export default function Home() {
           </Reveal>
         </section>
 
-        <section id="contact" className="py-12 sm:py-16">
+        <section id="contact" className="py-6 sm:py-16">
           <div className="mx-auto max-w-xl px-6 text-center">
             <h2 className="font-serif text-3xl text-ink sm:text-4xl">
               Contact Clobek Heritage Place
