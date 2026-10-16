@@ -250,10 +250,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden py-6 sm:py-16">
+        <section className="relative overflow-hidden py-4 sm:py-16">
           <div className="mx-auto max-w-7xl px-6">
             <Reveal>
-              <div className="grid gap-10 lg:grid-cols-[0.7fr_1fr] lg:items-end">
+              <div className="grid gap-6 lg:gap-10 lg:grid-cols-[0.7fr_1fr] lg:items-end">
                 <div>
                 <span className="text-xs font-semibold tracking-[0.3em] text-brand uppercase">
                   The Estate
@@ -262,32 +262,28 @@ export default function Home() {
                   Everything you want in a property, planned into one estate.
                 </h2>
                 </div>
-                <p className="max-w-2xl text-lg leading-8 text-muted">
-                  Clobek Heritage Place brings gated security, landscaped green
-                  parks, tarred roads, dependable water, and a community center
-                  together in one master-planned estate in Lugbe, Abuja, with six
-                  property types to match your family and your budget.
-                </p>
+                <div className="relative border-l-4 border-brand pl-6 sm:pl-8">
+                  <p className="max-w-2xl font-serif text-2xl leading-snug text-ink sm:text-3xl">
+                    Away from the hustle and bustle of the city centre, yet close
+                    enough to the city and the airport.{" "}
+                    <span className="text-brand italic">
+                      This is the estate that sets the standard in Lugbe.
+                    </span>
+                  </p>
+                </div>
               </div>
             </Reveal>
 
             <Reveal>
-              <div className="relative mt-8 sm:mt-12 overflow-hidden border border-ink/10 bg-champagne p-8 sm:p-12">
+              <div className="relative mt-6 sm:mt-12 overflow-hidden border border-ink/10 bg-champagne p-8 sm:p-12">
                 <span className="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-brand to-grove" />
-                <p className="max-w-4xl font-serif text-2xl leading-snug text-ink sm:text-3xl">
-                  Away from the hustle and bustle of the city centre, yet close
-                  enough to the city and the airport.{" "}
-                  <span className="text-brand italic">
-                    This is the estate that sets the standard in Lugbe.
-                  </span>
-                </p>
-                <p className="mt-6 max-w-4xl text-lg leading-8 text-muted">
+                <p className="max-w-4xl text-lg leading-8 text-muted">
                   Set in Sabon-Lugbe East Extension Layout, a sought-after
                   residential corridor in Abuja FCT, Clobek Heritage Place offers
                   a quiet, peaceful and welcoming environment, with a captivating
-                  ambience and awe-inspiring greenery. It comes from the
-                  developers of Clobek Crown Estate, known as one of the most
-                  premium residential estates on the Lugbe and Airport Road axis.
+                  ambience and awe-inspiring greenery. It sits right
+                  inside Clobek Crown Estate, known as one of the most premium
+                  residential estates on the Lugbe and Airport Road axis.
                 </p>
                 <p className="mt-6 text-base font-semibold text-grove sm:text-lg">
                   Experienced. Trusted. Beyond expectations.
@@ -298,9 +294,9 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="amenities" className="relative overflow-hidden bg-white py-6 sm:py-16">
+        <section id="amenities" className="relative overflow-hidden bg-white py-4 sm:py-16">
           <Reveal>
-            <div className="relative mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[0.85fr_1fr] lg:items-center">
+            <div className="relative mx-auto grid max-w-7xl gap-6 lg:gap-10 px-6 lg:grid-cols-[0.85fr_1fr] lg:items-center">
               <div>
               <span className="text-xs font-semibold tracking-[0.3em] text-brand uppercase">
                 Pricing
@@ -309,7 +305,7 @@ export default function Home() {
                 Premium estate living at a price that fits comfortably.
               </h2>
               </div>
-              <div className="relative overflow-hidden border border-ink/10 bg-champagne px-7 py-10 text-ink shadow-xl shadow-ink/5 sm:px-10">
+              <div className="relative overflow-hidden border border-ink/10 bg-champagne px-7 py-8 sm:py-10 text-ink shadow-xl shadow-ink/5 sm:px-10">
                 <span className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand to-grove" />
                 <h3 className="font-serif text-3xl text-ink sm:text-5xl">
                   Properties from{" "}
@@ -327,10 +323,10 @@ export default function Home() {
           </Reveal>
         </section>
 
-        <section id="house-types" className="py-6 sm:py-16">
+        <section id="house-types" className="py-4 sm:py-16">
           <div className="mx-auto max-w-7xl px-6">
             <Reveal>
-              <div className="flex flex-col justify-between gap-6 border-b border-ink/10 pb-10 lg:flex-row lg:items-end">
+              <div className="flex flex-col justify-between gap-6 border-b border-ink/10 pb-6 sm:pb-10 lg:flex-row lg:items-end">
                 <div>
                 <span className="text-xs font-semibold tracking-[0.3em] text-brand uppercase">
                   Property Types
@@ -346,7 +342,7 @@ export default function Home() {
               </div>
             </Reveal>
 
-            <div className="mt-8 sm:mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-6 sm:mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {houseTypes.map((house) => (
                 <Reveal key={house.id}>
                   <div className="group h-full overflow-hidden border border-ink/10 bg-white shadow-lg shadow-ink/5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-brand/10">
@@ -393,7 +389,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="why-invest" className="bg-white py-6 sm:py-16">
+        <section id="why-invest" className="bg-white py-4 sm:py-16">
           <div className="mx-auto max-w-7xl px-6">
             <Reveal>
               <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
@@ -413,7 +409,7 @@ export default function Home() {
               </div>
             </Reveal>
 
-            <div className="mt-8 sm:mt-12 divide-y divide-ink/10 border-y border-ink/10">
+            <div className="mt-6 sm:mt-12 divide-y divide-ink/10 border-y border-ink/10">
               {investReasons.map((reason, i) => (
                 <Reveal key={reason.title}>
                   <div
@@ -485,8 +481,8 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="site-progress" className="bg-white py-6 sm:py-16">
-          <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+        <section id="site-progress" className="bg-white py-4 sm:py-16">
+          <div className="mx-auto grid max-w-7xl gap-6 lg:gap-10 px-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
             <Reveal>
               <div>
                 <span className="text-xs font-semibold tracking-[0.3em] text-brand uppercase">
@@ -568,7 +564,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="our-estates" className="bg-champagne py-6 sm:py-16">
+        <section id="our-estates" className="bg-champagne py-4 sm:py-16">
           <div className="mx-auto max-w-7xl px-6">
             <Reveal>
               <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
@@ -588,7 +584,7 @@ export default function Home() {
             </Reveal>
           </div>
 
-          <div className="mt-8 sm:mt-12 space-y-10 sm:space-y-14">
+          <div className="mt-6 sm:mt-12 space-y-8 sm:space-y-14">
             {pastProjects
               .filter((project) => project.images.length > 0)
               .map((project, i) => (
@@ -631,9 +627,9 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden bg-white py-6 sm:py-16">
+        <section className="relative overflow-hidden bg-white py-4 sm:py-16">
           <Reveal>
-            <div className="relative mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[1fr_0.72fr] lg:items-end">
+            <div className="relative mx-auto grid max-w-7xl gap-6 lg:gap-12 px-6 lg:grid-cols-[1fr_0.72fr] lg:items-end">
               <div>
                 <span className="text-xs font-semibold tracking-[0.3em] text-brand uppercase">
                   Inspection & Availability
@@ -673,7 +669,7 @@ export default function Home() {
           </Reveal>
         </section>
 
-        <section id="contact" className="py-6 sm:py-16">
+        <section id="contact" className="py-4 sm:py-16">
           <div className="mx-auto max-w-xl px-6 text-center">
             <h2 className="font-serif text-3xl text-ink sm:text-4xl">
               Contact Clobek Heritage Place
@@ -705,7 +701,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="border-t border-ink/10 bg-grove py-12 text-center text-white/65">
+      <footer className="border-t border-ink/10 bg-grove py-8 sm:py-12 text-center text-white/65">
         <p className="font-serif text-2xl text-white">
           Clobek <span className="text-brand italic">Heritage</span> Place
         </p>
