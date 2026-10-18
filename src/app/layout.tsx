@@ -21,7 +21,7 @@ const fraunces = Fraunces({
 
 const SHARE_TITLE = "Clobek Heritage Place | Lugbe, Off Airport Road, Abuja";
 const SHARE_DESCRIPTION =
-  "When security, proximity to the city centre and the airport, world-class infrastructure, awe-inspiring greenery and eco-friendliness matter. Plots with DPC from ₦25M. Call +234 802 982 3593.";
+  "When security, proximity to the city centre and the airport, world-class infrastructure, awe-inspiring greenery and eco-friendliness matter. Plots with DPC from ₦22M. Call +234 802 982 3593.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://clobekheritageplace.live"),

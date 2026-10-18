@@ -21,47 +21,47 @@ const houseTypes = [
   {
     id: 1,
     name: "3-Bedroom Terrace",
-    size: "141.2 sqm",
-    sqm: 141.2,
-    price: 25,
+    size: "Approx. 141 sqm",
+    sqm: 141,
+    price: 22,
     image: "/images/3-bedroom-terrace.jpeg",
   },
   {
     id: 2,
     name: "3-Bedroom Terrace + B.Q",
-    size: "162.5 sqm",
-    sqm: 162.5,
-    price: 29,
+    size: "Approx. 163 sqm",
+    sqm: 163,
+    price: 27,
     image: "/images/3-bedroom-terrace-bq-2.jpeg",
   },
   {
     id: 3,
-    name: "4-Bedroom Terrace + B.Q",
-    size: "167 sqm",
+    name: "4-Bedroom Super Terrace + B.Q",
+    size: "Approx. 167 sqm",
     sqm: 167,
     price: 31.5,
     image: "/images/4-bedroom-terrace-bq.jpeg",
   },
   {
     id: 4,
-    name: "4-Bedroom Row House + B.Q",
-    size: "300 sqm",
+    name: "4-Bedroom Row House Duplex + B.Q",
+    size: "Approx. 300 sqm",
     sqm: 300,
-    price: 35,
+    price: 37,
     image: "/images/clobek-rowhouse-a.jpg",
   },
   {
     id: 5,
-    name: "5-Bedroom Row House + B.Q",
-    size: "360.4 sqm",
-    sqm: 360.4,
+    name: "5-Bedroom Row House Duplex + B.Q",
+    size: "Approx. 375 sqm",
+    sqm: 375,
     price: 43,
     image: "/images/clobek-duplex.jpg",
   },
   {
     id: 6,
     name: "5-Bedroom Detached Duplex + B.Q",
-    size: "465 sqm",
+    size: "Approx. 465 sqm",
     sqm: 465,
     price: 47,
     image: "/images/5-bedroom-detached-duplex-bq.jpeg",
@@ -93,7 +93,7 @@ const pastProjects = [
   {
     name: "Clobek Crown Estate",
     location: "Lugbe, Abuja",
-    description: "A completed Clobek estate with tarred roads, street lighting, landscaped frontages and finished homes.",
+    description: "Lugbe's benchmark for premium estate living. Completed, fully occupied, and the trusted foundation on which Clobek Heritage Place now rises.",
     images: [
       { src: "/images/clobeck1/clobek-phase1-home.jpg", alt: "Finished home with landscaped frontage at Clobek Crown Estate, Lugbe" },
       { src: "/images/clobeck1/clobek-phase1-street.jpg", alt: "Tarred road with street lights at Clobek Crown Estate, Lugbe" },
@@ -104,7 +104,7 @@ const pastProjects = [
   {
     name: "Pleasant Places",
     location: "Apo, Abuja",
-    description: "One of our greenest estates, with landscaped lawns, gardens and trees throughout.",
+    description: "Apo's premium address for serene, elegant living, where thoughtful design meets a lifestyle residents are proud to own.",
     images: [
       { src: "/images/pleasant-places/pleasant-places-entrance.jpg", alt: "Landscaped entrance and sign at Pleasant Places, Apo" },
       { src: "/images/pleasant-places/pleasant-places-terraces.jpg", alt: "Completed terrace homes along the road at Pleasant Places, Apo" },
@@ -118,7 +118,7 @@ const pastProjects = [
   {
     name: "TFP Vintage Homes",
     location: "Wuye, Abuja",
-    description: "A completed estate with mature landscaping, tree-lined streets and a residents' swimming pool.",
+    description: "A landmark of timeless elegance in Wuye, delivered with the craftsmanship and lasting value that define every estate we build.",
     images: [
       { src: "/images/tfp/tfp-vintage-homes-gardens.jpg", alt: "Palm trees and landscaped gardens at TFP Vintage Homes, Wuye" },
       { src: "/images/tfp/tfp-vintage-homes-home.jpg", alt: "Completed home with sculpted hedges at TFP Vintage Homes, Wuye" },
@@ -389,6 +389,89 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="site-progress" className="bg-white py-4 sm:py-16">
+          <div className="mx-auto grid max-w-7xl gap-6 lg:gap-10 px-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+            <Reveal>
+              <div>
+                <span className="text-xs font-semibold tracking-[0.3em] text-brand uppercase">
+                  Site Progress
+                </span>
+                <h2 className="mt-4 max-w-xl font-serif text-3xl leading-tight text-ink sm:text-5xl lg:text-6xl">
+                  We&apos;ve <span className="text-brand italic">already started.</span>
+                </h2>
+                <p className="mt-5 max-w-md leading-7 text-muted">
+                  DPC works are under way at Clobek Heritage Place, right inside
+                  a fully built-up neighbourhood. This is real footage from the
+                  site, not a render.
+                </p>
+                <p className="mt-6 flex items-start gap-2 text-sm text-muted">
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand" />
+                  {SITE_ADDRESS}
+                </p>
+                <p className="mt-6 text-sm font-semibold text-grove">
+                  Come and see it for yourself.
+                </p>
+                <div className="mt-4 flex flex-wrap gap-3">
+                  <a
+                    href={WHATSAPP_VISIT_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/20 transition hover:bg-brand-dark"
+                  >
+                    Book a Site Visit
+                    <MessageCircle className="h-4 w-4" />
+                  </a>
+                  <a
+                    href={PHONE_TEL}
+                    className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-6 py-3 text-sm font-semibold text-ink transition hover:border-brand/40 hover:text-brand"
+                  >
+                    Call {PHONE_DISPLAY}
+                    <Phone className="h-4 w-4" />
+                  </a>
+                </div>
+              </div>
+            </Reveal>
+            <Reveal>
+              <figure className="relative aspect-video overflow-hidden border border-ink/10 bg-ink shadow-xl shadow-ink/10">
+                <video
+                  src="/videos/clobek-heritage-dpc-aerial.mp4"
+                  poster="/videos/clobek-heritage-dpc-aerial-poster.jpg"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  aria-label="Aerial drone footage of DPC works on the Clobek Heritage Place site"
+                  className="h-full w-full object-cover"
+                />
+                <figcaption className="absolute bottom-0 left-0 flex items-center gap-2 bg-ink/70 px-3 py-1.5 text-[11px] font-semibold tracking-wide text-white uppercase">
+                  <span className="h-2 w-2 rounded-full bg-brand" />
+                  Real site footage · DPC works
+                </figcaption>
+              </figure>
+            </Reveal>
+          </div>
+
+          <div className="mx-auto mt-6 grid max-w-7xl gap-4 px-6 sm:grid-cols-3">
+            {sitePhotos.map((photo) => (
+              <Reveal key={photo.src}>
+                <figure className="relative aspect-[4/3] overflow-hidden border border-ink/10 shadow-lg shadow-ink/5">
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    sizes="(min-width: 640px) 33vw, 100vw"
+                    className="object-cover transition duration-500 hover:scale-105"
+                  />
+                  <figcaption className="absolute bottom-0 left-0 bg-ink/70 px-3 py-1.5 text-[11px] font-semibold tracking-wide text-white uppercase">
+                    {photo.caption}
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
         <section id="why-invest" className="bg-white py-4 sm:py-16">
           <div className="mx-auto max-w-7xl px-6">
             <Reveal>
@@ -478,89 +561,6 @@ export default function Home() {
                 </div>
               </div>
             </Reveal>
-          </div>
-        </section>
-
-        <section id="site-progress" className="bg-white py-4 sm:py-16">
-          <div className="mx-auto grid max-w-7xl gap-6 lg:gap-10 px-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-            <Reveal>
-              <div>
-                <span className="text-xs font-semibold tracking-[0.3em] text-brand uppercase">
-                  Site Progress
-                </span>
-                <h2 className="mt-4 max-w-xl font-serif text-3xl leading-tight text-ink sm:text-5xl lg:text-6xl">
-                  We&apos;ve <span className="text-brand italic">already started.</span>
-                </h2>
-                <p className="mt-5 max-w-md leading-7 text-muted">
-                  DPC works are under way at Clobek Heritage Place, right inside
-                  a fully built-up neighbourhood. This is real footage from the
-                  site, not a render.
-                </p>
-                <p className="mt-6 flex items-start gap-2 text-sm text-muted">
-                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand" />
-                  {SITE_ADDRESS}
-                </p>
-                <p className="mt-6 text-sm font-semibold text-grove">
-                  Come and see it for yourself.
-                </p>
-                <div className="mt-4 flex flex-wrap gap-3">
-                  <a
-                    href={WHATSAPP_VISIT_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/20 transition hover:bg-brand-dark"
-                  >
-                    Book a Site Visit
-                    <MessageCircle className="h-4 w-4" />
-                  </a>
-                  <a
-                    href={PHONE_TEL}
-                    className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-6 py-3 text-sm font-semibold text-ink transition hover:border-brand/40 hover:text-brand"
-                  >
-                    Call {PHONE_DISPLAY}
-                    <Phone className="h-4 w-4" />
-                  </a>
-                </div>
-              </div>
-            </Reveal>
-            <Reveal>
-              <figure className="relative aspect-video overflow-hidden border border-ink/10 bg-ink shadow-xl shadow-ink/10">
-                <video
-                  src="/videos/clobek-heritage-dpc-aerial.mp4"
-                  poster="/videos/clobek-heritage-dpc-aerial-poster.jpg"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  aria-label="Aerial drone footage of DPC works on the Clobek Heritage Place site"
-                  className="h-full w-full object-cover"
-                />
-                <figcaption className="absolute bottom-0 left-0 flex items-center gap-2 bg-ink/70 px-3 py-1.5 text-[11px] font-semibold tracking-wide text-white uppercase">
-                  <span className="h-2 w-2 rounded-full bg-brand" />
-                  Real site footage · DPC works
-                </figcaption>
-              </figure>
-            </Reveal>
-          </div>
-
-          <div className="mx-auto mt-6 grid max-w-7xl gap-4 px-6 sm:grid-cols-3">
-            {sitePhotos.map((photo) => (
-              <Reveal key={photo.src}>
-                <figure className="relative aspect-[4/3] overflow-hidden border border-ink/10 shadow-lg shadow-ink/5">
-                  <Image
-                    src={photo.src}
-                    alt={photo.alt}
-                    fill
-                    sizes="(min-width: 640px) 33vw, 100vw"
-                    className="object-cover transition duration-500 hover:scale-105"
-                  />
-                  <figcaption className="absolute bottom-0 left-0 bg-ink/70 px-3 py-1.5 text-[11px] font-semibold tracking-wide text-white uppercase">
-                    {photo.caption}
-                  </figcaption>
-                </figure>
-              </Reveal>
-            ))}
           </div>
         </section>
 
