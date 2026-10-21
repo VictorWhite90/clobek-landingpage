@@ -149,7 +149,7 @@ export default function FourBedroomTerracePage() {
 
       <section className="relative overflow-hidden bg-grove text-white">
         <div className="absolute inset-0 opacity-[0.12] [background-image:linear-gradient(rgba(255,255,255,.16)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.16)_1px,transparent_1px)] [background-size:48px_48px]" />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 pb-0 pt-0 sm:px-8 sm:py-20 lg:min-h-[590px] lg:grid-cols-[1fr_0.95fr] lg:gap-10 lg:py-16">
+        <div className="relative mx-auto grid max-w-7xl items-center gap-0 px-5 pb-0 pt-0 sm:px-8 sm:py-20 lg:min-h-[590px] lg:grid-cols-[1fr_0.95fr] lg:gap-10 lg:py-16">
           <div className="order-2 hidden max-w-xl lg:order-1 lg:block">
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#e4bd67]">
               Clobek Heritage Place · Lugbe, Abuja
@@ -183,7 +183,7 @@ export default function FourBedroomTerracePage() {
             </div>
           </div>
 
-          <div className="relative order-1 -mx-5 min-h-[calc(100svh-56px)] w-[calc(100%+2.5rem)] max-w-none sm:mx-auto sm:min-h-0 sm:w-full sm:max-w-[620px] sm:pb-10 lg:order-2 lg:ml-auto">
+          <div className="relative order-1 -mx-5 aspect-[1.05] w-[calc(100%+2.5rem)] max-w-none sm:mx-auto sm:aspect-[1.38] sm:w-full sm:max-w-[620px] sm:pb-10 lg:order-2 lg:ml-auto">
             <div className="absolute inset-0 overflow-hidden sm:relative sm:inset-auto sm:aspect-[1.38] sm:shadow-2xl sm:shadow-black/30 sm:rounded-[30px] sm:border-[10px] sm:border-white">
               <Image
                 src={property.image}
@@ -193,57 +193,9 @@ export default function FourBedroomTerracePage() {
                 sizes="(min-width: 1024px) 48vw, 100vw"
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-ink/10 lg:hidden" />
               <span className="absolute left-4 top-4 bg-[#092b21]/85 px-3 py-2 text-[11px] font-semibold text-white backdrop-blur-sm">
                 PROTOTYPE 03 · ARCHITECTURAL RENDER
               </span>
-              <div className="absolute inset-x-5 bottom-7 z-10 lg:hidden">
-                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#e4bd67]">
-                  Clobek Heritage Place · Lugbe, Abuja
-                </p>
-                <h1 className="mt-3 max-w-md font-serif text-4xl leading-[1.02] text-white">
-                  A little more room for life.
-                </h1>
-                <p className="mt-3 max-w-lg text-sm leading-6 text-white/85">
-                  {property.name}, designed across three levels with room to
-                  gather, unwind, and make space for family.
-                </p>
-                <div className="mt-3 inline-flex items-center gap-4 bg-white px-3.5 py-2.5 text-ink shadow-lg">
-                  <div>
-                    <p className="text-[9px] font-bold uppercase tracking-wide text-grove">
-                      Land + DPC
-                    </p>
-                    <p className="font-serif text-lg leading-tight text-brand">
-                      {formatNaira(property.price)}
-                    </p>
-                  </div>
-                  <span className="h-8 w-px bg-ink/10" />
-                  <div>
-                    <p className="text-[9px] font-bold uppercase tracking-wide text-muted">
-                      Plot size
-                    </p>
-                    <p className="text-sm font-semibold text-ink">
-                      {property.size} sqm
-                    </p>
-                  </div>
-                </div>
-                <div className="mt-5 flex flex-wrap gap-2.5">
-                  <a
-                    href={visitUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex min-h-11 items-center gap-2 bg-[#d7a63e] px-4 text-xs font-bold text-[#11251d] transition hover:bg-[#e6bd65]"
-                  >
-                    Book a site visit <ArrowRight className="h-4 w-4" />
-                  </a>
-                  <a
-                    href="#floor-plans"
-                    className="inline-flex min-h-11 items-center border border-white/55 bg-ink/20 px-4 text-xs font-semibold text-white transition hover:bg-white/10"
-                  >
-                    View floor plans
-                  </a>
-                </div>
-              </div>
             </div>
             <div className="absolute -bottom-1 left-2 hidden min-w-[225px] items-center gap-5 rounded-xl bg-white px-5 py-4 text-ink shadow-xl sm:bottom-0 sm:left-[-22px] sm:px-6 sm:py-5 lg:flex">
               <div>
@@ -265,6 +217,54 @@ export default function FourBedroomTerracePage() {
                 <p className="mt-1 text-xl font-bold text-ink">{property.size} sqm</p>
                 <p className="mt-1 text-[10px] text-muted">Approximate</p>
               </div>
+            </div>
+          </div>
+
+          <div className="order-2 py-7 sm:py-8 lg:hidden">
+            <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#e4bd67]">
+              Clobek Heritage Place · Lugbe, Abuja
+            </p>
+            <h1 className="mt-3 max-w-md font-serif text-4xl leading-[1.02] text-white">
+              A little more room for life.
+            </h1>
+            <p className="mt-3 max-w-lg text-sm leading-6 text-white/85">
+              {property.name}, designed across three levels with room to gather,
+              unwind, and make space for family.
+            </p>
+            <div className="mt-3 inline-flex items-center gap-4 bg-white px-3.5 py-2.5 text-ink shadow-lg">
+              <div>
+                <p className="text-[9px] font-bold uppercase tracking-wide text-grove">
+                  Land + DPC
+                </p>
+                <p className="font-serif text-lg leading-tight text-brand">
+                  {formatNaira(property.price)}
+                </p>
+              </div>
+              <span className="h-8 w-px bg-ink/10" />
+              <div>
+                <p className="text-[9px] font-bold uppercase tracking-wide text-muted">
+                  Plot size
+                </p>
+                <p className="text-sm font-semibold text-ink">
+                  {property.size} sqm
+                </p>
+              </div>
+            </div>
+            <div className="mt-5 flex flex-wrap gap-2.5">
+              <a
+                href={visitUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-11 items-center gap-2 bg-[#d7a63e] px-4 text-xs font-bold text-[#11251d] transition hover:bg-[#e6bd65]"
+              >
+                Book a site visit <ArrowRight className="h-4 w-4" />
+              </a>
+              <a
+                href="#floor-plans"
+                className="inline-flex min-h-11 items-center border border-white/55 bg-ink/20 px-4 text-xs font-semibold text-white transition hover:bg-white/10"
+              >
+                View floor plans
+              </a>
             </div>
           </div>
         </div>
