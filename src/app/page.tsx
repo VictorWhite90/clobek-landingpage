@@ -355,10 +355,28 @@ export default function Home() {
                         sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                         className="object-cover transition duration-500 group-hover:scale-105"
                       />
+                      {house.id === 3 && (
+                        <Link
+                          href="/properties/4-bedroom-terrace-bq"
+                          aria-label={`View details for ${house.name}`}
+                          className="absolute inset-0"
+                        />
+                      )}
                     </div>
                     <div className="flex items-start justify-between gap-4 p-7">
                       <div>
-                        <h3 className="font-serif text-2xl leading-tight text-ink">{house.name}</h3>
+                        <h3 className="font-serif text-2xl leading-tight text-ink">
+                          {house.id === 3 ? (
+                            <Link
+                              href="/properties/4-bedroom-terrace-bq"
+                              className="transition hover:text-brand"
+                            >
+                              {house.name}
+                            </Link>
+                          ) : (
+                            house.name
+                          )}
+                        </h3>
                         <p className="mt-2 text-sm font-medium text-muted">{house.size}</p>
                       </div>
                       <div className="shrink-0 text-right">
@@ -371,15 +389,25 @@ export default function Home() {
                         <p className="mt-0.5 text-[11px] text-muted">
                           T&amp;Cs apply
                         </p>
-                        <a
-                          href={WHATSAPP_URL}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`Enquire about ${house.name} on WhatsApp`}
-                          className="mt-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-grove text-white transition group-hover:bg-brand"
-                        >
-                          <ArrowUpRight className="h-4 w-4" />
-                        </a>
+                        {house.id === 3 ? (
+                          <Link
+                            href="/properties/4-bedroom-terrace-bq"
+                            className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-grove transition hover:text-brand"
+                          >
+                            View details
+                            <ArrowUpRight className="h-4 w-4" />
+                          </Link>
+                        ) : (
+                          <a
+                            href={WHATSAPP_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`Enquire about ${house.name} on WhatsApp`}
+                            className="mt-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-grove text-white transition group-hover:bg-brand"
+                          >
+                            <ArrowUpRight className="h-4 w-4" />
+                          </a>
+                        )}
                       </div>
                     </div>
                   </div>
