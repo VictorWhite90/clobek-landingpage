@@ -84,6 +84,39 @@ const floorPlans = [
   },
 ];
 
+const otherOptions = [
+  {
+    name: "3-Bedroom Terrace",
+    size: "Approx. 141 sqm",
+    price: 22,
+    image: "/images/3-bedroom-terrace.jpeg",
+  },
+  {
+    name: "3-Bedroom Terrace + B.Q",
+    size: "Approx. 163 sqm",
+    price: 27,
+    image: "/images/3-bedroom-terrace-bq-2.jpeg",
+  },
+  {
+    name: "4-Bedroom Row House Duplex + B.Q",
+    size: "Approx. 300 sqm",
+    price: 37,
+    image: "/images/clobek-rowhouse-a.jpg",
+  },
+  {
+    name: "5-Bedroom Row House Duplex + B.Q",
+    size: "Approx. 375 sqm",
+    price: 43,
+    image: "/images/clobek-duplex.jpg",
+  },
+  {
+    name: "5-Bedroom Detached Duplex + B.Q",
+    size: "Approx. 465 sqm",
+    price: 47,
+    image: "/images/5-bedroom-detached-duplex-bq.jpeg",
+  },
+];
+
 export const metadata: Metadata = {
   title: "4-Bedroom Terrace + B.Q | Clobek Heritage Place",
   description:
@@ -103,12 +136,6 @@ export default function FourBedroomTerracePage() {
             <ArrowLeft className="h-4 w-4" />
             Clobek Heritage Place
           </Link>
-          <Link
-            href="/#house-types"
-            className="hidden text-sm font-medium text-muted transition hover:text-ink sm:inline"
-          >
-            Explore other properties
-          </Link>
           <a
             href={whatsappUrl}
             target="_blank"
@@ -122,8 +149,8 @@ export default function FourBedroomTerracePage() {
 
       <section className="relative overflow-hidden bg-grove text-white">
         <div className="absolute inset-0 opacity-[0.12] [background-image:linear-gradient(rgba(255,255,255,.16)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.16)_1px,transparent_1px)] [background-size:48px_48px]" />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 py-14 sm:px-8 sm:py-20 lg:min-h-[590px] lg:grid-cols-[1fr_0.95fr] lg:gap-10 lg:py-16">
-          <div className="max-w-xl">
+        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 pb-14 pt-0 sm:px-8 sm:py-20 lg:min-h-[590px] lg:grid-cols-[1fr_0.95fr] lg:gap-10 lg:py-16">
+          <div className="order-2 max-w-xl lg:order-1">
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#e4bd67]">
               Clobek Heritage Place · Lugbe, Abuja
             </p>
@@ -156,8 +183,8 @@ export default function FourBedroomTerracePage() {
             </div>
           </div>
 
-          <div className="relative mx-auto w-full max-w-[620px] pb-8 sm:pb-10 lg:ml-auto">
-            <div className="relative aspect-[1.38] overflow-hidden rounded-[24px] border-[8px] border-white shadow-2xl shadow-black/30 sm:rounded-[30px] sm:border-[10px]">
+          <div className="relative order-1 -mx-5 w-[calc(100%+2.5rem)] max-w-none pb-8 sm:mx-auto sm:w-full sm:max-w-[620px] sm:pb-10 lg:order-2 lg:ml-auto">
+            <div className="relative aspect-[1.38] overflow-hidden shadow-2xl shadow-black/30 sm:rounded-[30px] sm:border-[10px] sm:border-white">
               <Image
                 src={property.image}
                 alt="Architectural render of terrace homes at Clobek Heritage Place"
@@ -337,6 +364,66 @@ export default function FourBedroomTerracePage() {
               Structural blockwork taking shape
             </figcaption>
           </figure>
+        </div>
+      </section>
+
+      <section className="bg-[#f3f5f1] py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <div className="flex flex-col justify-between gap-5 border-b border-ink/10 pb-7 sm:flex-row sm:items-end">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand">
+                More at Clobek Heritage Place
+              </p>
+              <h2 className="mt-3 max-w-2xl font-serif text-4xl leading-tight text-ink sm:text-5xl">
+                Other land + home options.
+              </h2>
+            </div>
+            <p className="max-w-md text-sm leading-6 text-muted">
+              Compare the other available home types. Prices shown are for Land
+              + DPC; terms and availability should be confirmed with Clobek.
+            </p>
+          </div>
+
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {otherOptions.map((option) => (
+              <article key={option.name} className="min-w-0 bg-white">
+                <div className="relative aspect-[1.45] overflow-hidden bg-grove-light">
+                  <Image
+                    src={option.image}
+                    alt={`${option.name} at Clobek Heritage Place`}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover transition duration-500 hover:scale-105"
+                  />
+                </div>
+                <div className="p-5">
+                  <h3 className="font-serif text-xl leading-snug text-ink">
+                    {option.name}
+                  </h3>
+                  <p className="mt-2 text-sm text-muted">{option.size}</p>
+                  <div className="mt-4 flex items-end justify-between gap-3 border-t border-ink/10 pt-4">
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-muted">
+                        Land + DPC
+                      </p>
+                      <p className="mt-1 font-serif text-2xl text-brand">
+                        {formatNaira(option.price)}
+                      </p>
+                    </div>
+                    <a
+                      href={`https://wa.me/2348029823593?text=${encodeURIComponent(`Hello Clobek Heritage Place, please send me details about the ${option.name}.`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Enquire about ${option.name} on WhatsApp`}
+                      className="inline-flex h-10 w-10 shrink-0 items-center justify-center bg-grove text-white transition hover:bg-brand"
+                    >
+                      <ArrowUpRight className="h-4 w-4" />
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
