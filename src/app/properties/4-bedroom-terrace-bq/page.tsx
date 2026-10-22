@@ -9,12 +9,16 @@ import {
   BedDouble,
   CarFront,
   ChefHat,
+  MessageCircle,
   MapPin,
   Maximize2,
+  Phone,
   Sofa,
   UsersRound,
 } from "lucide-react";
 import { formatNaira } from "@/lib/format";
+import Reveal from "@/components/Reveal";
+import WhyInvestSection from "@/components/WhyInvestSection";
 
 const property = {
   name: "4-Bedroom Terrace + B.Q",
@@ -29,6 +33,24 @@ const whatsappUrl =
   "https://wa.me/2348029823593?text=Hello%20Clobek%20Heritage%20Place%2C%20I%27m%20interested%20in%20the%204-Bedroom%20Terrace%20%2B%20B.Q.%20Please%20send%20me%20more%20details.";
 const visitUrl =
   "https://wa.me/2348029823593?text=Hello%20Clobek%20Heritage%20Place%2C%20I%27d%20like%20to%20book%20a%20site%20visit%20to%20see%20the%204-Bedroom%20Terrace%20%2B%20B.Q.";
+
+const sitePhotos = [
+  {
+    src: "/images/clobeck1/heritage-site-3.jpg",
+    alt: "DPC foundations at Clobek Heritage Place with finished homes in the neighbourhood behind",
+    caption: "DPC foundations",
+  },
+  {
+    src: "/images/clobeck1/heritage-site-2.jpg",
+    alt: "Workers laying blocks on the Clobek Heritage Place site",
+    caption: "Work in progress",
+  },
+  {
+    src: "/images/clobeck1/heritage-site-1.jpg",
+    alt: "Blockwork and starter bars on the Clobek Heritage Place site",
+    caption: "Blockwork & starter bars",
+  },
+];
 
 const features = [
   {
@@ -60,27 +82,6 @@ const features = [
     icon: CarFront,
     title: "Three-car parking",
     detail: "Parking provision shown in the prototype",
-  },
-];
-
-const floorPlans = [
-  {
-    name: "Ground floor",
-    image: "/images/prototype-03-ground-floor.png",
-    alt: "Ground floor plan showing the main lounge, dining, kitchen, foyer, visitor toilet, entrance porch, and B.Q.",
-    details: "Main lounge · Dining · Kitchen · Foyer · Visitor toilet · B.Q.",
-  },
-  {
-    name: "First floor",
-    image: "/images/prototype-03-first-floor.png",
-    alt: "First floor plan for the 4-bedroom terrace duplex prototype.",
-    details: "Bedrooms · Family lounge · Bathrooms · Balcony",
-  },
-  {
-    name: "Second floor",
-    image: "/images/prototype-03-second-floor.png",
-    alt: "Second floor plan for the 4-bedroom terrace duplex prototype.",
-    details: "Additional bedrooms · Bathrooms · Balcony",
   },
 ];
 
@@ -154,6 +155,7 @@ export default function FourBedroomTerracePage() {
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#e4bd67]">
               Clobek Heritage Place · Lugbe, Abuja
             </p>
+            <p className="mt-4 text-sm font-bold text-[#e4bd67]">Free DPC</p>
             <h1 className="mt-5 font-serif text-5xl leading-[1.04] text-white sm:text-6xl lg:text-7xl">
               A little more room for life.
             </h1>
@@ -224,6 +226,7 @@ export default function FourBedroomTerracePage() {
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#e4bd67]">
               Clobek Heritage Place · Lugbe, Abuja
             </p>
+            <p className="mt-3 text-sm font-bold text-[#e4bd67]">Free DPC</p>
             <h1 className="mt-3 font-serif text-4xl leading-[1.04] text-white sm:text-5xl">
               A little more room for life.
             </h1>
@@ -393,100 +396,90 @@ export default function FourBedroomTerracePage() {
         </div>
       </section>
 
-      <section id="floor-plans" className="bg-[#f3f5f1] py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="flex flex-col justify-between gap-5 border-b border-ink/10 pb-7 sm:flex-row sm:items-end">
+      <section className="bg-white py-4 sm:py-16">
+        <div className="mx-auto grid max-w-7xl gap-6 px-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-10">
+          <Reveal>
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand">Prototype 03</p>
-              <h2 className="mt-3 font-serif text-4xl leading-tight text-ink sm:text-5xl">
-                Explore the floor plans.
+              <span className="text-xs font-semibold tracking-[0.3em] text-brand uppercase">
+                Site Progress
+              </span>
+              <h2 className="mt-4 max-w-xl font-serif text-3xl leading-tight text-ink sm:text-5xl lg:text-6xl">
+                We&apos;ve <span className="text-brand italic">already started.</span>
               </h2>
+              <p className="mt-5 max-w-md leading-7 text-muted">
+                DPC works are under way at Clobek Heritage Place, right inside a
+                fully built-up neighbourhood. This is real footage from the
+                site, not a render.
+              </p>
+              <p className="mt-6 flex items-start gap-2 text-sm text-muted">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand" />
+                Plot 1946, Sabon-Lugbe East Extension Layout, Lugbe, Abuja FCT
+              </p>
+              <p className="mt-6 text-sm font-semibold text-grove">
+                Come and see it for yourself.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-3">
+                <a
+                  href={visitUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/20 transition hover:bg-brand-dark"
+                >
+                  Book a Site Visit
+                  <MessageCircle className="h-4 w-4" />
+                </a>
+                <a
+                  href="tel:+2348029823593"
+                  className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-6 py-3 text-sm font-semibold text-ink transition hover:border-brand/40 hover:text-brand"
+                >
+                  Call +234 802 982 3593
+                  <Phone className="h-4 w-4" />
+                </a>
+              </div>
             </div>
-            <p className="max-w-md text-sm leading-6 text-muted">
-              The architectural drawings show how the home is arranged, from
-              the shared ground-floor spaces to the upper-floor bedrooms.
-            </p>
-          </div>
+          </Reveal>
+          <Reveal>
+            <figure className="relative aspect-video overflow-hidden border border-ink/10 bg-ink shadow-xl shadow-ink/10">
+              <video
+                src="/videos/clobek-heritage-dpc-aerial.mp4"
+                poster="/videos/clobek-heritage-dpc-aerial-poster.jpg"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label="Aerial drone footage of DPC works on the Clobek Heritage Place site"
+                className="h-full w-full object-cover"
+              />
+              <figcaption className="absolute bottom-0 left-0 flex items-center gap-2 bg-ink/70 px-3 py-1.5 text-[11px] font-semibold tracking-wide text-white uppercase">
+                <span className="h-2 w-2 rounded-full bg-brand" />
+                Real site footage · DPC works
+              </figcaption>
+            </figure>
+          </Reveal>
+        </div>
 
-          <div className="mt-8 grid gap-5 lg:grid-cols-3">
-            {floorPlans.map((plan, index) => (
-              <article key={plan.name} className="min-w-0 bg-white">
-                <div className="relative aspect-[1.18] overflow-hidden bg-white">
-                  <Image
-                    src={plan.image}
-                    alt={plan.alt}
-                    fill
-                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-contain p-3"
-                  />
-                  <span className="absolute left-4 top-4 bg-grove px-3 py-2 text-[10px] font-bold uppercase tracking-[0.12em] text-white">
-                    0{index + 1}
-                  </span>
-                </div>
-                <div className="border-t border-ink/10 px-5 py-4">
-                  <h3 className="font-serif text-xl text-ink">{plan.name}</h3>
-                  <p className="mt-2 text-xs leading-5 text-muted">{plan.details}</p>
-                </div>
-              </article>
-            ))}
-          </div>
+        <div className="mx-auto mt-6 grid max-w-7xl gap-4 px-6 sm:grid-cols-3">
+          {sitePhotos.map((photo) => (
+            <Reveal key={photo.src}>
+              <figure className="relative aspect-[4/3] overflow-hidden border border-ink/10 shadow-lg shadow-ink/5">
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  sizes="(min-width: 640px) 33vw, 100vw"
+                  className="object-cover transition duration-500 hover:scale-105"
+                />
+                <figcaption className="absolute bottom-0 left-0 bg-ink/70 px-3 py-1.5 text-[11px] font-semibold tracking-wide text-white uppercase">
+                  {photo.caption}
+                </figcaption>
+              </figure>
+            </Reveal>
+          ))}
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24">
-        <div className="flex flex-col justify-between gap-5 border-b border-ink/10 pb-7 sm:flex-row sm:items-end">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand">
-              On the ground
-            </p>
-            <h2 className="mt-3 font-serif text-4xl leading-tight text-ink sm:text-5xl">
-              Work in progress.
-            </h2>
-          </div>
-          <p className="max-w-md text-sm leading-6 text-muted">
-            These are real photos from Clobek Heritage Place, showing foundation
-            and blockwork already under way on site.
-          </p>
-        </div>
-
-        <div className="mt-8 grid gap-5 sm:grid-cols-2">
-          <figure className="min-w-0">
-            <div className="relative aspect-[1.55] overflow-hidden bg-grove-light">
-              <Image
-                src="/images/clobeck1/heritage-site-2.jpg"
-                alt="Foundation blockwork and active construction at Clobek Heritage Place"
-                fill
-                sizes="(min-width: 640px) 50vw, 100vw"
-                className="object-cover"
-              />
-              <span className="absolute bottom-3 left-3 bg-ink/85 px-3 py-2 text-[10px] font-bold uppercase tracking-[0.12em] text-white">
-                Work in progress
-              </span>
-            </div>
-            <figcaption className="mt-3 text-sm font-medium text-muted">
-              Foundation work across the site
-            </figcaption>
-          </figure>
-
-          <figure className="min-w-0">
-            <div className="relative aspect-[1.55] overflow-hidden bg-grove-light">
-              <Image
-                src="/images/clobeck1/heritage-site-1.jpg"
-                alt="Estate blockwork and reinforcement bars at Clobek Heritage Place"
-                fill
-                sizes="(min-width: 640px) 50vw, 100vw"
-                className="object-cover"
-              />
-              <span className="absolute bottom-3 left-3 bg-ink/85 px-3 py-2 text-[10px] font-bold uppercase tracking-[0.12em] text-white">
-                Blockwork &amp; starter bars
-              </span>
-            </div>
-            <figcaption className="mt-3 text-sm font-medium text-muted">
-              Structural blockwork taking shape
-            </figcaption>
-          </figure>
-        </div>
-      </section>
+      <WhyInvestSection />
 
       <section className="bg-grove px-5 py-10 text-white sm:px-8 sm:py-12">
         <div className="mx-auto flex max-w-7xl flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">

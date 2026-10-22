@@ -7,6 +7,7 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import WhyInvestSection from "@/components/WhyInvestSection";
 import { formatNaira } from "@/lib/format";
 
 const PHONE_DISPLAY = "+234 802 982 3593";
@@ -127,46 +128,6 @@ const pastProjects = [
       { src: "/images/tfp/tfp-vintage-homes-residents.jpg", alt: "Resident walking past homes and parked cars at TFP Vintage Homes, Wuye" },
       { src: "/images/tfp/tfp-vintage-homes-hedges.jpg", alt: "Landscaped hedges and palms along a curved street at TFP Vintage Homes, Wuye" },
     ],
-  },
-];
-
-const investReasons = [
-  {
-    title: "Table Land in a Fully Built-Up Area",
-    body: "This isn't land in a remote location that will take five to ten years to become habitable. Clobek Heritage Place sits inside a fully developed, fully inhabited environment, on firm table land: no sand-filling, no hills, no surprises. Build today and move in.",
-    proof: "Come and verify it yourself. If you're not satisfied, don't commit your money.",
-    image: "/images/clobeck1/heritage-table-land.jpg",
-    imageAlt: "Aerial view of the flat Clobek Heritage Place site, surrounded by a built-up neighbourhood",
-    imageLabel: "Clobek Heritage Place · aerial view",
-  },
-  {
-    title: "Premium Infrastructure, Built to Last",
-    body: "We invest heavily in estate infrastructure because it is what drives the value of your property. More than 14 years after construction, the infrastructure in our earlier estates remains solid, and our subscribers have seen strong value growth in every neighbourhood we build in.",
-    proof: "See it for yourself at Clobek Crown Estate, Lugbe; Pleasant Places, Apo; and TFP Vintage Homes, Wuye.",
-  },
-  {
-    title: "More Than a Plot: DPC Included",
-    body: "You're not buying bare land. We handle the DPC for you, and work is already under way on site. Start building right away, or phase your development over up to three years. Whatever your plan, we'll work it out with you.",
-    proof: "Early-bird pricing is available for a limited time.",
-    image: "/images/clobeck1/heritage-site-3.jpg",
-    imageAlt: "DPC foundations at Clobek Heritage Place with finished homes in the neighbourhood behind",
-    imageLabel: "Clobek Heritage Place · DPC works",
-  },
-  {
-    title: "Trusted to Deliver Beyond Expectations",
-    body: "Every project starts with a vision and a 3D design, then careful execution down to every block and every nail. Our finished estates consistently turn out better than the designs they started from, and Clobek Heritage Place will be no different.",
-    proof: "Visit TFP Vintage Homes, Wuye; Clobek Crown Estate, Lugbe; and Pleasant Places, Apo. No pressure: if you're not convinced, walk away.",
-    image: "/images/heritage-3d-design.jpg",
-    imageAlt: "3D design of the terrace homes at Clobek Heritage Place at night",
-    imageLabel: "Clobek Heritage Place · 3D design",
-  },
-  {
-    title: "Green, Quiet and Peaceful",
-    body: "We've earned a reputation as one of the greenest, most eco-friendly estate developers around. Our estates are designed around nature, with landscaped lawns, gardens, trees and flowers that make them calm, beautiful places to come home to.",
-    proof: "Tour Pleasant Places, Apo, and see what Clobek Heritage Place will feel like.",
-    image: "/images/pleasant-places/pleasant-places-avenue.jpg",
-    imageAlt: "Tree-lined avenue at Pleasant Places, Apo",
-    imageLabel: "Pleasant Places, Apo",
   },
 ];
 
@@ -500,97 +461,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="why-invest" className="bg-white py-4 sm:py-16">
-          <div className="mx-auto max-w-7xl px-6">
-            <Reveal>
-              <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
-                <div>
-                  <span className="text-xs font-semibold tracking-[0.3em] text-brand uppercase">
-                    Why Invest
-                  </span>
-                  <h2 className="mt-4 max-w-2xl font-serif text-3xl leading-tight text-ink sm:text-5xl lg:text-6xl">
-                    Reasons to invest in{" "}
-                    <span className="text-brand italic">Clobek Heritage Place.</span>
-                  </h2>
-                </div>
-                <p className="max-w-md text-muted">
-                  Don&apos;t just take our word for it. Visit our estates, see
-                  the work for yourself, and decide with confidence.
-                </p>
-              </div>
-            </Reveal>
-
-            <div className="mt-6 sm:mt-12 divide-y divide-ink/10 border-y border-ink/10">
-              {investReasons.map((reason, i) => (
-                <Reveal key={reason.title}>
-                  <div
-                    className={`grid gap-6 py-6 md:py-10 ${
-                      reason.image ? "lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-12" : ""
-                    }`}
-                  >
-                    <div className="grid gap-4 md:grid-cols-[5rem_1fr] md:gap-10">
-                      <p className="font-serif text-4xl text-brand">0{i + 1}</p>
-                      <div>
-                        <h3 className="font-serif text-3xl leading-tight text-ink sm:text-4xl">
-                          {reason.title}
-                        </h3>
-                        <p className="mt-5 text-lg leading-8 text-muted sm:text-xl sm:leading-9">{reason.body}</p>
-                        <p className="mt-5 text-base font-semibold text-grove sm:text-lg">{reason.proof}</p>
-                        <a
-                          href={PHONE_TEL}
-                          className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/20 transition hover:bg-brand-dark"
-                        >
-                          Call Now
-                          <Phone className="h-4 w-4" />
-                        </a>
-                      </div>
-                    </div>
-                    {reason.image && (
-                      <figure className="relative aspect-[3/2] overflow-hidden border border-ink/10 shadow-lg shadow-ink/5">
-                        <Image
-                          src={reason.image}
-                          alt={reason.imageAlt ?? ""}
-                          fill
-                          sizes="(min-width: 1024px) 40vw, 100vw"
-                          className="object-cover"
-                        />
-                        <figcaption className="absolute bottom-0 left-0 bg-ink/70 px-3 py-1.5 text-[11px] font-semibold tracking-wide text-white uppercase">
-                          {reason.imageLabel}
-                        </figcaption>
-                      </figure>
-                    )}
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-
-            <Reveal>
-              <div className="mt-8 sm:mt-10 flex flex-col items-start justify-between gap-6 bg-champagne p-7 sm:flex-row sm:items-center sm:p-10">
-                <p className="max-w-xl font-serif text-2xl text-ink sm:text-3xl">
-                  Seeing is believing. <span className="text-brand italic">Book a site visit.</span>
-                </p>
-                <div className="flex flex-wrap gap-3">
-                  <a
-                    href={PHONE_TEL}
-                    className="inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-brand-dark"
-                  >
-                    Call Now
-                    <Phone className="h-4 w-4" />
-                  </a>
-                  <a
-                    href={WHATSAPP_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-7 py-3.5 text-sm font-semibold text-ink transition hover:border-brand/40 hover:text-brand"
-                  >
-                    Chat on WhatsApp
-                    <MessageCircle className="h-4 w-4" />
-                  </a>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </section>
+        <WhyInvestSection />
 
         <section className="relative overflow-hidden bg-white py-4 sm:py-16">
           <Reveal>
