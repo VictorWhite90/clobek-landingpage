@@ -305,6 +305,30 @@ export default function FourBedroomTerracePage() {
         </div>
       </section>
 
+      <section className="bg-grove px-5 py-10 text-white sm:px-8 sm:py-12">
+        <div className="mx-auto flex max-w-7xl flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#e4bd67]">
+              Picture your life here
+            </p>
+            <h2 className="mt-2 font-serif text-2xl sm:text-3xl">
+              Come explore the home in person.
+            </h2>
+            <p className="mt-2 text-sm text-white/70">
+              Book a visit to Clobek Heritage Place in Lugbe.
+            </p>
+          </div>
+          <a
+            href={visitUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 self-start bg-[#d7a63e] px-5 text-sm font-bold text-[#11251d] transition hover:bg-[#e6bd65] sm:self-auto"
+          >
+            Book a site visit <ArrowRight className="h-4 w-4" />
+          </a>
+        </div>
+      </section>
+
       <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24">
         <div className="flex flex-col justify-between gap-5 border-b border-ink/10 pb-7 sm:flex-row sm:items-end">
           <div>
@@ -461,6 +485,30 @@ export default function FourBedroomTerracePage() {
               Structural blockwork taking shape
             </figcaption>
           </figure>
+        </div>
+      </section>
+
+      <section className="bg-grove px-5 py-10 text-white sm:px-8 sm:py-12">
+        <div className="mx-auto flex max-w-7xl flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#e4bd67]">
+              Questions about the property?
+            </p>
+            <h2 className="mt-2 font-serif text-2xl sm:text-3xl">
+              Get the details directly from Clobek.
+            </h2>
+            <p className="mt-2 text-sm text-white/70">
+              Ask about availability, pricing, or arranging a site visit.
+            </p>
+          </div>
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 self-start border border-white/45 px-5 text-sm font-semibold text-white transition hover:bg-white/10 sm:self-auto"
+          >
+            Enquire on WhatsApp <ArrowUpRight className="h-4 w-4" />
+          </a>
         </div>
       </section>
 
