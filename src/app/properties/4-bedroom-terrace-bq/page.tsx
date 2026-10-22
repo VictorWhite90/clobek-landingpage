@@ -305,6 +305,70 @@ export default function FourBedroomTerracePage() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24">
+        <div className="flex flex-col justify-between gap-5 border-b border-ink/10 pb-7 sm:flex-row sm:items-end">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand">
+              Exterior views
+            </p>
+            <h2 className="mt-3 font-serif text-4xl leading-tight text-ink sm:text-5xl">
+              See the home in 3D.
+            </h2>
+          </div>
+          <p className="max-w-md text-sm leading-6 text-muted">
+            Explore architectural renderings of the terrace homes from different
+            angles and at different times of day.
+          </p>
+        </div>
+
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <figure className="min-w-0">
+            <div className="relative aspect-[1.4] overflow-hidden bg-grove-light">
+              <Image
+                src="/images/clobek-block-spare.jpg"
+                alt="Daytime front view of the 4-bedroom terrace homes"
+                fill
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <figcaption className="mt-3 text-sm font-medium text-muted">
+              Daytime front view
+            </figcaption>
+          </figure>
+
+          <figure className="min-w-0">
+            <div className="relative aspect-[1.4] overflow-hidden bg-grove-light">
+              <Image
+                src="/images/clobek-rowhouse-b.jpg"
+                alt="Daytime street perspective of the 4-bedroom terrace homes"
+                fill
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <figcaption className="mt-3 text-sm font-medium text-muted">
+              Daytime street view
+            </figcaption>
+          </figure>
+
+          <figure className="min-w-0 sm:col-span-2 lg:col-span-1">
+            <div className="relative aspect-[1.4] overflow-hidden bg-grove-light">
+              <Image
+                src={property.image}
+                alt="Night-time architectural render of the 4-bedroom terrace homes"
+                fill
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <figcaption className="mt-3 text-sm font-medium text-muted">
+              Night view
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
       <section id="floor-plans" className="bg-[#f3f5f1] py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="flex flex-col justify-between gap-5 border-b border-ink/10 pb-7 sm:flex-row sm:items-end">
