@@ -9,6 +9,7 @@ import {
 import Reveal from "@/components/Reveal";
 import WhyInvestSection from "@/components/WhyInvestSection";
 import { formatNaira } from "@/lib/format";
+import { getPropertyPath, propertyTypes } from "@/lib/property-types";
 
 const PHONE_DISPLAY = "+234 802 982 3593";
 const PHONE_TEL = "tel:+2348029823593";
@@ -18,58 +19,7 @@ const WHATSAPP_VISIT_URL =
   "https://wa.me/2348029823593?text=Hello%20Clobek%20Heritage%20Place%2C%20I%27d%20like%20to%20book%20a%20site%20visit%20to%20the%20Lugbe%20estate.";
 const SITE_ADDRESS = "Plot 1946, Sabon-Lugbe East Extension Layout, Lugbe, Abuja FCT";
 
-const houseTypes = [
-  {
-    id: 1,
-    name: "3-Bedroom Terrace",
-    size: "Approx. 141 sqm",
-    sqm: 141,
-    price: 22,
-    image: "/images/3-bedroom-terrace.jpeg",
-  },
-  {
-    id: 2,
-    name: "3-Bedroom Terrace + B.Q",
-    size: "Approx. 163 sqm",
-    sqm: 163,
-    price: 27,
-    image: "/images/3-bedroom-terrace-bq-2.jpeg",
-  },
-  {
-    id: 3,
-    name: "4-Bedroom Super Terrace + B.Q",
-    size: "Approx. 167 sqm",
-    sqm: 167,
-    price: 31.5,
-    image: "/images/4-bedroom-terrace-bq.jpeg",
-  },
-  {
-    id: 4,
-    name: "4-Bedroom Row House Duplex + B.Q",
-    size: "Approx. 300 sqm",
-    sqm: 300,
-    price: 37,
-    image: "/images/clobek-rowhouse-a.jpg",
-  },
-  {
-    id: 5,
-    name: "5-Bedroom Row House Duplex + B.Q",
-    size: "Approx. 375 sqm",
-    sqm: 375,
-    price: 43,
-    image: "/images/clobek-duplex.jpg",
-  },
-  {
-    id: 6,
-    name: "5-Bedroom Detached Duplex + B.Q",
-    size: "Approx. 465 sqm",
-    sqm: 465,
-    price: 47,
-    image: "/images/5-bedroom-detached-duplex-bq.jpeg",
-  },
-];
-
-const startingPrice = Math.min(...houseTypes.map((h) => h.price));
+const startingPrice = Math.min(...propertyTypes.map((property) => property.price));
 
 const sitePhotos = [
   {
@@ -304,8 +254,8 @@ export default function Home() {
             </Reveal>
 
             <div className="mt-6 sm:mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {houseTypes.map((house) => (
-                <Reveal key={house.id}>
+              {propertyTypes.map((house) => (
+                <Reveal key={house.slug}>
                   <div className="group h-full overflow-hidden border border-ink/10 bg-white shadow-lg shadow-ink/5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-brand/10">
                     <div className="h-1.5 bg-gradient-to-r from-brand to-grove" />
                     <div className="relative h-72 w-full overflow-hidden">
@@ -316,29 +266,25 @@ export default function Home() {
                         sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                         className="object-cover transition duration-500 group-hover:scale-105"
                       />
-                      {house.id === 3 && (
-                        <Link
-                          href="/properties/4-bedroom-terrace-bq"
-                          aria-label={`View details for ${house.name}`}
-                          className="absolute inset-0"
-                        />
-                      )}
+                      <Link
+                        href={getPropertyPath(house.slug)}
+                        aria-label={`View details for ${house.name}`}
+                        className="absolute inset-0"
+                      />
                     </div>
                     <div className="flex items-start justify-between gap-4 p-7">
                       <div>
                         <h3 className="font-serif text-2xl leading-tight text-ink">
-                          {house.id === 3 ? (
-                            <Link
-                              href="/properties/4-bedroom-terrace-bq"
-                              className="transition hover:text-brand"
-                            >
-                              {house.name}
-                            </Link>
-                          ) : (
-                            house.name
-                          )}
+                          <Link
+                            href={getPropertyPath(house.slug)}
+                            className="transition hover:text-brand"
+                          >
+                            {house.name}
+                          </Link>
                         </h3>
-                        <p className="mt-2 text-sm font-medium text-muted">{house.size}</p>
+                        <p className="mt-2 text-sm font-medium text-muted">
+                          Approx. {house.size} sqm
+                        </p>
                       </div>
                       <div className="shrink-0 text-right">
                         <p className="font-serif text-2xl text-brand">
@@ -350,25 +296,13 @@ export default function Home() {
                         <p className="mt-0.5 text-[11px] text-muted">
                           T&amp;Cs apply
                         </p>
-                        {house.id === 3 ? (
-                          <Link
-                            href="/properties/4-bedroom-terrace-bq"
-                            className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-grove transition hover:text-brand"
-                          >
-                            View details
-                            <ArrowUpRight className="h-4 w-4" />
-                          </Link>
-                        ) : (
-                          <a
-                            href={WHATSAPP_URL}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={`Enquire about ${house.name} on WhatsApp`}
-                            className="mt-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-grove text-white transition group-hover:bg-brand"
-                          >
-                            <ArrowUpRight className="h-4 w-4" />
-                          </a>
-                        )}
+                        <Link
+                          href={getPropertyPath(house.slug)}
+                          className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-grove transition hover:text-brand"
+                        >
+                          View details
+                          <ArrowUpRight className="h-4 w-4" />
+                        </Link>
                       </div>
                     </div>
                   </div>

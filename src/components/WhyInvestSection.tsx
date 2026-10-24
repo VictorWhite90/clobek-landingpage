@@ -9,6 +9,8 @@ const WHATSAPP_URL =
 const investReasons = [
   {
     title: "Table Land in a Fully Built-Up Area",
+    shortBody: "Firm table land inside a fully built-up, inhabited area. No sand-filling, no hills. Build today.",
+    shortProof: "Not satisfied after a visit? Don't commit your money.",
     body: "This isn't land in a remote location that will take five to ten years to become habitable. Clobek Heritage Place sits inside a fully developed, fully inhabited environment, on firm table land: no sand-filling, no hills, no surprises. Build today and move in.",
     proof: "Come and verify it yourself. If you're not satisfied, don't commit your money.",
     image: "/images/clobeck1/heritage-table-land.jpg",
@@ -17,11 +19,15 @@ const investReasons = [
   },
   {
     title: "Premium Infrastructure, Built to Last",
+    shortBody: "Solid roads and infrastructure that still stand strong in our estates 14+ years on.",
+    shortProof: "See it at Crown Estate, Pleasant Places and TFP Vintage Homes.",
     body: "We invest heavily in estate infrastructure because it is what drives the value of your property. More than 14 years after construction, the infrastructure in our earlier estates remains solid, and our subscribers have seen strong value growth in every neighbourhood we build in.",
     proof: "See it for yourself at Clobek Crown Estate, Lugbe; Pleasant Places, Apo; and TFP Vintage Homes, Wuye.",
   },
   {
     title: "More Than a Plot: DPC Included",
+    shortBody: "We do the DPC for you, and work has started. Build now or phase it over 3 years.",
+    shortProof: "Early-bird pricing for a limited time.",
     body: "You're not buying bare land. We handle the DPC for you, and work is already under way on site. Start building right away, or phase your development over up to three years. Whatever your plan, we'll work it out with you.",
     proof: "Early-bird pricing is available for a limited time.",
     image: "/images/clobeck1/heritage-site-3.jpg",
@@ -30,6 +36,8 @@ const investReasons = [
   },
   {
     title: "Trusted to Deliver Beyond Expectations",
+    shortBody: "From 3D design to finished estate, our projects turn out better than planned.",
+    shortProof: "Visit our estates. No pressure.",
     body: "Every project starts with a vision and a 3D design, then careful execution down to every block and every nail. Our finished estates consistently turn out better than the designs they started from, and Clobek Heritage Place will be no different.",
     proof: "Visit TFP Vintage Homes, Wuye; Clobek Crown Estate, Lugbe; and Pleasant Places, Apo. No pressure: if you're not convinced, walk away.",
     image: "/images/heritage-3d-design.jpg",
@@ -38,6 +46,8 @@ const investReasons = [
   },
   {
     title: "Green, Quiet and Peaceful",
+    shortBody: "Lawns, gardens and trees designed in, for a calm place to come home to.",
+    shortProof: "Tour Pleasant Places, Apo, to see it.",
     body: "We've earned a reputation as one of the greenest, most eco-friendly estate developers around. Our estates are designed around nature, with landscaped lawns, gardens, trees and flowers that make them calm, beautiful places to come home to.",
     proof: "Tour Pleasant Places, Apo, and see what Clobek Heritage Place will feel like.",
     image: "/images/pleasant-places/pleasant-places-avenue.jpg",
@@ -46,7 +56,7 @@ const investReasons = [
   },
 ];
 
-export default function WhyInvestSection() {
+export default function WhyInvestSection({ compact = false }: { compact?: boolean }) {
   return (
     <section id="why-invest" className="bg-white py-4 sm:py-16">
       <div className="mx-auto max-w-7xl px-6">
@@ -81,14 +91,28 @@ export default function WhyInvestSection() {
                 <div className="grid gap-4 md:grid-cols-[5rem_1fr] md:gap-10">
                   <p className="font-serif text-4xl text-brand">0{i + 1}</p>
                   <div>
-                    <h3 className="font-serif text-3xl leading-tight text-ink sm:text-4xl">
+                    <h3
+                      className={`font-serif leading-tight text-ink ${
+                        compact ? "text-2xl sm:text-3xl" : "text-3xl sm:text-4xl"
+                      }`}
+                    >
                       {reason.title}
                     </h3>
-                    <p className="mt-5 text-lg leading-8 text-muted sm:text-xl sm:leading-9">
-                      {reason.body}
+                    <p
+                      className={
+                        compact
+                          ? "mt-3 text-base leading-7 text-muted sm:text-lg"
+                          : "mt-5 text-lg leading-8 text-muted sm:text-xl sm:leading-9"
+                      }
+                    >
+                      {compact ? reason.shortBody : reason.body}
                     </p>
-                    <p className="mt-5 text-base font-semibold text-grove sm:text-lg">
-                      {reason.proof}
+                    <p
+                      className={`font-semibold text-grove ${
+                        compact ? "mt-3 text-sm sm:text-base" : "mt-5 text-base sm:text-lg"
+                      }`}
+                    >
+                      {compact ? reason.shortProof : reason.proof}
                     </p>
                     <a
                       href={PHONE_TEL}

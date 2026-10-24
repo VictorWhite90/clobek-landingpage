@@ -21,18 +21,17 @@ import Reveal from "@/components/Reveal";
 import WhyInvestSection from "@/components/WhyInvestSection";
 
 const property = {
-  name: "4-Bedroom Terrace + B.Q",
+  name: "4-Bedroom Super Terrace + B.Q",
   size: 167,
   price: 31.5,
-  units: 18,
   parking: 3,
   image: "/images/4-bedroom-terrace-bq.jpeg",
 };
 
 const whatsappUrl =
-  "https://wa.me/2348029823593?text=Hello%20Clobek%20Heritage%20Place%2C%20I%27m%20interested%20in%20the%204-Bedroom%20Terrace%20%2B%20B.Q.%20Please%20send%20me%20more%20details.";
+  "https://wa.me/2348029823593?text=Hello%20Clobek%20Heritage%20Place%2C%20I%27m%20interested%20in%20the%204-Bedroom%20Super%20Terrace%20%2B%20B.Q.%20Please%20send%20me%20more%20details.";
 const visitUrl =
-  "https://wa.me/2348029823593?text=Hello%20Clobek%20Heritage%20Place%2C%20I%27d%20like%20to%20book%20a%20site%20visit%20to%20see%20the%204-Bedroom%20Terrace%20%2B%20B.Q.";
+  "https://wa.me/2348029823593?text=Hello%20Clobek%20Heritage%20Place%2C%20I%27d%20like%20to%20book%20a%20site%20visit%20to%20see%20the%204-Bedroom%20Super%20Terrace%20%2B%20B.Q.";
 
 const sitePhotos = [
   {
@@ -87,30 +86,35 @@ const features = [
 
 const otherOptions = [
   {
+    slug: "3-bedroom-terrace",
     name: "3-Bedroom Terrace",
     size: "Approx. 141 sqm",
     price: 22,
     image: "/images/3-bedroom-terrace.jpeg",
   },
   {
+    slug: "3-bedroom-terrace-bq",
     name: "3-Bedroom Terrace + B.Q",
     size: "Approx. 163 sqm",
     price: 27,
     image: "/images/3-bedroom-terrace-bq-2.jpeg",
   },
   {
+    slug: "4-bedroom-row-house-bq",
     name: "4-Bedroom Row House Duplex + B.Q",
     size: "Approx. 300 sqm",
     price: 37,
     image: "/images/clobek-rowhouse-a.jpg",
   },
   {
+    slug: "5-bedroom-row-house-bq",
     name: "5-Bedroom Row House Duplex + B.Q",
     size: "Approx. 375 sqm",
     price: 43,
     image: "/images/clobek-duplex.jpg",
   },
   {
+    slug: "5-bedroom-detached-duplex-bq",
     name: "5-Bedroom Detached Duplex + B.Q",
     size: "Approx. 465 sqm",
     price: 47,
@@ -119,9 +123,9 @@ const otherOptions = [
 ];
 
 export const metadata: Metadata = {
-  title: "4-Bedroom Terrace + B.Q | Clobek Heritage Place",
+  title: "4-Bedroom Super Terrace + B.Q | Clobek Heritage Place",
   description:
-    "Explore the 4-bedroom terrace duplex with B.Q. at Clobek Heritage Place. Approx. 167 sqm, three-car parking, with Land + DPC from ₦31.5M.",
+    "Explore the 4-bedroom super terrace with B.Q. at Clobek Heritage Place. Approx. 167 sqm, three-car parking, with Land + DPC from ₦31.5M.",
 };
 
 export default function FourBedroomTerracePage() {
@@ -168,15 +172,15 @@ export default function FourBedroomTerracePage() {
                 href={visitUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-12 items-center gap-3 bg-[#d7a63e] px-6 text-sm font-bold text-[#11251d] transition hover:bg-[#e6bd65]"
+                className="inline-flex min-h-12 items-center gap-3 bg-brand px-6 text-sm font-bold text-white transition hover:bg-brand-dark"
               >
                 Book a site visit <ArrowRight className="h-4 w-4" />
               </a>
               <a
-                href="#floor-plans"
+                href="#property-facts"
                 className="inline-flex min-h-12 items-center border border-white/35 px-6 text-sm font-semibold text-white transition hover:bg-white/10"
               >
-                View floor plans
+                Property details
               </a>
             </div>
             <div className="mt-8 flex items-center gap-2 text-sm text-white/65">
@@ -239,15 +243,15 @@ export default function FourBedroomTerracePage() {
                 href={visitUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center gap-2 bg-[#d7a63e] px-5 text-sm font-bold text-[#11251d] transition hover:bg-[#e6bd65]"
+                className="inline-flex min-h-11 items-center gap-2 bg-brand px-5 text-sm font-bold text-white transition hover:bg-brand-dark"
               >
                 Book a site visit <ArrowRight className="h-4 w-4" />
               </a>
               <a
-                href="#floor-plans"
+                href="#property-facts"
                 className="inline-flex min-h-11 items-center border border-white/35 px-5 text-sm font-semibold text-white transition hover:bg-white/10"
               >
-                View floor plans
+                Property details
               </a>
             </div>
             <div className="mt-6 flex items-center gap-2 text-sm text-white/65">
@@ -258,8 +262,12 @@ export default function FourBedroomTerracePage() {
         </div>
       </section>
 
-      <section aria-label="Property facts" className="border-b border-ink/10 bg-white">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-y divide-ink/10 sm:grid-cols-4 sm:divide-y-0">
+      <section
+        id="property-facts"
+        aria-label="Property facts"
+        className="border-b border-ink/10 bg-white"
+      >
+        <div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-y divide-ink/10 sm:grid-cols-3 lg:grid-cols-6">
           <div className="px-5 py-5 text-center sm:py-6">
             <p className="text-lg font-bold text-ink">4 + B.Q</p>
             <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-muted">Bedrooms</p>
@@ -273,8 +281,16 @@ export default function FourBedroomTerracePage() {
             <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-muted">Parking</p>
           </div>
           <div className="px-5 py-5 text-center sm:py-6">
-            <p className="text-lg font-bold text-ink">{property.units} units</p>
-            <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-muted">Prototype 03</p>
+            <p className="text-lg font-bold text-ink">{formatNaira(property.price)}</p>
+            <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-muted">Land + DPC</p>
+          </div>
+          <div className="px-5 py-5 text-center sm:py-6">
+            <p className="text-lg font-bold text-ink">Payment Plan</p>
+            <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-muted">Flexible</p>
+          </div>
+          <div className="px-5 py-5 text-center sm:py-6">
+            <p className="text-lg font-bold text-ink">Free DPC</p>
+            <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-muted">Included</p>
           </div>
         </div>
       </section>
@@ -325,7 +341,7 @@ export default function FourBedroomTerracePage() {
             href={visitUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 self-start bg-[#d7a63e] px-5 text-sm font-bold text-[#11251d] transition hover:bg-[#e6bd65] sm:self-auto"
+            className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 self-start bg-brand px-5 text-sm font-bold text-white transition hover:bg-brand-dark sm:self-auto"
           >
             Book a site visit <ArrowRight className="h-4 w-4" />
           </a>
@@ -479,7 +495,7 @@ export default function FourBedroomTerracePage() {
         </div>
       </section>
 
-      <WhyInvestSection />
+      <WhyInvestSection compact />
 
       <section className="bg-grove px-5 py-10 text-white sm:px-8 sm:py-12">
         <div className="mx-auto flex max-w-7xl flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
@@ -524,7 +540,7 @@ export default function FourBedroomTerracePage() {
 
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {otherOptions.map((option) => (
-              <article key={option.name} className="min-w-0 bg-white">
+              <article key={option.slug} className="min-w-0 bg-white">
                 <div className="relative aspect-[1.45] overflow-hidden bg-grove-light">
                   <Image
                     src={option.image}
@@ -536,7 +552,12 @@ export default function FourBedroomTerracePage() {
                 </div>
                 <div className="p-5">
                   <h3 className="font-serif text-xl leading-snug text-ink">
-                    {option.name}
+                    <Link
+                      href={`/properties/${option.slug}`}
+                      className="transition hover:text-brand"
+                    >
+                      {option.name}
+                    </Link>
                   </h3>
                   <p className="mt-2 text-sm text-muted">{option.size}</p>
                   <div className="mt-4 flex items-end justify-between gap-3 border-t border-ink/10 pt-4">
@@ -548,15 +569,13 @@ export default function FourBedroomTerracePage() {
                         {formatNaira(option.price)}
                       </p>
                     </div>
-                    <a
-                      href={`https://wa.me/2348029823593?text=${encodeURIComponent(`Hello Clobek Heritage Place, please send me details about the ${option.name}.`)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Enquire about ${option.name} on WhatsApp`}
+                    <Link
+                      href={`/properties/${option.slug}`}
+                      aria-label={`View details for ${option.name}`}
                       className="inline-flex h-10 w-10 shrink-0 items-center justify-center bg-grove text-white transition hover:bg-brand"
                     >
                       <ArrowUpRight className="h-4 w-4" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </article>
@@ -570,14 +589,14 @@ export default function FourBedroomTerracePage() {
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#e4bd67]">Make it yours</p>
             <h2 className="mt-3 font-serif text-3xl sm:text-4xl">Come see Clobek Heritage Place.</h2>
-            <p className="mt-3 text-sm text-white/70">Book a site visit or ask us about the 4-Bedroom Terrace + B.Q.</p>
+            <p className="mt-3 text-sm text-white/70">Book a site visit or ask us about the 4-Bedroom Super Terrace + B.Q.</p>
           </div>
           <div className="flex flex-wrap gap-3">
             <a
               href={visitUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-12 items-center gap-2 bg-[#d7a63e] px-5 text-sm font-bold text-[#11251d] transition hover:bg-[#e6bd65]"
+              className="inline-flex min-h-12 items-center gap-2 bg-brand px-5 text-sm font-bold text-white transition hover:bg-brand-dark"
             >
               Book a site visit <ArrowUpRight className="h-4 w-4" />
             </a>
