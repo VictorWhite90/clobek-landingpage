@@ -34,23 +34,13 @@ const investReasons = [
   },
   {
     title: "Trusted to Deliver Beyond Expectations",
-    shortBody: "From 3D design to finished estate, our projects turn out better than planned.",
+    shortBody: "Clobek Nig. Limited is reputed for delivering on its promises: the developers of premium estates such as TFP Vintage Homes, Pleasant Places and Clobek Crown Estate.",
     shortProof: "Visit our estates. No pressure.",
     body: "Every project starts with a vision and a 3D design, then careful execution down to every block and every nail. Our finished estates consistently turn out better than the designs they started from, and Clobek Heritage Place will be no different.",
     proof: "Visit TFP Vintage Homes, Wuye; Clobek Crown Estate, Lugbe; and Pleasant Places, Apo. No pressure: if you're not convinced, walk away.",
     image: "/images/heritage-3d-design.jpg",
     imageAlt: "3D design of the terrace properties at Clobek Heritage Place at night",
     imageLabel: "Clobek Heritage Place · 3D design",
-  },
-  {
-    title: "Green, Quiet and Peaceful",
-    shortBody: "Lawns, gardens and trees designed in, for a calm, green environment.",
-    shortProof: "Tour Pleasant Places, Apo, to see it.",
-    body: "We've earned a reputation as one of the greenest, most eco-friendly estate developers around. Our estates are designed around nature, with landscaped lawns, gardens, trees and flowers that make them calm, beautiful places to live.",
-    proof: "Tour Pleasant Places, Apo, and see what Clobek Heritage Place will feel like.",
-    image: "/images/pleasant-places/pleasant-places-avenue.jpg",
-    imageAlt: "Tree-lined avenue at Pleasant Places, Apo",
-    imageLabel: "Pleasant Places, Apo",
   },
 ];
 

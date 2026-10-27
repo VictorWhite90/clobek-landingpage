@@ -3,27 +3,50 @@
 import { useState } from "react";
 import {
   DEPOSIT_PERCENT,
-  DISCOUNT_PERCENT,
   INSTALMENT_MONTHS,
   INSTALMENT_QUARTERS,
+  OFFER_ENDS,
+  OFFER_SLOTS,
+  STANDARD_DEPOSIT_PERCENT,
+  STANDARD_MONTHS,
   formatNairaFull,
   formatNairaShort,
   paymentPlan,
 } from "@/lib/pricing";
 
-// Compact band: deposit + instalments = offer price. On phones the three
-// figures collapse into label/amount rows.
+// Offer comparison (why act now), then the calculator: deposit + instalments
+// = discounted price. On phones the figures collapse into label/amount rows.
 export default function PaymentPlan({
   price,
+  original = price,
   name,
 }: {
   price: number;
+  original?: number;
   name: string;
 }) {
   const [cadence, setCadence] = useState<"monthly" | "quarterly">("monthly");
   const plan = paymentPlan(price);
   const count = cadence === "monthly" ? INSTALMENT_MONTHS : INSTALMENT_QUARTERS;
   const amount = cadence === "monthly" ? plan.monthly : plan.quarterly;
+
+  const offerTerms = [
+    {
+      label: "Price",
+      now: formatNairaShort(plan.total),
+      was: formatNairaShort(Math.round(original * 1_000_000)),
+    },
+    {
+      label: "Initial deposit",
+      now: `${DEPOSIT_PERCENT}%`,
+      was: `${STANDARD_DEPOSIT_PERCENT}%`,
+    },
+    {
+      label: "Time to pay",
+      now: `${INSTALMENT_MONTHS} months`,
+      was: `${STANDARD_MONTHS} months`,
+    },
+  ];
 
   const items = [
     {
@@ -32,12 +55,12 @@ export default function PaymentPlan({
     },
     {
       label: `${count} ${cadence === "monthly" ? "monthly" : "quarterly"} payments`,
-      value: `${count} × ${formatNairaFull(amount)}`,
+      value: `${formatNairaFull(amount)} / ${cadence === "monthly" ? "month" : "quarter"}`,
     },
     {
-      label: "Offer price · Land + DPC",
+      label: "Discounted price · Plot + DPC",
       value: formatNairaShort(plan.total),
-      was: formatNairaShort(Math.round(price * 1_000_000)),
+      was: formatNairaShort(Math.round(original * 1_000_000)),
       accent: true,
     },
   ];
@@ -45,17 +68,53 @@ export default function PaymentPlan({
   return (
     <section id="payment-plan" aria-label="Flexible payment plan" className="bg-ink text-white">
       <div className="mx-auto max-w-7xl px-5 py-8 sm:px-8 sm:py-10">
-        <div className="flex flex-wrap items-center justify-between gap-4">
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#e4bd67]">
+              Limited offer
+            </p>
+            <h2 className="mt-2 font-serif text-2xl sm:text-3xl">
+              Why you shouldn&apos;t miss this offer
+            </h2>
+          </div>
+          <p className="rounded-full border border-[#e4bd67]/50 px-3 py-1 text-xs font-semibold text-[#e4bd67]">
+            Ends {OFFER_ENDS} · First {OFFER_SLOTS} subscribers only
+          </p>
+        </div>
+
+        <dl className="mt-5 grid grid-cols-3 gap-px overflow-hidden rounded-xl bg-white/10">
+          {offerTerms.map((term) => (
+            <div key={term.label} className="bg-ink px-3 py-4 sm:px-6 sm:py-5">
+              <dt className="text-[10px] font-bold uppercase tracking-[0.16em] text-white/50 sm:text-[11px]">
+                {term.label}
+              </dt>
+              <dd className="mt-1.5">
+                <span className="block font-serif text-xl text-[#e4bd67] sm:inline sm:text-3xl">
+                  {term.now}
+                </span>
+                <span className="text-xs text-white/40 line-through sm:ml-2 sm:text-base">
+                  {term.was}
+                </span>
+              </dd>
+            </div>
+          ))}
+        </dl>
+
+        <h3 className="mt-10 font-serif text-xl text-white/90 sm:text-2xl">
+          What you would be paying
+        </h3>
+
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-5">
           <div>
           <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#e4bd67]">
             Flexible payment plan
           </p>
-          <h2 className="mt-2 font-serif text-2xl sm:text-3xl">
+          <p className="mt-2 font-serif text-2xl sm:text-3xl">
             {DEPOSIT_PERCENT}% today.{" "}
             <span className="italic text-[#e4bd67]">
               Balance over {INSTALMENT_MONTHS} months.
             </span>
-          </h2>
+          </p>
           </div>
           <div
             role="tablist"
@@ -111,7 +170,7 @@ export default function PaymentPlan({
         </dl>
 
         <p className="mt-3 text-[11px] leading-5 text-white/45">
-          {name}, after the {DISCOUNT_PERCENT}% discount.{" "}
+          {name}, at the discounted price.{" "}
           {cadence === "monthly" ? "Monthly" : "Quarterly"} payments over{" "}
           {INSTALMENT_MONTHS} months; amounts are approximate. T&amp;Cs apply.
         </p>

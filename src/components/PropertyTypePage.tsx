@@ -22,6 +22,7 @@ import { SignaturePillars } from "@/components/SellingPoints";
 import { discountedNaira, formatNairaShort } from "@/lib/pricing";
 import {
   getPropertyPath,
+  originalPrice,
   propertyTypes,
   type PropertyType,
 } from "@/lib/property-types";
@@ -108,7 +109,7 @@ export default function PropertyTypePage({
             </h1>
             <p className="mt-5 max-w-lg text-lg leading-7 text-white/75">
               Explore this property at Clobek Heritage Place. Approx.{" "}
-              {property.size} sqm, Land + DPC now{" "}
+              {property.size} sqm, Plot + DPC now{" "}
               {formatNairaShort(discountedNaira(property.price))}.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -150,13 +151,13 @@ export default function PropertyTypePage({
             <div className="absolute -bottom-1 left-2 flex min-w-[225px] items-center gap-5 rounded-xl bg-white px-5 py-4 text-ink shadow-xl sm:bottom-0 sm:left-[-22px] sm:px-6 sm:py-5">
               <div>
                 <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-grove/65">
-                  Land + DPC
+                  Plot + DPC
                 </p>
                 <p className="mt-1">
-                  <PriceTag price={property.price} size="sm" />
+                  <PriceTag price={property.price} original={originalPrice(property)} size="sm" />
                 </p>
                 <p className="mt-1 text-[10px] font-bold uppercase tracking-wide text-grove">
-                  5% discount applied
+                  Discounted price
                 </p>
               </div>
               <span className="h-12 w-px bg-ink/10" />
@@ -185,7 +186,7 @@ export default function PropertyTypePage({
             </h1>
             <p className="mt-4 max-w-lg text-base leading-7 text-white/75">
               Explore this property at Clobek Heritage Place. Approx.{" "}
-              {property.size} sqm, Land + DPC now{" "}
+              {property.size} sqm, Plot + DPC now{" "}
               {formatNairaShort(discountedNaira(property.price))}.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
@@ -212,11 +213,15 @@ export default function PropertyTypePage({
         </div>
       </section>
 
-      <SignaturePillars />
-
-      <PaymentPlan price={property.price} name={property.name} />
-
       <LandDpcFeature size={property.size} />
+
+      <PaymentPlan
+        price={property.price}
+        original={originalPrice(property)}
+        name={property.name}
+      />
+
+      <SignaturePillars />
 
       {property.features && property.features.length > 0 && (
         <section className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20">
@@ -396,7 +401,7 @@ export default function PropertyTypePage({
               </h2>
             </div>
             <p className="max-w-md text-sm leading-6 text-muted">
-              Compare the other available property types. Prices shown are for Land
+              Compare the other available property types. Prices shown are for Plot
               + DPC; terms and availability should be confirmed with Clobek.
             </p>
           </div>
@@ -428,10 +433,10 @@ export default function PropertyTypePage({
                     <div className="mt-4 flex items-end justify-between gap-3 border-t border-ink/10 pt-4">
                       <div>
                         <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-muted">
-                          Land + DPC
+                          Plot + DPC
                         </p>
                         <p className="mt-1">
-                          <PriceTag price={option.price} size="sm" />
+                          <PriceTag price={option.price} original={originalPrice(option)} size="sm" />
                         </p>
                       </div>
                       <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center bg-grove text-white transition hover:bg-brand">

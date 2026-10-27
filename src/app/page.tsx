@@ -13,12 +13,11 @@ import { DiscountChip, OfferBanner, PriceTag } from "@/components/Offer";
 import {
   
   DEPOSIT_PERCENT,
-  DISCOUNT_PERCENT,
   INSTALMENT_MONTHS,
   discountedNaira,
   formatNairaShort,
 } from "@/lib/pricing";
-import { getPropertyPath, propertyTypes } from "@/lib/property-types";
+import { getPropertyPath, originalPrice, propertyTypes } from "@/lib/property-types";
 
 const PHONE_DISPLAY = "+234 802 982 3593";
 const PHONE_TEL = "tel:+2348029823593";
@@ -29,6 +28,9 @@ const WHATSAPP_VISIT_URL =
 const SITE_ADDRESS = "Plot 1946, Sabon-Lugbe East Extension Layout, Lugbe, Abuja FCT";
 
 const startingPrice = Math.min(...propertyTypes.map((property) => property.price));
+const startingOriginal = originalPrice(
+  propertyTypes.find((property) => property.price === startingPrice)!,
+);
 
 const sitePhotos = [
   {
@@ -155,7 +157,7 @@ export default function Home() {
                   </span>
                   <p className="text-base text-white sm:text-lg">
                     Pay <strong>{DEPOSIT_PERCENT}% deposit</strong>, spread the balance over{" "}
-                    <strong>{INSTALMENT_MONTHS} months</strong>, monthly or quarterly. Land + DPC now from{" "}
+                    <strong>{INSTALMENT_MONTHS} months</strong>, monthly or quarterly. Plot + DPC now from{" "}
                     <strong>{formatNairaShort(discountedNaira(startingPrice))}</strong>.
                   </p>
                 </div>
@@ -247,8 +249,8 @@ export default function Home() {
                   </span>
                 </h3>
                 <p className="mt-2 text-sm text-muted">
-                  <span className="line-through">₦{startingPrice}M</span> ·{" "}
-                  {DISCOUNT_PERCENT}% discount on every property type
+                  <span className="line-through">₦{startingOriginal}M</span> ·{" "}
+                  Discounted price on every property type
                 </p>
                 <div className="mt-5 grid gap-3 sm:grid-cols-2">
                   <div className="border border-ink/10 bg-white px-4 py-3">
@@ -261,7 +263,7 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="mt-4 max-w-2xl text-sm text-muted">
-                  Every price covers Land + DPC across all six property types at
+                  Every price covers Plot + DPC across all six property types at
                   Clobek Heritage Place. Terms and conditions apply.
                 </p>
               </div>
@@ -324,10 +326,10 @@ export default function Home() {
                       <div className="shrink-0 text-right">
                         <DiscountChip />
                         <p className="mt-1.5">
-                          <PriceTag price={house.price} size="sm" />
+                          <PriceTag price={house.price} original={originalPrice(house)} size="sm" />
                         </p>
                         <p className="mt-1 text-xs font-bold tracking-wide text-ink uppercase">
-                          Land + DPC
+                          Plot + DPC
                         </p>
                         <p className="mt-0.5 text-[11px] text-muted">
                           T&amp;Cs apply

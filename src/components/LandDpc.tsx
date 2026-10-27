@@ -1,13 +1,13 @@
 import Image from "next/image";
 import { ArrowRight, Hammer, LandPlot, Layers } from "lucide-react";
 
-// Explains what "Land + DPC" means: the plot plus a damp-proof course
+// Explains what "Plot + DPC" means: the plot plus a damp-proof course
 // foundation the developer builds for the buyer.
 export function LandDpcFeature({ size }: { size: number }) {
   const steps = [
     {
       icon: LandPlot,
-      title: "Your land",
+      title: "Your plot",
       detail: `Approx. ${size} sqm plot inside Clobek Crown Estate`,
     },
     {
@@ -23,11 +23,11 @@ export function LandDpcFeature({ size }: { size: number }) {
   ];
 
   return (
-    <section aria-label="What Land + DPC includes" className="bg-white">
+    <section aria-label="What Plot + DPC includes" className="bg-white">
       <div className="mx-auto grid max-w-7xl items-center gap-8 px-5 py-12 sm:px-8 sm:py-16 lg:grid-cols-[1fr_0.9fr] lg:gap-14">
         <div>
           <p className="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand/5 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-brand">
-            Land <span className="text-ink/40">+</span> DPC
+            Plot <span className="text-ink/40">+</span> DPC
           </p>
           <h2 className="mt-4 font-serif text-3xl leading-tight text-ink sm:text-4xl">
             More than a plot.{" "}
@@ -69,12 +69,12 @@ export function LandDpcFeature({ size }: { size: number }) {
 
 export function LandDpcStrip({ visitUrl }: { visitUrl: string }) {
   return (
-    <section aria-label="Land + DPC" className="bg-white">
+    <section aria-label="Plot + DPC" className="bg-white">
       <div className="mx-auto max-w-7xl px-5 py-10 sm:px-8 sm:py-14">
         <div className="flex items-center gap-4 sm:gap-8">
           <span className="h-px flex-1 bg-gradient-to-r from-transparent to-ink/20" />
           <p className="flex items-center gap-3 font-serif text-3xl text-ink sm:gap-4 sm:text-5xl">
-            Land
+            Plot
             <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand text-xl text-white sm:h-12 sm:w-12 sm:text-2xl">
               +
             </span>

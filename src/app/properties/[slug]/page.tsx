@@ -28,7 +28,7 @@ export async function generateMetadata({
 
   return {
     title: `${property.name} | Clobek Heritage Place`,
-    description: `Explore the ${property.name} at Clobek Heritage Place. Approx. ${property.size} sqm, Land + DPC now ${formatNairaShort(discountedNaira(property.price))} (5% off), with 25% deposit and 18-month payment plan.`,
+    description: `Explore the ${property.name} at Clobek Heritage Place. Approx. ${property.size} sqm, Plot + DPC now ${formatNairaShort(discountedNaira(property.price))} (discounted), with 20% deposit and 18-month payment plan.`,
   };
 }
 

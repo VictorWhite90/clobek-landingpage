@@ -1,8 +1,16 @@
-// Current offer: 5% off every property, and a 25% deposit with the balance
-// spread over 18 months. Change these numbers to update the whole site.
+// Current offer: discounted prices, a 20% deposit with the balance over 18
+// months, until the deadline or the first 10 subscribers. Change these numbers
+// to update the whole site.
 export const DISCOUNT_RATE = 0.05;
-export const DEPOSIT_RATE = 0.25;
+export const DEPOSIT_RATE = 0.2;
 export const INSTALMENT_MONTHS = 18;
+
+// Standard terms the offer is compared against.
+export const STANDARD_DEPOSIT_PERCENT = 35;
+export const STANDARD_MONTHS = 9;
+
+export const OFFER_ENDS = "15 November";
+export const OFFER_SLOTS = 10;
 
 export const INSTALMENT_QUARTERS = INSTALMENT_MONTHS / 3;
 

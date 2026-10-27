@@ -6,6 +6,8 @@ export type PropertyType = {
   parking: number;
   size: number;
   price: number;
+  // Pre-offer price shown struck through; defaults to price.
+  originalPrice?: number;
   image: string;
   gallery: {
     src: string;
@@ -24,6 +26,7 @@ export const propertyTypes: PropertyType[] = [
     parking: 2,
     size: 141,
     price: 22,
+    originalPrice: 23.2,
     image: "/images/3-bedroom-terrace.jpeg",
     gallery: [
       {
@@ -51,6 +54,7 @@ export const propertyTypes: PropertyType[] = [
     parking: 2,
     size: 163,
     price: 27,
+    originalPrice: 28.5,
     image: "/images/3-bedroom-terrace-bq-2.jpeg",
     gallery: [
       {
@@ -78,6 +82,7 @@ export const propertyTypes: PropertyType[] = [
     parking: 3,
     size: 167,
     price: 31.5,
+    originalPrice: 33.2,
     image: "/images/4-bedroom-terrace-bq.jpeg",
     features: [
       { title: "Four bedrooms", detail: "Bedrooms arranged across the upper floors" },
@@ -113,6 +118,7 @@ export const propertyTypes: PropertyType[] = [
     parking: 3,
     size: 300,
     price: 37,
+    originalPrice: 39.1,
     image: "/images/clobek-rowhouse-a.jpg",
     gallery: [
       {
@@ -135,6 +141,7 @@ export const propertyTypes: PropertyType[] = [
     parking: 3,
     size: 375,
     price: 43,
+    originalPrice: 45.4,
     image: "/images/clobek-duplex.jpg",
     gallery: [
       {
@@ -152,6 +159,7 @@ export const propertyTypes: PropertyType[] = [
     parking: 3,
     size: 465,
     price: 47,
+    originalPrice: 49.6,
     image: "/images/5-bedroom-detached-duplex-bq.jpeg",
     gallery: [
       {
@@ -169,4 +177,8 @@ export function getPropertyType(slug: string) {
 
 export function getPropertyPath(slug: string) {
   return `/properties/${slug}`;
+}
+
+export function originalPrice(property: Pick<PropertyType, "price" | "originalPrice">) {
+  return property.originalPrice ?? property.price;
 }

@@ -19,9 +19,10 @@ const fraunces = Fraunces({
   axes: ["opsz", "SOFT", "WONK"],
 });
 
-const SHARE_TITLE = "Clobek Heritage Place | Lugbe, Off Airport Road, Abuja";
+const SHARE_TITLE =
+  "Own a Plot + DPC off Airport Road, inside Lugbe's premium estate";
 const SHARE_DESCRIPTION =
-  "When security, proximity to the city centre and the airport, world-class infrastructure, awe-inspiring greenery and eco-friendliness matter. Plots with DPC now from ₦20.9M (5% off). 25% deposit, balance over 18 months, monthly or quarterly. Call +234 802 982 3593.";
+  "Save 10% and pay just 20% initial deposit. Only for the first 10 slots. Book your inspection today.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://clobekheritageplace.live"),

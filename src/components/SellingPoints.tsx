@@ -1,12 +1,5 @@
 import Image from "next/image";
-import {
-  Droplets,
-  Lightbulb,
-  MapPin,
-  Plane,
-  Route,
-  ShieldCheck,
-} from "lucide-react";
+import { LandPlot, Layers, MapPin, Plane } from "lucide-react";
 
 // What Clobek is selling, as an image-led opener. Optional children render
 // under the copy (e.g. the property tag and call to action).
@@ -54,18 +47,32 @@ export function SignatureBanner({ children }: { children?: React.ReactNode }) {
 
 // Location first, then infrastructure, as one compact strip.
 const highlights = [
-  { icon: MapPin, title: "Inside Crown Estate", detail: "Established & fully occupied" },
-  { icon: Plane, title: "Off Airport Road", detail: "Between the city & the airport" },
-  { icon: Route, title: "Tarred roads", detail: "Fully networked internal roads" },
-  { icon: Lightbulb, title: "Street lighting", detail: "Lit roads across the estate" },
-  { icon: ShieldCheck, title: "Gated & secured", detail: "Manned gate, perimeter fence" },
-  { icon: Droplets, title: "Water supply", detail: "Dedicated on-site sources" },
+  {
+    icon: MapPin,
+    title: "Inside a fully built and occupied estate",
+    detail: "Clobek Crown Estate, fully developed and occupied for over 12 years",
+  },
+  {
+    icon: Plane,
+    title: "Proximity to the airport and city centre",
+    detail: "20-minute drive to the city centre, 15 minutes to the airport",
+  },
+  {
+    icon: LandPlot,
+    title: "Flat table land",
+    detail: "No sand-filling, no hills. Build and move in now",
+  },
+  {
+    icon: Layers,
+    title: "DPC included",
+    detail: "Your foundation is built for you, ready for your building",
+  },
 ];
 
 export function SignaturePillars() {
   return (
     <section aria-label="Location and infrastructure" className="border-b border-ink/10 bg-white">
-      <ul className="mx-auto grid max-w-7xl grid-cols-2 gap-px bg-ink/10 sm:grid-cols-3 lg:grid-cols-6">
+      <ul className="mx-auto grid max-w-7xl grid-cols-2 gap-px bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
         {highlights.map(({ icon: Icon, title, detail }) => (
           <li key={title} className="flex items-start gap-3 bg-white px-4 py-4 sm:px-5 sm:py-5">
             <Icon className="mt-0.5 h-5 w-5 shrink-0 text-brand" strokeWidth={1.7} />
