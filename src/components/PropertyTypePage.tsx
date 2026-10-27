@@ -10,7 +10,15 @@ import {
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import WhyInvestSection from "@/components/WhyInvestSection";
-import { formatNaira } from "@/lib/format";
+import InspectionSection from "@/components/InspectionSection";
+import {
+  DiscountChip,
+  OfferBanner,
+  PriceTag,
+} from "@/components/Offer";
+import PaymentPlan from "@/components/PaymentPlan";
+import { SignaturePillars } from "@/components/SellingPoints";
+import { discountedNaira, formatNairaShort } from "@/lib/pricing";
 import {
   getPropertyPath,
   propertyTypes,
@@ -24,7 +32,7 @@ const SITE_ADDRESS =
 const sitePhotos = [
   {
     src: "/images/clobeck1/heritage-site-3.jpg",
-    alt: "DPC foundations at Clobek Heritage Place with finished homes in the neighbourhood behind",
+    alt: "DPC foundations at Clobek Heritage Place with finished buildings in the neighbourhood behind",
     caption: "DPC foundations",
   },
   {
@@ -61,6 +69,7 @@ export default function PropertyTypePage({
 
   return (
     <main className="min-h-screen flex-1 bg-white text-ink">
+      <OfferBanner />
       <header className="relative z-10 border-b border-ink/10 bg-white">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
           <Link
@@ -86,17 +95,20 @@ export default function PropertyTypePage({
         <div className="absolute inset-0 opacity-[0.12] [background-image:linear-gradient(rgba(255,255,255,.16)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.16)_1px,transparent_1px)] [background-size:48px_48px]" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 py-8 sm:px-8 sm:py-20 lg:min-h-[590px] lg:grid-cols-[1fr_0.95fr] lg:gap-10 lg:py-16">
           <div className="order-2 hidden max-w-xl lg:order-1 lg:block">
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#e4bd67]">
-              Clobek Heritage Place · Lugbe, Abuja
+            <p className="rise font-serif text-4xl leading-[1.08] text-white xl:text-5xl" style={{ animationDelay: "0.1s" }}>
+              Own a property in Lugbe&apos;s prime location,{" "}
+              <span className="italic text-[#e4bd67]">inside Lugbe&apos;s premium estate.</span>
             </p>
-            <p className="mt-4 text-sm font-bold text-[#e4bd67]">Free DPC</p>
-            <h1 className="mt-5 font-serif text-5xl leading-[1.04] text-white sm:text-6xl lg:text-7xl">
+            <div className="mt-8 flex items-center gap-3 border-t border-white/15 pt-6">
+              <DiscountChip />
+            </div>
+            <h1 className="mt-3 font-serif text-3xl leading-[1.1] text-white xl:text-4xl">
               {property.name}
             </h1>
             <p className="mt-5 max-w-lg text-lg leading-7 text-white/75">
               Explore this property at Clobek Heritage Place. Approx.{" "}
-              {property.size} sqm, with Land + DPC from{" "}
-              {formatNaira(property.price)}.
+              {property.size} sqm, Land + DPC now{" "}
+              {formatNairaShort(discountedNaira(property.price))}.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
@@ -108,10 +120,10 @@ export default function PropertyTypePage({
                 Book a site visit <ArrowRight className="h-4 w-4" />
               </a>
               <a
-                href="#property-details"
+                href="#payment-plan"
                 className="inline-flex min-h-12 items-center border border-white/35 px-6 text-sm font-semibold text-white transition hover:bg-white/10"
               >
-                Property details
+                Payment plan
               </a>
             </div>
             <div className="mt-8 flex items-center gap-2 text-sm text-white/65">
@@ -120,7 +132,7 @@ export default function PropertyTypePage({
             </div>
           </div>
 
-          <div className="relative order-1 mx-auto w-full max-w-[620px] pb-8 lg:order-2 lg:ml-auto">
+          <div className="relative order-2 mx-auto w-full max-w-[620px] pb-8 lg:order-2 lg:ml-auto">
             <div className="relative aspect-[1.38] overflow-hidden rounded-[24px] border-[8px] border-white shadow-2xl shadow-black/30 sm:rounded-[30px] sm:border-[10px]">
               <Image
                 src={property.image}
@@ -139,11 +151,11 @@ export default function PropertyTypePage({
                 <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-grove/65">
                   Land + DPC
                 </p>
-                <p className="mt-1 font-serif text-3xl text-[#10251d]">
-                  {formatNaira(property.price)}
+                <p className="mt-1">
+                  <PriceTag price={property.price} size="sm" />
                 </p>
                 <p className="mt-1 text-[10px] font-bold uppercase tracking-wide text-grove">
-                  Starting price
+                  5% discount applied
                 </p>
               </div>
               <span className="h-12 w-px bg-ink/10" />
@@ -159,18 +171,21 @@ export default function PropertyTypePage({
             </div>
           </div>
 
-          <div className="order-2 max-w-xl lg:hidden">
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#e4bd67]">
-              Clobek Heritage Place · Lugbe, Abuja
+          <div className="order-1 max-w-xl lg:hidden">
+            <p className="rise font-serif text-3xl leading-[1.1] text-white sm:text-4xl" style={{ animationDelay: "0.1s" }}>
+              Own a property in Lugbe&apos;s prime location,{" "}
+              <span className="italic text-[#e4bd67]">inside Lugbe&apos;s premium estate.</span>
             </p>
-            <p className="mt-3 text-sm font-bold text-[#e4bd67]">Free DPC</p>
-            <h1 className="mt-3 font-serif text-4xl leading-[1.04] text-white sm:text-5xl">
+            <div className="mt-6 border-t border-white/15 pt-5">
+              <DiscountChip />
+            </div>
+            <h1 className="mt-3 font-serif text-2xl leading-[1.1] text-white sm:text-3xl">
               {property.name}
             </h1>
             <p className="mt-4 max-w-lg text-base leading-7 text-white/75">
               Explore this property at Clobek Heritage Place. Approx.{" "}
-              {property.size} sqm, with Land + DPC from{" "}
-              {formatNaira(property.price)}.
+              {property.size} sqm, Land + DPC now{" "}
+              {formatNairaShort(discountedNaira(property.price))}.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
@@ -182,10 +197,10 @@ export default function PropertyTypePage({
                 Book a site visit <ArrowRight className="h-4 w-4" />
               </a>
               <a
-                href="#property-details"
+                href="#payment-plan"
                 className="inline-flex min-h-11 items-center border border-white/35 px-5 text-sm font-semibold text-white transition hover:bg-white/10"
               >
-                Property details
+                Payment plan
               </a>
             </div>
             <div className="mt-6 flex items-center gap-2 text-sm text-white/65">
@@ -196,110 +211,34 @@ export default function PropertyTypePage({
         </div>
       </section>
 
-      <section
-        id="property-details"
-        aria-label="Property facts"
-        className="border-b border-ink/10 bg-white"
-      >
-        <div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-y divide-ink/10 sm:grid-cols-3 lg:grid-cols-6">
-          <div className="px-5 py-5 text-center sm:py-6">
-            <p className="text-lg font-bold text-ink">
-              {property.bedrooms}
-              {property.hasBq ? " + B.Q" : ""}
-            </p>
-            <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-muted">
-              Bedrooms
-            </p>
-          </div>
-          <div className="px-5 py-5 text-center sm:py-6">
-            <p className="text-lg font-bold text-ink">
-              Approx. {property.size} sqm
-            </p>
-            <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-muted">
-              Approximate size
-            </p>
-          </div>
-          <div className="px-5 py-5 text-center sm:py-6">
-            <p className="text-lg font-bold text-ink">{property.parking} cars</p>
-            <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-muted">
-              Parking
-            </p>
-          </div>
-          <div className="px-5 py-5 text-center sm:py-6">
-            <p className="text-lg font-bold text-ink">
-              {formatNaira(property.price)}
-            </p>
-            <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-muted">
-              Land + DPC starting price
-            </p>
-          </div>
-          <div className="px-5 py-5 text-center sm:py-6">
-            <p className="text-lg font-bold text-ink">Payment Plan</p>
-            <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-muted">
-              Flexible
-            </p>
-          </div>
-          <div className="px-5 py-5 text-center sm:py-6">
-            <p className="text-lg font-bold text-ink">Free DPC</p>
-            <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-muted">
-              Included
-            </p>
-          </div>
-        </div>
-      </section>
+      <SignaturePillars />
 
-      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24">
-        <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand">
-              Property details
-            </p>
-            <h2 className="mt-4 max-w-md font-serif text-4xl leading-tight sm:text-5xl">
-              {property.name}
-            </h2>
-          </div>
-          <div className="border-t border-ink/10 py-5">
-            <p className="text-sm leading-7 text-muted">
-              The confirmed details for this property are shown above. Contact
-              Clobek for floor plans, further specifications, current
-              availability, and terms.
-            </p>
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-grove transition hover:text-brand"
-            >
-              Ask about this property
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
-          </div>
-        </div>
-      </section>
+      <PaymentPlan price={property.price} name={property.name} />
 
-      <section className="bg-grove px-5 py-10 text-white sm:px-8 sm:py-12">
-        <div className="mx-auto flex max-w-7xl flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#e4bd67]">
-              Picture your life here
-            </p>
-            <h2 className="mt-2 font-serif text-2xl sm:text-3xl">
-              Come explore the home in person.
-            </h2>
-            <p className="mt-2 text-sm text-white/70">
-              Book a visit to Clobek Heritage Place in Lugbe.
-            </p>
+      {property.features && property.features.length > 0 && (
+        <section className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20">
+          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand">
+                Thoughtfully planned
+              </p>
+              <h2 className="mt-4 max-w-md font-serif text-4xl leading-tight sm:text-5xl">
+                Inside the {property.name}.
+              </h2>
+            </div>
+            <ul className="grid gap-x-8 sm:grid-cols-2">
+              {property.features.map((feature) => (
+                <li key={feature.title} className="border-t border-ink/10 py-5">
+                  <h3 className="text-sm font-bold text-ink">{feature.title}</h3>
+                  <p className="mt-1 text-sm leading-6 text-muted">{feature.detail}</p>
+                </li>
+              ))}
+            </ul>
           </div>
-          <a
-            href={visitUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 self-start bg-brand px-5 text-sm font-bold text-white transition hover:bg-brand-dark sm:self-auto"
-          >
-            Book a site visit <ArrowRight className="h-4 w-4" />
-          </a>
-        </div>
-      </section>
+        </section>
+      )}
+
+
 
       <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24">
         <div className="flex flex-col justify-between gap-5 border-b border-ink/10 pb-7 sm:flex-row sm:items-end">
@@ -308,7 +247,7 @@ export default function PropertyTypePage({
               Exterior views
             </p>
             <h2 className="mt-3 font-serif text-4xl leading-tight text-ink sm:text-5xl">
-              See the home in 3D.
+              See the property in 3D.
             </h2>
           </div>
           <p className="max-w-md text-sm leading-6 text-muted">
@@ -434,31 +373,11 @@ export default function PropertyTypePage({
         </div>
       </section>
 
+
+
       <WhyInvestSection compact />
 
-      <section className="bg-grove px-5 py-10 text-white sm:px-8 sm:py-12">
-        <div className="mx-auto flex max-w-7xl flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#e4bd67]">
-              Questions about the property?
-            </p>
-            <h2 className="mt-2 font-serif text-2xl sm:text-3xl">
-              Get the details directly from Clobek.
-            </h2>
-            <p className="mt-2 text-sm text-white/70">
-              Ask about availability, pricing, or arranging a site visit.
-            </p>
-          </div>
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 self-start border border-white/45 px-5 text-sm font-semibold text-white transition hover:bg-white/10 sm:self-auto"
-          >
-            Enquire on WhatsApp <ArrowUpRight className="h-4 w-4" />
-          </a>
-        </div>
-      </section>
+      <InspectionSection whatsappUrl={visitUrl} />
 
       <section className="bg-[#f3f5f1] py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -468,11 +387,11 @@ export default function PropertyTypePage({
                 More at Clobek Heritage Place
               </p>
               <h2 className="mt-3 max-w-2xl font-serif text-4xl leading-tight text-ink sm:text-5xl">
-                Other land + home options.
+                Other property options.
               </h2>
             </div>
             <p className="max-w-md text-sm leading-6 text-muted">
-              Compare the other available home types. Prices shown are for Land
+              Compare the other available property types. Prices shown are for Land
               + DPC; terms and availability should be confirmed with Clobek.
             </p>
           </div>
@@ -506,8 +425,8 @@ export default function PropertyTypePage({
                         <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-muted">
                           Land + DPC
                         </p>
-                        <p className="mt-1 font-serif text-2xl text-brand">
-                          {formatNaira(option.price)}
+                        <p className="mt-1">
+                          <PriceTag price={option.price} size="sm" />
                         </p>
                       </div>
                       <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center bg-grove text-white transition hover:bg-brand">
@@ -544,12 +463,14 @@ export default function PropertyTypePage({
             >
               Book a site visit <ArrowUpRight className="h-4 w-4" />
             </a>
-            <Link
-              href="/#house-types"
-              className="inline-flex min-h-12 items-center border border-white/35 px-5 text-sm font-semibold text-white transition hover:bg-white/10"
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-12 items-center gap-2 border border-white/35 px-5 text-sm font-semibold text-white transition hover:bg-white/10"
             >
-              More property types
-            </Link>
+              Enquire on WhatsApp <ArrowUpRight className="h-4 w-4" />
+            </a>
           </div>
         </div>
       </section>

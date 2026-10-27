@@ -12,6 +12,7 @@ export type PropertyType = {
     alt: string;
     caption: string;
   }[];
+  features?: { title: string; detail: string }[];
 };
 
 export const propertyTypes: PropertyType[] = [
@@ -27,17 +28,17 @@ export const propertyTypes: PropertyType[] = [
     gallery: [
       {
         src: "/images/3-bedroom-terrace.jpeg",
-        alt: "Architectural rendering of the 3-bedroom terrace homes",
+        alt: "Architectural rendering of the 3-bedroom terrace properties",
         caption: "Front perspective",
       },
       {
         src: "/images/clobek-terrace-c.jpg",
-        alt: "Daytime architectural rendering of the 3-bedroom terrace homes",
+        alt: "Daytime architectural rendering of the 3-bedroom terrace properties",
         caption: "Daytime exterior",
       },
       {
         src: "/images/clobek-estate-street.jpg",
-        alt: "Street-level architectural rendering of the 3-bedroom terrace homes",
+        alt: "Street-level architectural rendering of the 3-bedroom terrace properties",
         caption: "Street perspective",
       },
     ],
@@ -54,17 +55,17 @@ export const propertyTypes: PropertyType[] = [
     gallery: [
       {
         src: "/images/3-bedroom-terrace-bq-2.jpeg",
-        alt: "Evening architectural rendering of the 3-bedroom terrace homes with B.Q.",
+        alt: "Evening architectural rendering of the 3-bedroom terrace properties with B.Q.",
         caption: "Evening exterior",
       },
       {
-        src: "/images/3-bedroom-terrace-bq.jpeg",
-        alt: "Daytime architectural rendering of the 3-bedroom terrace homes with B.Q.",
+        src: "/images/3-bedroom-terrace-bq-day-1.jpg",
+        alt: "Daytime architectural rendering of the 3-bedroom terrace properties with B.Q.",
         caption: "Daytime exterior",
       },
       {
-        src: "/images/clobek-exterior-2.jpg",
-        alt: "Daytime front view of the 3-bedroom terrace homes with B.Q.",
+        src: "/images/3-bedroom-terrace-bq-day-2.jpg",
+        alt: "Daytime front view of the 3-bedroom terrace properties with B.Q.",
         caption: "Front view",
       },
     ],
@@ -78,20 +79,28 @@ export const propertyTypes: PropertyType[] = [
     size: 167,
     price: 31.5,
     image: "/images/4-bedroom-terrace-bq.jpeg",
+    features: [
+      { title: "Four bedrooms", detail: "Bedrooms arranged across the upper floors" },
+      { title: "Private bathrooms", detail: "En-suite bathrooms shown on the bedroom plans" },
+      { title: "Two lounge spaces", detail: "Main lounge and an upper-floor family lounge" },
+      { title: "Kitchen and dining", detail: "Separate kitchen and dedicated dining area" },
+      { title: "Boys' Quarters", detail: "Separate B.Q. shown on the ground-floor plan" },
+      { title: "Three-car parking", detail: "Parking provision shown in the prototype" },
+    ],
     gallery: [
       {
         src: "/images/clobek-block-spare.jpg",
-        alt: "Daytime front view of the 4-bedroom terrace homes",
+        alt: "Daytime front view of the 4-bedroom terrace properties",
         caption: "Daytime front view",
       },
       {
         src: "/images/clobek-rowhouse-b.jpg",
-        alt: "Daytime street perspective of the 4-bedroom terrace homes",
+        alt: "Daytime street perspective of the 4-bedroom terrace properties",
         caption: "Daytime street view",
       },
       {
         src: "/images/4-bedroom-terrace-bq.jpeg",
-        alt: "Night-time architectural render of the 4-bedroom terrace homes",
+        alt: "Night-time architectural render of the 4-bedroom terrace properties",
         caption: "Night view",
       },
     ],

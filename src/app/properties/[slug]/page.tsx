@@ -1,19 +1,17 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import PropertyTypePage from "@/components/PropertyTypePage";
+import { discountedNaira, formatNairaShort } from "@/lib/pricing";
 import {
   getPropertyType,
   propertyTypes,
 } from "@/lib/property-types";
 
-const additionalPropertyTypes = propertyTypes.filter(
-  (property) => property.slug !== "4-bedroom-terrace-bq",
-);
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return additionalPropertyTypes.map(({ slug }) => ({ slug }));
+  return propertyTypes.map(({ slug }) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -24,13 +22,13 @@ export async function generateMetadata({
   const { slug } = await params;
   const property = getPropertyType(slug);
 
-  if (!property || property.slug === "4-bedroom-terrace-bq") {
+  if (!property) {
     return {};
   }
 
   return {
     title: `${property.name} | Clobek Heritage Place`,
-    description: `Explore the ${property.name} at Clobek Heritage Place. Approx. ${property.size} sqm, with Land + DPC from ₦${property.price}M.`,
+    description: `Explore the ${property.name} at Clobek Heritage Place. Approx. ${property.size} sqm, Land + DPC now ${formatNairaShort(discountedNaira(property.price))} (5% off), with 25% deposit and 18-month payment plan.`,
   };
 }
 
@@ -42,7 +40,7 @@ export default async function PropertyTypeRoute({
   const { slug } = await params;
   const property = getPropertyType(slug);
 
-  if (!property || property.slug === "4-bedroom-terrace-bq") {
+  if (!property) {
     notFound();
   }
 

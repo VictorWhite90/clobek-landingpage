@@ -1,10 +1,8 @@
 import Image from "next/image";
-import { MessageCircle, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
 import Reveal from "@/components/Reveal";
 
 const PHONE_TEL = "tel:+2348029823593";
-const WHATSAPP_URL =
-  "https://wa.me/2348029823593?text=Hello%20Clobek%20Heritage%20Place%2C%20I%27m%20interested%20in%20the%20Lugbe%20estate.";
 
 const investReasons = [
   {
@@ -31,7 +29,7 @@ const investReasons = [
     body: "You're not buying bare land. We handle the DPC for you, and work is already under way on site. Start building right away, or phase your development over up to three years. Whatever your plan, we'll work it out with you.",
     proof: "Early-bird pricing is available for a limited time.",
     image: "/images/clobeck1/heritage-site-3.jpg",
-    imageAlt: "DPC foundations at Clobek Heritage Place with finished homes in the neighbourhood behind",
+    imageAlt: "DPC foundations at Clobek Heritage Place with finished buildings in the neighbourhood behind",
     imageLabel: "Clobek Heritage Place · DPC works",
   },
   {
@@ -41,14 +39,14 @@ const investReasons = [
     body: "Every project starts with a vision and a 3D design, then careful execution down to every block and every nail. Our finished estates consistently turn out better than the designs they started from, and Clobek Heritage Place will be no different.",
     proof: "Visit TFP Vintage Homes, Wuye; Clobek Crown Estate, Lugbe; and Pleasant Places, Apo. No pressure: if you're not convinced, walk away.",
     image: "/images/heritage-3d-design.jpg",
-    imageAlt: "3D design of the terrace homes at Clobek Heritage Place at night",
+    imageAlt: "3D design of the terrace properties at Clobek Heritage Place at night",
     imageLabel: "Clobek Heritage Place · 3D design",
   },
   {
     title: "Green, Quiet and Peaceful",
-    shortBody: "Lawns, gardens and trees designed in, for a calm place to come home to.",
+    shortBody: "Lawns, gardens and trees designed in, for a calm, green environment.",
     shortProof: "Tour Pleasant Places, Apo, to see it.",
-    body: "We've earned a reputation as one of the greenest, most eco-friendly estate developers around. Our estates are designed around nature, with landscaped lawns, gardens, trees and flowers that make them calm, beautiful places to come home to.",
+    body: "We've earned a reputation as one of the greenest, most eco-friendly estate developers around. Our estates are designed around nature, with landscaped lawns, gardens, trees and flowers that make them calm, beautiful places to live.",
     proof: "Tour Pleasant Places, Apo, and see what Clobek Heritage Place will feel like.",
     image: "/images/pleasant-places/pleasant-places-avenue.jpg",
     imageAlt: "Tree-lined avenue at Pleasant Places, Apo",
@@ -142,32 +140,6 @@ export default function WhyInvestSection({ compact = false }: { compact?: boolea
           ))}
         </div>
 
-        <Reveal>
-          <div className="mt-8 flex flex-col items-start justify-between gap-6 bg-champagne p-7 sm:mt-10 sm:flex-row sm:items-center sm:p-10">
-            <p className="max-w-xl font-serif text-2xl text-ink sm:text-3xl">
-              Seeing is believing.{" "}
-              <span className="text-brand italic">Book a site visit.</span>
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <a
-                href={PHONE_TEL}
-                className="inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-brand-dark"
-              >
-                Call Now
-                <Phone className="h-4 w-4" />
-              </a>
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-7 py-3.5 text-sm font-semibold text-ink transition hover:border-brand/40 hover:text-brand"
-              >
-                Chat on WhatsApp
-                <MessageCircle className="h-4 w-4" />
-              </a>
-            </div>
-          </div>
-        </Reveal>
       </div>
     </section>
   );

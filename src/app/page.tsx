@@ -8,7 +8,16 @@ import {
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import WhyInvestSection from "@/components/WhyInvestSection";
-import { formatNaira } from "@/lib/format";
+import InspectionSection from "@/components/InspectionSection";
+import { DiscountChip, OfferBanner, PriceTag } from "@/components/Offer";
+import {
+  
+  DEPOSIT_PERCENT,
+  DISCOUNT_PERCENT,
+  INSTALMENT_MONTHS,
+  discountedNaira,
+  formatNairaShort,
+} from "@/lib/pricing";
 import { getPropertyPath, propertyTypes } from "@/lib/property-types";
 
 const PHONE_DISPLAY = "+234 802 982 3593";
@@ -24,7 +33,7 @@ const startingPrice = Math.min(...propertyTypes.map((property) => property.price
 const sitePhotos = [
   {
     src: "/images/clobeck1/heritage-site-3.jpg",
-    alt: "DPC foundations at Clobek Heritage Place with finished homes in the neighbourhood behind",
+    alt: "DPC foundations at Clobek Heritage Place with finished buildings in the neighbourhood behind",
     caption: "DPC foundations",
   },
   {
@@ -84,6 +93,7 @@ const pastProjects = [
 export default function Home() {
   return (
     <div className="flex-1">
+      <OfferBanner />
       <header className="sticky top-0 z-40 border-b border-white/10 bg-grove/95 backdrop-blur">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <Link href="#home" className="flex items-center">
@@ -138,7 +148,18 @@ export default function Home() {
                 <h1 className="mt-8 font-serif text-4xl leading-[1.05] text-white sm:text-6xl sm:leading-[0.94] lg:text-8xl">
                   Live in Lugbe&apos;s premium gated estate.
                 </h1>
-                <div className="mt-9 flex flex-wrap items-center gap-4">
+                <div className="mt-6 inline-flex max-w-xl flex-col gap-1 rounded-2xl border border-white/20 bg-ink/45 px-5 py-4 backdrop-blur">
+                  <span className="flex flex-wrap items-center gap-2 text-xs font-bold tracking-[0.18em] text-white uppercase">
+                    <DiscountChip />
+                    Flexible payment plan
+                  </span>
+                  <p className="text-base text-white sm:text-lg">
+                    Pay <strong>{DEPOSIT_PERCENT}% deposit</strong>, spread the balance over{" "}
+                    <strong>{INSTALMENT_MONTHS} months</strong>, monthly or quarterly. Land + DPC now from{" "}
+                    <strong>{formatNairaShort(discountedNaira(startingPrice))}</strong>.
+                  </p>
+                </div>
+                <div className="mt-7 flex flex-wrap items-center gap-4">
                   <a
                     href={PHONE_TEL}
                     className="inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3.5 text-sm font-semibold text-white shadow-xl shadow-brand/30 transition hover:bg-brand-dark"
@@ -218,16 +239,30 @@ export default function Home() {
               </div>
               <div className="relative overflow-hidden border border-ink/10 bg-champagne px-7 py-8 sm:py-10 text-ink shadow-xl shadow-ink/5 sm:px-10">
                 <span className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand to-grove" />
-                <h3 className="font-serif text-3xl text-ink sm:text-5xl">
+                <DiscountChip />
+                <h3 className="mt-3 font-serif text-3xl text-ink sm:text-5xl">
                   Properties from{" "}
                   <span className="text-brand italic">
-                    ₦{startingPrice} million
+                    {formatNairaShort(discountedNaira(startingPrice))}
                   </span>
                 </h3>
-                <p className="mt-4 max-w-2xl text-muted">
-                  Every price covers Land + DPC across all six
-                  property types at Clobek Heritage Place. Terms and conditions
-                  apply.
+                <p className="mt-2 text-sm text-muted">
+                  <span className="line-through">₦{startingPrice}M</span> ·{" "}
+                  {DISCOUNT_PERCENT}% discount on every property type
+                </p>
+                <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                  <div className="border border-ink/10 bg-white px-4 py-3">
+                    <p className="font-serif text-2xl text-ink">{DEPOSIT_PERCENT}%</p>
+                    <p className="text-sm text-muted">Initial deposit</p>
+                  </div>
+                  <div className="border border-ink/10 bg-white px-4 py-3">
+                    <p className="font-serif text-2xl text-ink">{INSTALMENT_MONTHS} months</p>
+                    <p className="text-sm text-muted">To pay the balance, monthly or quarterly</p>
+                  </div>
+                </div>
+                <p className="mt-4 max-w-2xl text-sm text-muted">
+                  Every price covers Land + DPC across all six property types at
+                  Clobek Heritage Place. Terms and conditions apply.
                 </p>
               </div>
             </div>
@@ -287,8 +322,9 @@ export default function Home() {
                         </p>
                       </div>
                       <div className="shrink-0 text-right">
-                        <p className="font-serif text-2xl text-brand">
-                          {formatNaira(house.price)}
+                        <DiscountChip />
+                        <p className="mt-1.5">
+                          <PriceTag price={house.price} size="sm" />
                         </p>
                         <p className="mt-1 text-xs font-bold tracking-wide text-ink uppercase">
                           Land + DPC
@@ -397,47 +433,7 @@ export default function Home() {
 
         <WhyInvestSection />
 
-        <section className="relative overflow-hidden bg-white py-4 sm:py-16">
-          <Reveal>
-            <div className="relative mx-auto grid max-w-7xl gap-6 lg:gap-12 px-6 lg:grid-cols-[1fr_0.72fr] lg:items-end">
-              <div>
-                <span className="text-xs font-semibold tracking-[0.3em] text-brand uppercase">
-                  Inspection & Availability
-                </span>
-                <h2 className="mt-4 max-w-4xl font-serif text-3xl leading-tight text-ink sm:text-6xl lg:text-7xl">
-                  Your address in Lugbe&apos;s finest estate is waiting.
-                </h2>
-              </div>
-              <div className="relative overflow-hidden border border-ink/10 bg-champagne p-7 text-ink shadow-xl shadow-ink/5">
-                <span className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand to-grove" />
-                <p className="font-serif text-3xl text-ink">
-                  Ready to own at <span className="text-brand italic">Clobek Heritage Place?</span>
-                </p>
-                <p className="mt-4 text-sm leading-6 text-muted">
-                  Speak with us today for current availability and pricing, and book a private inspection of the estate in Lugbe, Abuja.
-                </p>
-                <div className="mt-7 flex flex-col gap-3">
-                  <a
-                    href={PHONE_TEL}
-                    className="inline-flex items-center justify-center gap-2 rounded-full bg-brand px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-brand-dark"
-                  >
-                    Call Now
-                    <Phone className="h-4 w-4" />
-                  </a>
-                  <a
-                    href={WHATSAPP_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 rounded-full border border-ink/15 px-7 py-3.5 text-sm font-semibold text-ink transition hover:border-brand/40 hover:text-brand"
-                  >
-                    Chat on WhatsApp
-                    <MessageCircle className="h-4 w-4" />
-                  </a>
-                  </div>
-              </div>
-            </div>
-          </Reveal>
-        </section>
+        <InspectionSection />
 
         <section id="our-estates" className="bg-champagne py-4 sm:py-16">
           <div className="mx-auto max-w-7xl px-6">
