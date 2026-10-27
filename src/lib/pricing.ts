@@ -45,5 +45,5 @@ export function formatNairaShort(naira: number) {
 export const OFFER_PITCH = `Save 10% and pay just ${DEPOSIT_PERCENT}% initial deposit. Only for ${OFFER_SLOTS} slots. Book your inspection today.`;
 
 export function propertyHeadline(name: string) {
-  return `Own a prime Plot + DPC in Abuja, off Airport Road, inside Lugbe's premium estate for ${name}`;
+  return `Buy a prime Plot + DPC in Abuja, off Airport Road, inside Lugbe's premium estate for ${name}`;
 }

@@ -102,7 +102,7 @@ export default function PropertyTypePage({
         <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 py-8 sm:px-8 sm:py-20 lg:min-h-[590px] lg:grid-cols-[1fr_0.95fr] lg:gap-10 lg:py-16">
           <div className="order-2 hidden max-w-xl lg:order-1 lg:block">
             <p className="rise font-serif text-4xl leading-[1.08] text-white xl:text-5xl" style={{ animationDelay: "0.1s" }}>
-              Own a prime Plot + DPC in Abuja, off Airport Road,{" "}
+              Buy a prime Plot + DPC in Abuja, off Airport Road,{" "}
               <span className="italic text-[#e4bd67]">
                 inside Lugbe&apos;s premium estate for {property.name}.
               </span>
@@ -187,7 +187,7 @@ export default function PropertyTypePage({
 
           <div className="order-1 max-w-xl lg:hidden">
             <p className="rise font-serif text-3xl leading-[1.1] text-white sm:text-4xl" style={{ animationDelay: "0.1s" }}>
-              Own a prime Plot + DPC in Abuja, off Airport Road,{" "}
+              Buy a prime Plot + DPC in Abuja, off Airport Road,{" "}
               <span className="italic text-[#e4bd67]">
                 inside Lugbe&apos;s premium estate for {property.name}.
               </span>
