@@ -40,3 +40,10 @@ export function formatNairaFull(naira: number) {
 export function formatNairaShort(naira: number) {
   return `₦${naira / 1_000_000}M`;
 }
+
+// Shared marketing copy for the offer, used in heroes and link previews.
+export const OFFER_PITCH = `Save 10% and pay just ${DEPOSIT_PERCENT}% initial deposit. Only for ${OFFER_SLOTS} slots. Book your inspection today.`;
+
+export function propertyHeadline(name: string) {
+  return `Own a prime Plot + DPC in Abuja, off Airport Road, inside Lugbe's premium estate for ${name}`;
+}
