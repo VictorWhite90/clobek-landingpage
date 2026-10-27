@@ -14,7 +14,6 @@ export type PropertyType = {
     alt: string;
     caption: string;
   }[];
-  features?: { title: string; detail: string }[];
 };
 
 export const propertyTypes: PropertyType[] = [
@@ -84,14 +83,6 @@ export const propertyTypes: PropertyType[] = [
     price: 31.5,
     originalPrice: 33.2,
     image: "/images/4-bedroom-terrace-bq.jpeg",
-    features: [
-      { title: "Four bedrooms", detail: "Bedrooms arranged across the upper floors" },
-      { title: "Private bathrooms", detail: "En-suite bathrooms shown on the bedroom plans" },
-      { title: "Two lounge spaces", detail: "Main lounge and an upper-floor family lounge" },
-      { title: "Kitchen and dining", detail: "Separate kitchen and dedicated dining area" },
-      { title: "Boys' Quarters", detail: "Separate B.Q. shown on the ground-floor plan" },
-      { title: "Three-car parking", detail: "Parking provision shown in the prototype" },
-    ],
     gallery: [
       {
         src: "/images/clobek-block-spare.jpg",

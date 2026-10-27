@@ -22,7 +22,7 @@ const fraunces = Fraunces({
 const SHARE_TITLE =
   "Own a Plot + DPC off Airport Road, inside Lugbe's premium estate";
 const SHARE_DESCRIPTION =
-  "Save 10% and pay just 20% initial deposit. Only for the first 10 slots. Book your inspection today.";
+  "Save 10% and pay just 20% initial deposit. Only 10 slots available. Book your inspection today.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://clobekheritageplace.live"),

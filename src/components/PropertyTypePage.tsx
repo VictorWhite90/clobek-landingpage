@@ -223,31 +223,6 @@ export default function PropertyTypePage({
 
       <SignaturePillars />
 
-      {property.features && property.features.length > 0 && (
-        <section className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20">
-          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand">
-                Thoughtfully planned
-              </p>
-              <h2 className="mt-4 max-w-md font-serif text-4xl leading-tight sm:text-5xl">
-                Inside the {property.name}.
-              </h2>
-            </div>
-            <ul className="grid gap-x-8 sm:grid-cols-2">
-              {property.features.map((feature) => (
-                <li key={feature.title} className="border-t border-ink/10 py-5">
-                  <h3 className="text-sm font-bold text-ink">{feature.title}</h3>
-                  <p className="mt-1 text-sm leading-6 text-muted">{feature.detail}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-      )}
-
-
-
       <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24">
         <div className="flex flex-col justify-between gap-5 border-b border-ink/10 pb-7 sm:flex-row sm:items-end">
           <div>
