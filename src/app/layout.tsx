@@ -20,7 +20,7 @@ const fraunces = Fraunces({
 });
 
 const SHARE_TITLE =
-  "Own a Plot + DPC off Airport Road, inside Lugbe's premium estate";
+  "Own a Plot + DPC in Abuja, off Airport Road, inside Lugbe's premium estate";
 const SHARE_DESCRIPTION =
   "Save 10% and pay just 20% initial deposit. Only for 10 slots. Book your inspection today.";
 
