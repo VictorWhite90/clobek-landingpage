@@ -17,6 +17,7 @@ import {
   PriceTag,
 } from "@/components/Offer";
 import PaymentPlan from "@/components/PaymentPlan";
+import { LandDpcFeature, LandDpcStrip } from "@/components/LandDpc";
 import { SignaturePillars } from "@/components/SellingPoints";
 import { discountedNaira, formatNairaShort } from "@/lib/pricing";
 import {
@@ -215,6 +216,8 @@ export default function PropertyTypePage({
 
       <PaymentPlan price={property.price} name={property.name} />
 
+      <LandDpcFeature size={property.size} />
+
       {property.features && property.features.length > 0 && (
         <section className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20">
           <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16">
@@ -289,6 +292,8 @@ export default function PropertyTypePage({
           ))}
         </div>
       </section>
+
+      <LandDpcStrip visitUrl={visitUrl} />
 
       <section className="bg-white py-4 sm:py-16">
         <div className="mx-auto grid max-w-7xl gap-6 px-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-10">
