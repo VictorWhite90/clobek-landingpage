@@ -9,7 +9,7 @@ import {
 import Reveal from "@/components/Reveal";
 import WhyInvestSection from "@/components/WhyInvestSection";
 import InspectionSection from "@/components/InspectionSection";
-import { DiscountChip, OfferBanner, PriceTag } from "@/components/Offer";
+import { DiscountChip, PriceTag } from "@/components/Offer";
 import {
   
   DEPOSIT_PERCENT,
@@ -95,7 +95,6 @@ const pastProjects = [
 export default function Home() {
   return (
     <div className="flex-1">
-      <OfferBanner />
       <header className="sticky top-0 z-40 border-b border-white/10 bg-grove/95 backdrop-blur">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <Link href="#home" className="flex items-center">

@@ -8,7 +8,7 @@ export function LandDpcFeature({ size }: { size: number }) {
     {
       icon: LandPlot,
       title: "Your plot",
-      detail: `Approx. ${size} sqm plot inside Clobek Crown Estate`,
+      detail: `Approx. ${size} sqm plot inside Clobek Crown Estate, Lugbe's premium estate`,
     },
     {
       icon: Layers,

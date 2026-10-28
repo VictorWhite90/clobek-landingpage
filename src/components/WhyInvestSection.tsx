@@ -1,8 +1,6 @@
 import Image from "next/image";
-import { Phone } from "lucide-react";
 import Reveal from "@/components/Reveal";
 
-const PHONE_TEL = "tel:+2348029823593";
 
 const investReasons = [
   {
@@ -17,8 +15,8 @@ const investReasons = [
   },
   {
     title: "Premium Infrastructure, Built to Last",
-    shortBody: "Solid roads and infrastructure that still stand strong in our estates 14+ years on.",
-    shortProof: "See it at Crown Estate, Pleasant Places and TFP Vintage Homes.",
+    shortBody: "Tarred roads, street lighting, drainage, a manned gate and water supply.",
+    shortProof: "Built to last: still standing strong in our estates 14+ years on.",
     body: "We invest heavily in estate infrastructure because it is what drives the value of your property. More than 14 years after construction, the infrastructure in our earlier estates remains solid, and our subscribers have seen strong value growth in every neighbourhood we build in.",
     proof: "See it for yourself at Clobek Crown Estate, Lugbe; Pleasant Places, Apo; and TFP Vintage Homes, Wuye.",
   },
@@ -102,13 +100,6 @@ export default function WhyInvestSection({ compact = false }: { compact?: boolea
                     >
                       {compact ? reason.shortProof : reason.proof}
                     </p>
-                    <a
-                      href={PHONE_TEL}
-                      className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/20 transition hover:bg-brand-dark"
-                    >
-                      Call Now
-                      <Phone className="h-4 w-4" />
-                    </a>
                   </div>
                 </div>
                 {reason.image && (

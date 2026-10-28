@@ -13,7 +13,6 @@ import WhyInvestSection from "@/components/WhyInvestSection";
 import InspectionSection from "@/components/InspectionSection";
 import {
   DiscountChip,
-  OfferBanner,
   PriceTag,
 } from "@/components/Offer";
 import PaymentPlan from "@/components/PaymentPlan";
@@ -75,7 +74,6 @@ export default function PropertyTypePage({
 
   return (
     <main className="min-h-screen flex-1 bg-white text-ink">
-      <OfferBanner />
       <header className="relative z-10 border-b border-ink/10 bg-white">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
           <Link
