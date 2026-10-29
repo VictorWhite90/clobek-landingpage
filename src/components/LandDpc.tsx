@@ -70,15 +70,15 @@ export function LandDpcFeature({ size }: { size: number }) {
 export function LandDpcStrip({ visitUrl }: { visitUrl: string }) {
   return (
     <section aria-label="Plot + DPC" className="bg-white">
-      <div className="mx-auto max-w-7xl px-5 py-10 sm:px-8 sm:py-14">
+      <div className="mx-auto max-w-7xl px-5 py-5 sm:px-8 sm:py-7">
         <div className="flex items-center gap-4 sm:gap-8">
           <span className="h-px flex-1 bg-gradient-to-r from-transparent to-ink/20" />
-          <p className="flex items-center gap-3 font-serif text-3xl text-ink sm:gap-4 sm:text-5xl">
+          <p className="flex items-center gap-3 font-serif text-3xl font-bold text-ink sm:gap-4 sm:text-5xl">
             Plot
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand text-xl text-white sm:h-12 sm:w-12 sm:text-2xl">
+            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand text-xl font-bold text-white sm:h-12 sm:w-12 sm:text-2xl">
               +
             </span>
-            <span className="italic text-brand">DPC</span>
+            <span className="font-bold italic text-brand">DPC</span>
           </p>
           <span className="h-px flex-1 bg-gradient-to-l from-transparent to-ink/20" />
         </div>

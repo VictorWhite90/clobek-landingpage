@@ -1,41 +1,4 @@
-import { BadgePercent } from "lucide-react";
-import {
-  DEPOSIT_PERCENT,
-  INSTALMENT_MONTHS,
-  OFFER_ENDS,
-  OFFER_SLOTS,
-  discountedNaira,
-  formatNairaShort,
-} from "@/lib/pricing";
-
-export function OfferBanner() {
-  return (
-    <div className="bg-brand text-white">
-      <p className="mx-auto flex max-w-7xl items-center justify-center gap-2 px-4 py-2 text-center text-xs font-semibold sm:text-sm">
-        <BadgePercent className="h-4 w-4 shrink-0" />
-        <span className="sm:hidden">
-          Discounted prices · Ends {OFFER_ENDS} · First {OFFER_SLOTS} only
-        </span>
-        <span className="hidden sm:inline">
-          Limited offer: discounted prices, {DEPOSIT_PERCENT}% deposit and{" "}
-          {INSTALMENT_MONTHS} months to pay · Ends {OFFER_ENDS}, first{" "}
-          {OFFER_SLOTS} subscribers only
-        </span>
-      </p>
-    </div>
-  );
-}
-
-export function DiscountChip({ className = "" }: { className?: string }) {
-  return (
-    <span
-      className={`inline-flex items-center gap-1 rounded-full bg-brand px-2.5 py-1 text-[10px] font-bold tracking-wide text-white uppercase ${className}`}
-    >
-      <BadgePercent className="h-3 w-3" />
-      Discounted
-    </span>
-  );
-}
+import { discountedNaira, formatNairaShort } from "@/lib/pricing";
 
 // Discounted price, with the original (pre-offer) price struck through.
 // Both prices are in millions of naira.

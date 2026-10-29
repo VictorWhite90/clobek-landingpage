@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import Reveal from "@/components/Reveal";
 
 
@@ -15,6 +16,7 @@ const investReasons = [
   },
   {
     title: "Premium Infrastructure, Built to Last",
+    fullOnly: true,
     shortBody: "Tarred roads, street lighting, drainage, a manned gate and water supply.",
     shortProof: "Built to last: still standing strong in our estates 14+ years on.",
     body: "We invest heavily in estate infrastructure because it is what drives the value of your property. More than 14 years after construction, the infrastructure in our earlier estates remains solid, and our subscribers have seen strong value growth in every neighbourhood we build in.",
@@ -32,7 +34,7 @@ const investReasons = [
   },
   {
     title: "Trusted to Deliver Beyond Expectations",
-    shortBody: "Clobek Nig. Limited is reputed for delivering on its promises: the developers of premium estates such as TFP Vintage Homes, Pleasant Places and Clobek Crown Estate.",
+    shortBody: "Clobek Nig. Limited is reputed for building premium estates: TFP Vintage Homes, Wuye; Pleasant Places, Apo; and Clobek Crown Estate, Lugbe.",
     shortProof: "Visit our estates. No pressure.",
     body: "Every project starts with a vision and a 3D design, then careful execution down to every block and every nail. Our finished estates consistently turn out better than the designs they started from, and Clobek Heritage Place will be no different.",
     proof: "Visit TFP Vintage Homes, Wuye; Clobek Crown Estate, Lugbe; and Pleasant Places, Apo. No pressure: if you're not convinced, walk away.",
@@ -42,30 +44,35 @@ const investReasons = [
   },
 ];
 
-export default function WhyInvestSection({ compact = false }: { compact?: boolean }) {
+const DEFAULT_VISIT_URL =
+  "https://wa.me/2348029823593?text=Hello%20Clobek%20Heritage%20Place%2C%20I%27d%20like%20to%20book%20a%20site%20visit%20to%20the%20Lugbe%20estate.";
+
+export default function WhyInvestSection({
+  compact = false,
+  visitUrl = DEFAULT_VISIT_URL,
+}: {
+  compact?: boolean;
+  visitUrl?: string;
+}) {
+  const reasons = compact
+    ? investReasons.filter((reason) => !("fullOnly" in reason))
+    : investReasons;
   return (
     <section id="why-invest" className="bg-white py-4 sm:py-16">
       <div className="mx-auto max-w-7xl px-6">
         <Reveal>
-          <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+          <div>
             <div>
-              <span className="text-xs font-semibold tracking-[0.3em] text-brand uppercase">
-                Why Invest
-              </span>
-              <h2 className="mt-4 max-w-2xl font-serif text-3xl leading-tight text-ink sm:text-5xl lg:text-6xl">
+              <h2 className="max-w-2xl font-serif text-3xl leading-tight text-ink sm:text-5xl lg:text-6xl">
                 Reasons to invest in{" "}
                 <span className="text-brand italic">Clobek Heritage Place.</span>
               </h2>
             </div>
-            <p className="max-w-md text-muted">
-              Don&apos;t just take our word for it. Visit our estates, see the
-              work for yourself, and decide with confidence.
-            </p>
           </div>
         </Reveal>
 
         <div className="mt-6 divide-y divide-ink/10 border-y border-ink/10 sm:mt-12">
-          {investReasons.map((reason, i) => (
+          {reasons.map((reason, i) => (
             <Reveal key={reason.title}>
               <div
                 className={`grid gap-6 py-6 md:py-10 ${
@@ -121,6 +128,22 @@ export default function WhyInvestSection({ compact = false }: { compact?: boolea
           ))}
         </div>
 
+        <Reveal>
+          <div className="mt-8 flex flex-col items-start gap-5">
+            <p className="max-w-xl text-lg leading-8 text-ink">
+              Don&apos;t just take our word for it. Visit our estates, see the
+              work for yourself, and decide with confidence.
+            </p>
+            <a
+              href={visitUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-12 items-center gap-2 bg-brand px-6 text-sm font-bold text-white transition hover:bg-brand-dark"
+            >
+              Book an inspection <ArrowRight className="h-4 w-4" />
+            </a>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

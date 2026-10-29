@@ -21,7 +21,7 @@ const fraunces = Fraunces({
 });
 
 const SHARE_TITLE =
-  "Buy a prime Plot + DPC in Abuja, off Airport Road, inside Lugbe's premium estate";
+  "Buy a prime Plot + DPC in Abuja, Off Airport Road, Inside Lugbe's premium estate";
 const SHARE_DESCRIPTION = OFFER_PITCH;
 
 export const metadata: Metadata = {

@@ -50,12 +50,12 @@ const highlights = [
   {
     icon: MapPin,
     title: "Inside a fully built and occupied estate",
-    detail: "Clobek Crown Estate, fully developed and occupied for over 12 years",
+    detail: "Situated inside Clobek Crown Estate, fully developed and occupied for over 14 years",
   },
   {
     icon: Plane,
     title: "Proximity to the airport and city centre",
-    detail: "20-minute drive to the city centre, 15 minutes to the airport",
+    detail: "20-minute drive to the city centre, 15 minutes from the airport",
   },
   {
     icon: LandPlot,
@@ -71,8 +71,15 @@ const highlights = [
 
 export function SignaturePillars() {
   return (
-    <section aria-label="Location and infrastructure" className="border-b border-ink/10 bg-white">
-      <ul className="mx-auto grid max-w-7xl grid-cols-2 gap-px bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
+    <section aria-label="Why Clobek Heritage Place is different" className="border-b border-ink/10 bg-white">
+      <div className="mx-auto max-w-7xl px-5 pt-10 sm:px-8 sm:pt-14">
+        <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand">The difference</p>
+        <h2 className="mt-2 font-serif text-3xl text-ink sm:text-4xl">
+          Why Clobek Heritage Place is{" "}
+          <span className="italic text-brand">different and unique.</span>
+        </h2>
+      </div>
+      <ul className="mx-auto mt-6 grid max-w-7xl grid-cols-2 gap-px bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
         {highlights.map(({ icon: Icon, title, detail }) => (
           <li key={title} className="flex items-start gap-3 bg-white px-4 py-4 sm:px-5 sm:py-5">
             <Icon className="mt-0.5 h-5 w-5 shrink-0 text-brand" strokeWidth={1.7} />
