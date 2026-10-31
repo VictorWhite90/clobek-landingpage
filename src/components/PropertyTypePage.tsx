@@ -7,7 +7,6 @@ import {
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import CtaButtons from "@/components/CtaButtons";
-import ShareButton from "@/components/ShareButton";
 import { DirectionsLink } from "@/components/Directions";
 import { SITE_ADDRESS } from "@/lib/location";
 import { ScrollProgress, SectionReveal } from "@/components/ScrollEffects";
@@ -16,7 +15,7 @@ import { PriceTag } from "@/components/Offer";
 import PaymentPlan from "@/components/PaymentPlan";
 import { LandDpcFeature } from "@/components/LandDpc";
 import { SignaturePillars } from "@/components/SellingPoints";
-import { OFFER_PITCH, SHARE_TITLE, shareDescription } from "@/lib/pricing";
+import { OFFER_PITCH } from "@/lib/pricing";
 import {
   getPropertyPath,
   originalPrice,
@@ -91,20 +90,14 @@ export default function PropertyTypePage({
             <ArrowLeft className="h-4 w-4" />
             Clobek Heritage Place
           </Link>
-          <div className="flex items-center gap-2">
-            <ShareButton
-              headline={`${SHARE_TITLE}\n${shareDescription(property.price)}`}
-              path={getPropertyPath(property.slug)}
-            />
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-h-10 items-center gap-2 bg-grove px-4 text-sm font-semibold text-white transition hover:bg-brand"
-            >
-              Enquire <ArrowUpRight className="h-4 w-4" />
-            </a>
-          </div>
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-10 items-center gap-2 bg-grove px-4 text-sm font-semibold text-white transition hover:bg-brand"
+          >
+            Enquire <ArrowUpRight className="h-4 w-4" />
+          </a>
         </nav>
       </header>
 
