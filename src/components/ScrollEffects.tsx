@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { motion, useReducedMotion, useScroll, useSpring } from "motion/react";
+import { motion, useScroll, useSpring } from "motion/react";
 
 // Thin gold bar across the top that fills as the page is scrolled.
 export function ScrollProgress() {
@@ -17,17 +17,8 @@ export function ScrollProgress() {
 }
 
 // Each section rises, sharpens and settles into place as it scrolls into view.
+// Pure CSS (scroll-driven animation in globals.css): content is always visible
+// before JavaScript loads, and browsers without support simply show it.
 export function SectionReveal({ children }: { children: ReactNode }) {
-  const reduce = useReducedMotion();
-  if (reduce) return <>{children}</>;
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 70, scale: 0.98, filter: "blur(10px)" }}
-      whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
-      viewport={{ once: true, amount: 0.12 }}
-      transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-    >
-      {children}
-    </motion.div>
-  );
+  return <div className="section-reveal">{children}</div>;
 }

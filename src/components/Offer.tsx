@@ -22,7 +22,7 @@ export function PriceTag({
         {now}
       </span>
       <span
-        className={`text-sm line-through ${tone === "dark" ? "text-white/55" : "text-muted"}`}
+        className={`relative px-1 text-sm font-medium before:absolute before:inset-x-0 before:top-1/2 before:h-px before:content-[''] ${tone === "dark" ? "text-white/80 before:bg-white/60" : "text-ink/60 before:bg-ink/50"}`}
       >
         {was}
       </span>

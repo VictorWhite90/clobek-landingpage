@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowRight, Hammer, LandPlot, Layers } from "lucide-react";
+import { ArrowRight, Hammer, LandPlot, Layers, MapPin } from "lucide-react";
 
 // Explains what "Plot + DPC" means: the plot plus a damp-proof course
 // foundation the developer builds for the buyer.
@@ -49,14 +49,21 @@ export function LandDpcFeature({ size }: { size: number }) {
               </li>
             ))}
           </ol>
+          <p className="mt-8 flex items-start gap-2 border-t border-ink/10 pt-5 text-sm font-semibold text-ink sm:text-base">
+            <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-brand" />
+            <span>
+              <span className="text-brand">Location:</span> Plot 1946, Sabon-Lugbe
+              East Extension Layout, Lugbe, Abuja FCT
+            </span>
+          </p>
         </div>
-        <figure className="relative aspect-[4/3] overflow-hidden border border-ink/10 shadow-xl shadow-ink/10">
+        <figure className="group sheen relative aspect-[4/3] overflow-hidden border border-ink/10 shadow-xl shadow-ink/10">
           <Image
             src="/images/clobeck1/heritage-site-3.jpg"
             alt="DPC foundation blockwork on a plot at Clobek Heritage Place"
             fill
             sizes="(min-width: 1024px) 40vw, 100vw"
-            className="object-cover"
+            className="object-cover img-fx"
           />
           <figcaption className="absolute bottom-0 left-0 bg-ink/75 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-white">
             Real site · DPC in progress
@@ -82,14 +89,21 @@ export function LandDpcStrip({ visitUrl }: { visitUrl: string }) {
           </p>
           <span className="h-px flex-1 bg-gradient-to-l from-transparent to-ink/20" />
         </div>
-        <p className="mx-auto mt-4 max-w-xl text-center text-sm leading-6 text-muted sm:text-base">
+        <p className="mx-auto mt-4 flex max-w-xl items-start justify-center gap-2 text-center text-sm font-semibold text-ink sm:text-base">
+          <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand sm:h-5 sm:w-5" />
+          <span>
+            <span className="text-brand">Location:</span> Plot 1946, Sabon-Lugbe
+            East Extension Layout, Lugbe, Abuja FCT
+          </span>
+        </p>
+        <p className="mx-auto mt-3 max-w-xl text-center text-sm leading-6 text-muted sm:text-base">
           Every price covers your plot and its foundation, built for you.
           <br className="hidden sm:block" />{" "}
           <a
             href={visitUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 font-semibold text-grove underline decoration-brand/40 underline-offset-4 transition hover:text-brand"
+            className="link-fx inline-flex items-center gap-1 font-semibold text-grove underline decoration-brand/40 underline-offset-4 hover:text-brand"
           >
             Come see it for yourself. Book an inspection <ArrowRight className="h-3.5 w-3.5" />
           </a>

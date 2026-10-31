@@ -81,8 +81,8 @@ export function SignaturePillars() {
       </div>
       <ul className="mx-auto mt-6 grid max-w-7xl grid-cols-2 gap-px bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
         {highlights.map(({ icon: Icon, title, detail }) => (
-          <li key={title} className="flex items-start gap-3 bg-white px-4 py-4 sm:px-5 sm:py-5">
-            <Icon className="mt-0.5 h-5 w-5 shrink-0 text-brand" strokeWidth={1.7} />
+          <li key={title} className="group flex items-start gap-3 bg-white px-4 py-4 transition-colors duration-500 hover:bg-champagne sm:px-5 sm:py-5">
+            <Icon className="mt-0.5 h-5 w-5 shrink-0 text-brand transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-0.5 group-hover:scale-125" strokeWidth={1.7} />
             <span>
               <span className="block text-sm font-semibold text-ink">{title}</span>
               <span className="mt-0.5 block text-xs leading-4 text-muted">{detail}</span>

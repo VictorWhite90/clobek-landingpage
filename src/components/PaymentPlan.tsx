@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, Phone } from "lucide-react";
+import CtaButtons from "@/components/CtaButtons";
 import LimitedOffer from "@/components/LimitedOffer";
 import {
   DEPOSIT_PERCENT,
@@ -14,18 +14,14 @@ import {
 
 // Offer comparison (why act now), then the calculator: deposit + instalments
 // = discounted price. On phones the figures collapse into label/amount rows.
-const PHONE_TEL = "tel:+2348029823593";
-
 export default function PaymentPlan({
   price,
   original = price,
   name,
-  visitUrl,
 }: {
   price: number;
   original?: number;
   name: string;
-  visitUrl: string;
 }) {
   const [cadence, setCadence] = useState<"monthly" | "quarterly">("monthly");
   const plan = paymentPlan(price);
@@ -51,7 +47,7 @@ export default function PaymentPlan({
 
   return (
     <>
-    <LimitedOffer price={price} original={original} visitUrl={visitUrl} />
+    <LimitedOffer price={price} original={original} subject={name} />
 
     <section id="payment-plan" aria-label="Flexible payment plan" className="bg-champagne text-ink">
       <div className="mx-auto max-w-7xl px-5 py-10 sm:px-8 sm:py-14">
@@ -64,7 +60,7 @@ export default function PaymentPlan({
         </p>
 
         <div className="mt-5 rounded-2xl border border-ink/10 bg-white p-5 shadow-xl shadow-ink/5 sm:p-7">
-          <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="flex flex-col items-start gap-3">
             <h3 className="font-serif text-xl sm:text-2xl">What you would be paying</h3>
             <div
               role="tablist"
@@ -109,8 +105,10 @@ export default function PaymentPlan({
                       {item.value}
                     </span>
                     {item.was && (
-                      <span className="mt-1 block text-[11px] text-muted line-through sm:text-sm">
-                        {item.was}
+                      <span className="mt-1.5 block text-sm font-medium text-ink/60 sm:text-base">
+                        <span className="relative -mx-1 inline-block px-1 before:absolute before:inset-x-0 before:top-1/2 before:h-px before:bg-ink/50 before:content-['']">
+                          {item.was}
+                        </span>
                       </span>
                     )}
                   </dd>
@@ -127,22 +125,7 @@ export default function PaymentPlan({
           </p>
         </div>
 
-        <div className="mt-6 flex flex-wrap gap-3">
-          <a
-            href={visitUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-11 items-center gap-2 bg-brand px-5 text-sm font-bold text-white transition hover:bg-brand-dark"
-          >
-            Book an inspection <ArrowRight className="h-4 w-4" />
-          </a>
-          <a
-            href={PHONE_TEL}
-            className="inline-flex min-h-11 items-center gap-2 border border-ink/20 px-5 text-sm font-semibold text-ink transition hover:border-brand hover:text-brand"
-          >
-            Call now <Phone className="h-4 w-4" />
-          </a>
-        </div>
+        <CtaButtons actions={["book", "inspect", "call"]} subject={name} className="mt-6" />
       </div>
     </section>
     </>

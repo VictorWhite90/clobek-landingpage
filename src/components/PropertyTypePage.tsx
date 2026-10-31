@@ -2,13 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowLeft,
-  ArrowRight,
   ArrowUpRight,
   MapPin,
-  MessageCircle,
-  Phone,
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import CtaButtons from "@/components/CtaButtons";
+import CountdownBar from "@/components/CountdownBar";
 import { ScrollProgress, SectionReveal } from "@/components/ScrollEffects";
 import WhyInvestSection from "@/components/WhyInvestSection";
 import InspectionSection from "@/components/InspectionSection";
@@ -16,11 +15,7 @@ import { PriceTag } from "@/components/Offer";
 import PaymentPlan from "@/components/PaymentPlan";
 import { LandDpcFeature, LandDpcStrip } from "@/components/LandDpc";
 import { SignaturePillars } from "@/components/SellingPoints";
-import {
-  OFFER_PITCH,
-  discountedNaira,
-  formatNairaShort,
-} from "@/lib/pricing";
+import { OFFER_PITCH } from "@/lib/pricing";
 import {
   getPropertyPath,
   originalPrice,
@@ -28,7 +23,6 @@ import {
   type PropertyType,
 } from "@/lib/property-types";
 
-const PHONE_TEL = "tel:+2348029823593";
 const SITE_ADDRESS =
   "Plot 1946, Sabon-Lugbe East Extension Layout, Lugbe, Abuja FCT";
 
@@ -78,7 +72,7 @@ export default function PropertyTypePage({
           <Link
             href="/#home"
             aria-label="Back to Clobek Heritage Place"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-grove transition hover:text-brand"
+            className="link-fx inline-flex items-center gap-2 text-sm font-semibold text-grove hover:text-brand"
           >
             <ArrowLeft className="h-4 w-4" />
             Clobek Heritage Place
@@ -98,14 +92,14 @@ export default function PropertyTypePage({
         <div className="absolute inset-0 opacity-[0.12] [background-image:linear-gradient(rgba(255,255,255,.16)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.16)_1px,transparent_1px)] [background-size:48px_48px]" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 py-8 sm:px-8 sm:py-16 lg:min-h-[590px] lg:grid-cols-[0.95fr_1fr] lg:gap-14">
           <div className="relative mx-auto w-full max-w-[620px] pb-10 lg:mr-auto lg:ml-0">
-            <div className="relative aspect-[1.38] overflow-hidden rounded-[24px] border-[8px] border-white shadow-2xl shadow-black/30 sm:rounded-[30px] sm:border-[10px]">
+            <div className="group sheen relative aspect-[1.38] overflow-hidden rounded-[24px] border-[8px] border-white shadow-2xl shadow-black/30 sm:rounded-[30px] sm:border-[10px]">
               <Image
                 src={property.image}
                 alt={`Architectural impression of the ${property.name} at Clobek Heritage Place`}
                 fill
                 priority
                 sizes="(min-width: 1024px) 48vw, 100vw"
-                className="object-cover"
+                className="object-cover img-fx"
               />
               <span className="absolute left-4 top-4 bg-[#092b21]/85 px-3 py-2 text-[11px] font-semibold text-white backdrop-blur-sm">
                 {property.name.toUpperCase()} · ARTIST&apos;S IMPRESSION
@@ -144,112 +138,25 @@ export default function PropertyTypePage({
                 Inside Lugbe&apos;s premium estate for {property.name}.
               </span>
             </h1>
+            <p className="mt-4 inline-flex items-start gap-2 rounded-xl border border-[#e4bd67]/40 bg-[#e4bd67]/10 px-4 py-3 text-sm font-semibold text-white sm:text-base">
+              <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#e4bd67]" />
+              <span>
+                <span className="text-[#e4bd67]">Location:</span> {SITE_ADDRESS}
+              </span>
+            </p>
             <p
               className="rise mt-4 max-w-lg text-base leading-7 text-white/80"
               style={{ animationDelay: "0.6s" }}
             >
               {OFFER_PITCH}
             </p>
-            <p className="mt-6 max-w-lg border-t border-white/15 pt-6 text-base leading-7 text-white/75">
-              Explore this property at Clobek Heritage Place. Approx.{" "}
-              {property.size} sqm, Plot + DPC now{" "}
-              {formatNairaShort(discountedNaira(property.price))}.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a
-                href={visitUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex min-h-12 items-center gap-3 bg-brand px-6 text-sm font-bold text-white transition hover:bg-brand-dark"
-              >
-                Book a site visit <ArrowRight className="h-4 w-4" />
-              </a>
-              <a
-                href="#payment-plan"
-                className="inline-flex min-h-12 items-center border border-white/35 px-6 text-sm font-semibold text-white transition hover:bg-white/10"
-              >
-                Payment plan
-              </a>
-            </div>
-            <div className="mt-6 flex items-center gap-2 text-sm text-white/65">
-              <MapPin className="h-4 w-4 shrink-0 text-[#e4bd67]" />
-              Sabon-Lugbe East Extension Layout, off Airport Road
-            </div>
+            <CtaButtons actions={["book", "plan", "enquire", "call"]} subject={property.name} tone="dark" className="mt-6" />
           </div>
         </div>
       </section>
 
       <SectionReveal>
         <LandDpcFeature size={property.size} />
-      </SectionReveal>
-
-      <SectionReveal>
-        <PaymentPlan
-          visitUrl={visitUrl}
-          price={property.price}
-          original={originalPrice(property)}
-          name={property.name}
-        />
-      </SectionReveal>
-
-      <SectionReveal>
-        <SignaturePillars />
-      </SectionReveal>
-
-      <SectionReveal>
-        <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24">
-          <div className="flex flex-col justify-between gap-5 border-b border-ink/10 pb-7 sm:flex-row sm:items-end">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand">
-                Exterior views
-              </p>
-              <h2 className="mt-3 font-serif text-4xl leading-tight text-ink sm:text-5xl">
-                See the property in 3D.
-              </h2>
-            </div>
-            <p className="max-w-md text-sm leading-6 text-muted">
-              Explore architectural renderings of {property.name} at Clobek
-              Heritage Place.
-            </p>
-          </div>
-
-          <div
-            className={`mt-8 grid gap-5 ${
-              property.gallery.length === 1
-                ? "mx-auto max-w-4xl"
-                : property.gallery.length === 2
-                  ? "sm:grid-cols-2"
-                  : "sm:grid-cols-2 lg:grid-cols-3"
-            }`}
-          >
-            {property.gallery.map((image) => (
-              <Reveal key={image.src}>
-                <figure className="min-w-0">
-                  <div className="relative aspect-[1.4] overflow-hidden bg-grove-light">
-                    <Image
-                      src={image.src}
-                      alt={image.alt}
-                      fill
-                      sizes={
-                        property.gallery.length === 1
-                          ? "(min-width: 1024px) 896px, 100vw"
-                          : "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                      }
-                      className="object-cover transition duration-500 hover:scale-105"
-                    />
-                  </div>
-                  <figcaption className="mt-3 text-sm font-medium text-muted">
-                    {image.caption}
-                  </figcaption>
-                </figure>
-              </Reveal>
-            ))}
-          </div>
-        </section>
-      </SectionReveal>
-
-      <SectionReveal>
-        <LandDpcStrip visitUrl={visitUrl} />
       </SectionReveal>
 
       <SectionReveal>
@@ -276,24 +183,7 @@ export default function PropertyTypePage({
                 <p className="mt-6 text-sm font-semibold text-grove">
                   Come and see it for yourself.
                 </p>
-                <div className="mt-4 flex flex-wrap gap-3">
-                  <a
-                    href={visitUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/20 transition hover:bg-brand-dark"
-                  >
-                    Book a Site Visit
-                    <MessageCircle className="h-4 w-4" />
-                  </a>
-                  <a
-                    href={PHONE_TEL}
-                    className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-6 py-3 text-sm font-semibold text-ink transition hover:border-brand/40 hover:text-brand"
-                  >
-                    Call +234 802 982 3593
-                    <Phone className="h-4 w-4" />
-                  </a>
-                </div>
+                <CtaButtons actions={["inspect", "enquire", "call"]} subject={property.name} className="mt-4" />
                 </div>
               </div>
             </Reveal>
@@ -321,13 +211,13 @@ export default function PropertyTypePage({
           <div className="mx-auto mt-6 grid max-w-7xl gap-4 px-6 sm:grid-cols-3">
             {sitePhotos.map((photo) => (
               <Reveal key={photo.src}>
-                <figure className="relative aspect-[4/3] overflow-hidden border border-ink/10 shadow-lg shadow-ink/5">
+                <figure className="relative aspect-[4/3] group sheen overflow-hidden border border-ink/10 shadow-lg shadow-ink/5">
                   <Image
                     src={photo.src}
                     alt={photo.alt}
                     fill
                     sizes="(min-width: 640px) 33vw, 100vw"
-                    className="object-cover transition duration-500 hover:scale-105"
+                    className="object-cover img-fx"
                   />
                   <figcaption className="absolute bottom-0 left-0 bg-ink/70 px-3 py-1.5 text-[11px] font-semibold tracking-wide text-white uppercase">
                     {photo.caption}
@@ -340,36 +230,85 @@ export default function PropertyTypePage({
                 <p className="text-sm font-semibold text-grove">
                   Come and see it for yourself.
                 </p>
-                <div className="mt-4 flex flex-wrap gap-3">
-                  <a
-                    href={visitUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/20 transition hover:bg-brand-dark"
-                  >
-                    Book a Site Visit
-                    <MessageCircle className="h-4 w-4" />
-                  </a>
-                  <a
-                    href={PHONE_TEL}
-                    className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-6 py-3 text-sm font-semibold text-ink transition hover:border-brand/40 hover:text-brand"
-                  >
-                    Call +234 802 982 3593
-                    <Phone className="h-4 w-4" />
-                  </a>
-                </div>
+                <CtaButtons actions={["inspect", "enquire", "call"]} subject={property.name} className="mt-4" />
           </div>
         </section>
       </SectionReveal>
 
-
-
       <SectionReveal>
-        <WhyInvestSection compact visitUrl={visitUrl} />
+        <InspectionSection subject={property.name} />
       </SectionReveal>
 
       <SectionReveal>
-        <InspectionSection whatsappUrl={visitUrl} />
+        <PaymentPlan
+          price={property.price}
+          original={originalPrice(property)}
+          name={property.name}
+        />
+      </SectionReveal>
+
+      <SectionReveal>
+        <SignaturePillars />
+      </SectionReveal>
+
+      <SectionReveal>
+        <WhyInvestSection compact subject={property.name} />
+      </SectionReveal>
+
+      <SectionReveal>
+        <section className="mx-auto max-w-7xl px-5 pb-4 pt-16 sm:px-8 sm:pb-6 sm:pt-24">
+          <div className="flex flex-col justify-between gap-5 border-b border-ink/10 pb-7 sm:flex-row sm:items-end">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand">
+                Exterior views
+              </p>
+              <h2 className="mt-3 font-serif text-4xl leading-tight text-ink sm:text-5xl">
+                See the property in 3D.
+              </h2>
+            </div>
+            <p className="max-w-md text-sm leading-6 text-muted">
+              Explore architectural renderings of {property.name} at Clobek
+              Heritage Place.
+            </p>
+          </div>
+
+          <div
+            className={`mt-8 grid gap-5 ${
+              property.gallery.length === 1
+                ? "mx-auto max-w-4xl"
+                : property.gallery.length === 2
+                  ? "sm:grid-cols-2"
+                  : "sm:grid-cols-2 lg:grid-cols-3"
+            }`}
+          >
+            {property.gallery.map((image) => (
+              <Reveal key={image.src}>
+                <figure className="min-w-0">
+                  <div className="relative aspect-[1.4] group sheen overflow-hidden bg-grove-light">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      sizes={
+                        property.gallery.length === 1
+                          ? "(min-width: 1024px) 896px, 100vw"
+                          : "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      }
+                      className="object-cover img-fx"
+                    />
+                  </div>
+                  <figcaption className="mt-3 text-sm font-medium text-muted">
+                    {image.caption}
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+      </SectionReveal>
+
+      <SectionReveal>
+        <LandDpcStrip visitUrl={visitUrl} />
       </SectionReveal>
 
       <SectionReveal>
@@ -392,19 +331,19 @@ export default function PropertyTypePage({
 
             <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {otherOptions.map((option) => (
-                <article key={option.slug} className="min-w-0 bg-white">
+                <article key={option.slug} className="card-fx min-w-0 bg-white">
                   <Link
                     href={getPropertyPath(option.slug)}
                     aria-label={`View details for ${option.name}`}
-                    className="block"
+                    className="group block"
                   >
-                    <div className="relative aspect-[1.45] overflow-hidden bg-grove-light">
+                    <div className="relative aspect-[1.45] sheen overflow-hidden bg-grove-light">
                       <Image
                         src={option.image}
                         alt={`${option.name} at Clobek Heritage Place`}
                         fill
                         sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                        className="object-cover transition duration-500 hover:scale-105"
+                        className="object-cover img-fx"
                       />
                     </div>
                     <div className="p-5">
@@ -423,7 +362,7 @@ export default function PropertyTypePage({
                             <PriceTag price={option.price} original={originalPrice(option)} size="sm" />
                           </p>
                         </div>
-                        <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center bg-grove text-white transition hover:bg-brand">
+                        <span className="card-icon inline-flex h-10 w-10 shrink-0 items-center justify-center bg-grove text-white">
                           <ArrowUpRight className="h-4 w-4" />
                         </span>
                       </div>
@@ -449,28 +388,18 @@ export default function PropertyTypePage({
               <p className="mt-3 text-sm text-white/70">
                 Book a site visit or ask us about the {property.name}.
               </p>
+              <p className="mt-4 inline-flex items-start gap-2 text-sm font-semibold text-white sm:text-base">
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#e4bd67]" />
+                <span>
+                  <span className="text-[#e4bd67]">Location:</span> {SITE_ADDRESS}
+                </span>
+              </p>
             </div>
-            <div className="flex flex-wrap gap-3">
-              <a
-                href={visitUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex min-h-12 items-center gap-2 bg-brand px-5 text-sm font-bold text-white transition hover:bg-brand-dark"
-              >
-                Book a site visit <ArrowUpRight className="h-4 w-4" />
-              </a>
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex min-h-12 items-center gap-2 border border-white/35 px-5 text-sm font-semibold text-white transition hover:bg-white/10"
-              >
-                Enquire on WhatsApp <ArrowUpRight className="h-4 w-4" />
-              </a>
-            </div>
+            <CtaButtons actions={["book", "inspect", "enquire", "call"]} subject={property.name} tone="dark" />
           </div>
         </section>
       </SectionReveal>
+      <CountdownBar visitUrl={visitUrl} />
     </main>
   );
 }

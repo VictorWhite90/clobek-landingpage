@@ -1,14 +1,11 @@
-import { MessageCircle, Phone } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import CtaButtons from "@/components/CtaButtons";
 
-const PHONE_TEL = "tel:+2348029823593";
-const DEFAULT_WHATSAPP_URL =
-  "https://wa.me/2348029823593?text=Hello%20Clobek%20Heritage%20Place%2C%20I%27m%20interested%20in%20the%20Lugbe%20estate.";
 
 export default function InspectionSection({
-  whatsappUrl = DEFAULT_WHATSAPP_URL,
+  subject = "Clobek Heritage Place estate in Lugbe",
 }: {
-  whatsappUrl?: string;
+  subject?: string;
 }) {
   return (
     <section className="relative overflow-hidden bg-white py-4 sm:py-16">
@@ -30,24 +27,7 @@ export default function InspectionSection({
             <p className="mt-4 text-sm leading-6 text-muted">
               Speak with us today for current availability and pricing, and book a private inspection of the estate in Lugbe, Abuja.
             </p>
-            <div className="mt-7 flex flex-col gap-3">
-              <a
-                href={PHONE_TEL}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-brand px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-brand-dark"
-              >
-                Call Now
-                <Phone className="h-4 w-4" />
-              </a>
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-ink/15 px-7 py-3.5 text-sm font-semibold text-ink transition hover:border-brand/40 hover:text-brand"
-              >
-                Chat on WhatsApp
-                <MessageCircle className="h-4 w-4" />
-              </a>
-              </div>
+            <CtaButtons actions={["inspect", "enquire", "call"]} subject={subject} className="mt-7" />
           </div>
         </div>
       </Reveal>

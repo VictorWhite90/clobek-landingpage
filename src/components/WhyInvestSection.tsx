@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import CtaButtons from "@/components/CtaButtons";
 
 
 const investReasons = [
@@ -44,15 +44,12 @@ const investReasons = [
   },
 ];
 
-const DEFAULT_VISIT_URL =
-  "https://wa.me/2348029823593?text=Hello%20Clobek%20Heritage%20Place%2C%20I%27d%20like%20to%20book%20a%20site%20visit%20to%20the%20Lugbe%20estate.";
-
 export default function WhyInvestSection({
   compact = false,
-  visitUrl = DEFAULT_VISIT_URL,
+  subject = "Clobek Heritage Place estate in Lugbe",
 }: {
   compact?: boolean;
-  visitUrl?: string;
+  subject?: string;
 }) {
   const reasons = compact
     ? investReasons.filter((reason) => !("fullOnly" in reason))
@@ -110,13 +107,13 @@ export default function WhyInvestSection({
                   </div>
                 </div>
                 {reason.image && (
-                  <figure className="relative aspect-[3/2] overflow-hidden border border-ink/10 shadow-lg shadow-ink/5">
+                  <figure className="group sheen relative aspect-[3/2] overflow-hidden border border-ink/10 shadow-lg shadow-ink/5">
                     <Image
                       src={reason.image}
                       alt={reason.imageAlt ?? ""}
                       fill
                       sizes="(min-width: 1024px) 40vw, 100vw"
-                      className="object-cover"
+                      className="object-cover img-fx"
                     />
                     <figcaption className="absolute bottom-0 left-0 bg-ink/70 px-3 py-1.5 text-[11px] font-semibold tracking-wide text-white uppercase">
                       {reason.imageLabel}
@@ -134,14 +131,7 @@ export default function WhyInvestSection({
               Don&apos;t just take our word for it. Visit our estates, see the
               work for yourself, and decide with confidence.
             </p>
-            <a
-              href={visitUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-h-12 items-center gap-2 bg-brand px-6 text-sm font-bold text-white transition hover:bg-brand-dark"
-            >
-              Book an inspection <ArrowRight className="h-4 w-4" />
-            </a>
+            <CtaButtons actions={["inspect", "enquire", "call"]} subject={subject} />
           </div>
         </Reveal>
       </div>

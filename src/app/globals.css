@@ -115,3 +115,216 @@ body {
     animation: settle 7s ease-out both;
   }
 }
+
+/* Never allow sideways scrolling/drag on the page. */
+html,
+body {
+  overflow-x: clip;
+}
+
+@keyframes section-in {
+  from {
+    opacity: 0.001;
+    transform: translateY(60px) scale(0.98);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .section-reveal {
+      animation: section-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 45%;
+    }
+  }
+}
+
+/* ---------- Hover and scroll finish ---------- */
+
+/* Images: slow, weighted zoom on hover plus a gentle parallax drift while
+   scrolling. Zoom uses `scale`, parallax uses `translate`, so they combine. */
+.img-fx {
+  scale: 1.08;
+  transition:
+    scale 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.group:hover .img-fx {
+  scale: 1.16;
+  filter: saturate(1.12) contrast(1.04);
+}
+
+/* A soft band of light sweeps across the image on hover. */
+.sheen {
+  isolation: isolate;
+}
+.sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.28) 48%,
+    transparent 66%
+  );
+  translate: -110% 0;
+}
+.group:hover .sheen::after {
+  translate: 110% 0;
+  transition: translate 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes parallax-drift {
+  from {
+    translate: 0 -4%;
+  }
+  to {
+    translate: 0 4%;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .img-fx {
+      animation: parallax-drift linear both;
+      animation-timeline: view();
+    }
+  }
+}
+
+/* Buttons: lift, light sweep on solid buttons, colour wipe on outlined ones,
+   and the icon slides forward. */
+.btn-fx {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition:
+    translate 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.4s ease,
+    border-color 0.4s ease,
+    background-color 0.4s ease;
+}
+.btn-fx:hover {
+  translate: 0 -2px;
+}
+.btn-fx:active {
+  translate: 0 0;
+  transition-duration: 0.1s;
+}
+.btn-fx svg {
+  transition: translate 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-fx:hover svg {
+  translate: 3px 0;
+}
+.btn-fx.btn-solid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    110deg,
+    transparent 25%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 75%
+  );
+  translate: -120% 0;
+}
+.btn-fx.btn-solid:hover::after {
+  translate: 120% 0;
+  transition: translate 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-fx.btn-solid:hover {
+  box-shadow: 0 14px 30px -10px rgba(218, 119, 86, 0.65);
+}
+.btn-fx.btn-line::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--color-brand);
+  scale: 0 1;
+  transform-origin: left;
+  transition: scale 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-fx.btn-line:hover::before {
+  scale: 1 1;
+}
+.btn-fx.btn-line:hover {
+  color: #fff;
+  border-color: var(--color-brand);
+}
+
+/* Text links: underline draws in from the left. */
+.link-fx {
+  background: linear-gradient(currentColor, currentColor) left bottom / 0% 1px no-repeat;
+  transition:
+    background-size 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.3s ease;
+}
+.link-fx:hover {
+  background-size: 100% 1px;
+}
+
+/* Cards: rise with a deepening shadow and a brand line drawing across the top. */
+.card-fx {
+  position: relative;
+  transition:
+    translate 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.4s ease;
+}
+.card-fx::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 2;
+  height: 2px;
+  background: var(--color-brand);
+  scale: 0 1;
+  transform-origin: left;
+  transition: scale 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-fx:hover {
+  translate: 0 -6px;
+  box-shadow: 0 30px 60px -28px rgba(31, 33, 25, 0.35);
+}
+.card-fx:hover::before {
+  scale: 1 1;
+}
+.card-fx .card-icon {
+  transition:
+    rotate 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    scale 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.4s ease;
+}
+.card-fx:hover .card-icon {
+  rotate: 45deg;
+  background-color: var(--color-brand);
+}
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .btn-fx:hover,
+  .card-fx:hover {
+    translate: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .img-fx {
+    scale: 1;
+  }
+  .group:hover .img-fx {
+    scale: 1;
+  }
+}

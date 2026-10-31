@@ -7,6 +7,7 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import CountdownBar from "@/components/CountdownBar";
 import { ScrollProgress, SectionReveal } from "@/components/ScrollEffects";
 import WhyInvestSection from "@/components/WhyInvestSection";
 import InspectionSection from "@/components/InspectionSection";
@@ -110,19 +111,19 @@ export default function Home() {
             />
           </Link>
           <div className="hidden items-center gap-10 text-sm font-medium text-white/70 md:flex">
-            <Link href="#house-types" className="transition hover:text-brand">
+            <Link href="#house-types" className="link-fx hover:text-brand">
               Property Types
             </Link>
-            <Link href="#amenities" className="transition hover:text-brand">
+            <Link href="#amenities" className="link-fx hover:text-brand">
               Amenities
             </Link>
-            <Link href="#contact" className="transition hover:text-brand">
+            <Link href="#contact" className="link-fx hover:text-brand">
               Contact
             </Link>
           </div>
           <a
             href={PHONE_TEL}
-            className="hidden rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand/20 transition hover:bg-brand-dark sm:inline-flex"
+            className="hidden btn-fx btn-solid rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand/20 sm:inline-flex"
           >
             Call Now
           </a>
@@ -164,7 +165,7 @@ export default function Home() {
                 <div className="mt-7 flex flex-wrap items-center gap-4">
                   <a
                     href={PHONE_TEL}
-                    className="inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3.5 text-sm font-semibold text-white shadow-xl shadow-brand/30 transition hover:bg-brand-dark"
+                    className="inline-flex items-center gap-2 btn-fx btn-solid rounded-full bg-brand px-7 py-3.5 text-sm font-semibold text-white shadow-xl shadow-brand/30"
                   >
                     Call Us Now
                     <Phone className="h-4 w-4" />
@@ -263,6 +264,7 @@ export default function Home() {
                       <p className="font-serif text-2xl text-ink">{INSTALMENT_MONTHS} months</p>
                       <p className="text-sm text-muted">To pay the balance, monthly or quarterly</p>
                     </div>
+                    
                   </div>
                   <p className="mt-4 max-w-2xl text-sm text-muted">
                     Every price covers Plot + DPC across all six property types at
@@ -297,15 +299,15 @@ export default function Home() {
               <div className="mt-6 sm:mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {propertyTypes.map((house) => (
                   <Reveal key={house.slug}>
-                    <div className="group h-full overflow-hidden border border-ink/10 bg-white shadow-lg shadow-ink/5 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-brand/10">
+                    <div className="card-fx group h-full overflow-hidden border border-ink/10 bg-white shadow-lg shadow-ink/5">
                       <div className="h-1.5 bg-gradient-to-r from-brand to-grove" />
-                      <div className="relative h-72 w-full overflow-hidden">
+                      <div className="relative h-72 w-full group sheen overflow-hidden">
                         <Image
                           src={house.image}
                           alt={`${house.name} artist's impression`}
                           fill
                           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                          className="object-cover transition duration-500 group-hover:scale-105"
+                          className="object-cover img-fx"
                         />
                         <Link
                           href={getPropertyPath(house.slug)}
@@ -382,14 +384,14 @@ export default function Home() {
                       href={WHATSAPP_VISIT_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/20 transition hover:bg-brand-dark"
+                      className="inline-flex items-center gap-2 btn-fx btn-solid rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/20"
                     >
                       Book a Site Visit
                       <MessageCircle className="h-4 w-4" />
                     </a>
                     <a
                       href={PHONE_TEL}
-                      className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-6 py-3 text-sm font-semibold text-ink transition hover:border-brand/40 hover:text-brand"
+                      className="inline-flex items-center gap-2 btn-fx btn-line rounded-full border border-ink/15 px-6 py-3 text-sm font-semibold text-ink"
                     >
                       Call {PHONE_DISPLAY}
                       <Phone className="h-4 w-4" />
@@ -421,13 +423,13 @@ export default function Home() {
             <div className="mx-auto mt-6 grid max-w-7xl gap-4 px-6 sm:grid-cols-3">
               {sitePhotos.map((photo) => (
                 <Reveal key={photo.src}>
-                  <figure className="relative aspect-[4/3] overflow-hidden border border-ink/10 shadow-lg shadow-ink/5">
+                  <figure className="relative aspect-[4/3] group sheen overflow-hidden border border-ink/10 shadow-lg shadow-ink/5">
                     <Image
                       src={photo.src}
                       alt={photo.alt}
                       fill
                       sizes="(min-width: 640px) 33vw, 100vw"
-                      className="object-cover transition duration-500 hover:scale-105"
+                      className="object-cover img-fx"
                     />
                     <figcaption className="absolute bottom-0 left-0 bg-ink/70 px-3 py-1.5 text-[11px] font-semibold tracking-wide text-white uppercase">
                       {photo.caption}
@@ -547,6 +549,7 @@ export default function Home() {
           </section>
         </SectionReveal>
       </main>
+      <CountdownBar />
 
       <footer className="border-t border-ink/10 bg-grove py-8 sm:py-12 text-center text-white/65">
         <p className="font-serif text-2xl text-white">
