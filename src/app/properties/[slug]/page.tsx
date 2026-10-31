@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import PropertyTypePage from "@/components/PropertyTypePage";
-import { OFFER_PITCH, propertyHeadline } from "@/lib/pricing";
+import { SHARE_TITLE, propertyHeadline, shareDescription } from "@/lib/pricing";
 import {
   getPropertyType,
   propertyTypes,
@@ -27,13 +27,14 @@ export async function generateMetadata({
   }
 
   const headline = propertyHeadline(property.name);
+  const share = shareDescription(property.price);
 
   return {
     title: `${property.name} | Clobek Heritage Place`,
-    description: `${headline}. ${OFFER_PITCH}`,
+    description: `${headline}. ${share}`,
     openGraph: {
-      title: headline,
-      description: OFFER_PITCH,
+      title: SHARE_TITLE,
+      description: share,
       url: `/properties/${property.slug}`,
       siteName: "Clobek Heritage Place",
       locale: "en_NG",
@@ -42,8 +43,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: headline,
-      description: OFFER_PITCH,
+      title: SHARE_TITLE,
+      description: share,
       images: [property.image],
     },
   };

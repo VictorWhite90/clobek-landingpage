@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import CtaButtons from "@/components/CtaButtons";
 import LimitedOffer from "@/components/LimitedOffer";
 import {
   DEPOSIT_PERCENT,
@@ -30,6 +29,12 @@ export default function PaymentPlan({
 
   const items = [
     {
+      label: "Discounted price · Plot + DPC",
+      value: formatNairaShort(plan.total),
+      was: formatNairaShort(Math.round(original * 1_000_000)),
+      accent: true,
+    },
+    {
       label: `${DEPOSIT_PERCENT}% deposit today`,
       value: formatNairaFull(plan.deposit),
     },
@@ -37,18 +42,10 @@ export default function PaymentPlan({
       label: `${count} ${cadence === "monthly" ? "monthly" : "quarterly"} payments`,
       value: `${formatNairaFull(amount)} / ${cadence === "monthly" ? "month" : "quarter"}`,
     },
-    {
-      label: "Discounted price · Plot + DPC",
-      value: formatNairaShort(plan.total),
-      was: formatNairaShort(Math.round(original * 1_000_000)),
-      accent: true,
-    },
   ];
 
   return (
     <>
-    <LimitedOffer price={price} original={original} subject={name} />
-
     <section id="payment-plan" aria-label="Flexible payment plan" className="bg-champagne text-ink">
       <div className="mx-auto max-w-7xl px-5 py-10 sm:px-8 sm:py-14">
         <p className="text-xs font-bold uppercase tracking-[0.25em] text-brand">
@@ -125,9 +122,10 @@ export default function PaymentPlan({
           </p>
         </div>
 
-        <CtaButtons actions={["book", "inspect", "call"]} subject={name} className="mt-6" />
       </div>
     </section>
+
+    <LimitedOffer price={price} original={original} subject={name} />
     </>
   );
 }

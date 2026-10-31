@@ -76,7 +76,7 @@ export default function LimitedOffer({
         </p>
         <p className="mt-2 text-sm font-semibold text-white/70">T&amp;Cs apply.</p>
 
-        <CtaButtons actions={["book", "inspect", "call"]} subject={subject} tone="dark" className="mt-5" />
+        <CtaButtons actions={["call", "book", "enquire"]} subject={subject} tone="dark" className="mt-5" />
       </div>
     </section>
   );

@@ -16,7 +16,7 @@ export function ScrollProgress() {
   );
 }
 
-// Each section rises, sharpens and settles into place as it scrolls into view.
+// Each section fades up and settles into place as it scrolls into view.
 // Pure CSS (scroll-driven animation in globals.css): content is always visible
 // before JavaScript loads, and browsers without support simply show it.
 export function SectionReveal({ children }: { children: ReactNode }) {

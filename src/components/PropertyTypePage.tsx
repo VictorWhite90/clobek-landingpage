@@ -7,13 +7,13 @@ import {
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import CtaButtons from "@/components/CtaButtons";
-import CountdownBar from "@/components/CountdownBar";
+import { DirectionsLink } from "@/components/Directions";
+import { SITE_ADDRESS } from "@/lib/location";
 import { ScrollProgress, SectionReveal } from "@/components/ScrollEffects";
-import WhyInvestSection from "@/components/WhyInvestSection";
 import InspectionSection from "@/components/InspectionSection";
 import { PriceTag } from "@/components/Offer";
 import PaymentPlan from "@/components/PaymentPlan";
-import { LandDpcFeature, LandDpcStrip } from "@/components/LandDpc";
+import { LandDpcFeature } from "@/components/LandDpc";
 import { SignaturePillars } from "@/components/SellingPoints";
 import { OFFER_PITCH } from "@/lib/pricing";
 import {
@@ -23,8 +23,6 @@ import {
   type PropertyType,
 } from "@/lib/property-types";
 
-const SITE_ADDRESS =
-  "Plot 1946, Sabon-Lugbe East Extension Layout, Lugbe, Abuja FCT";
 
 const sitePhotos = [
   {
@@ -62,7 +60,6 @@ export default function PropertyTypePage({
     (option) => option.slug !== property.slug,
   );
   const whatsappUrl = getWhatsAppUrl(property, "enquire");
-  const visitUrl = getWhatsAppUrl(property, "visit");
 
   return (
     <main className="min-h-screen flex-1 bg-white text-ink">
@@ -92,17 +89,17 @@ export default function PropertyTypePage({
         <div className="absolute inset-0 opacity-[0.12] [background-image:linear-gradient(rgba(255,255,255,.16)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.16)_1px,transparent_1px)] [background-size:48px_48px]" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 py-8 sm:px-8 sm:py-16 lg:min-h-[590px] lg:grid-cols-[0.95fr_1fr] lg:gap-14">
           <div className="relative mx-auto w-full max-w-[620px] pb-10 lg:mr-auto lg:ml-0">
-            <div className="group sheen relative aspect-[1.38] overflow-hidden rounded-[24px] border-[8px] border-white shadow-2xl shadow-black/30 sm:rounded-[30px] sm:border-[10px]">
+            <div className="relative aspect-[1.38] overflow-hidden rounded-[24px] border-[8px] border-white shadow-2xl shadow-black/30 sm:rounded-[30px] sm:border-[10px]">
               <Image
-                src={property.image}
-                alt={`Architectural impression of the ${property.name} at Clobek Heritage Place`}
+                src="/images/clobeck1/heritage-aerial-wide.jpg"
+                alt="Aerial view of the flat, fenced plots at Clobek Heritage Place, inside Clobek Crown Estate, Lugbe"
                 fill
                 priority
                 sizes="(min-width: 1024px) 48vw, 100vw"
-                className="object-cover img-fx"
+                className="object-cover"
               />
               <span className="absolute left-4 top-4 bg-[#092b21]/85 px-3 py-2 text-[11px] font-semibold text-white backdrop-blur-sm">
-                {property.name.toUpperCase()} · ARTIST&apos;S IMPRESSION
+                AERIAL VIEW · CLOBEK HERITAGE PLACE, LUGBE
               </span>
             </div>
             <div className="absolute -bottom-1 right-2 flex min-w-[225px] items-center gap-5 rounded-xl bg-white px-5 py-4 text-ink shadow-xl sm:bottom-0 sm:right-[-22px] sm:px-6 sm:py-5">
@@ -138,19 +135,20 @@ export default function PropertyTypePage({
                 Inside Lugbe&apos;s premium estate for {property.name}.
               </span>
             </h1>
-            <p className="mt-4 inline-flex items-start gap-2 rounded-xl border border-[#e4bd67]/40 bg-[#e4bd67]/10 px-4 py-3 text-sm font-semibold text-white sm:text-base">
+            <div className="mt-4 inline-flex items-start gap-2 rounded-xl border border-[#e4bd67]/40 bg-[#e4bd67]/10 px-4 py-3 text-sm font-semibold text-white sm:text-base">
               <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#e4bd67]" />
               <span>
                 <span className="text-[#e4bd67]">Location:</span> {SITE_ADDRESS}
+                <DirectionsLink tone="dark" block className="mt-2" />
               </span>
-            </p>
+            </div>
+            <CtaButtons subject={property.name} tone="dark" className="mt-6" />
             <p
-              className="rise mt-4 max-w-lg text-base leading-7 text-white/80"
+              className="rise mt-5 max-w-lg text-base leading-7 text-white/80"
               style={{ animationDelay: "0.6s" }}
             >
               {OFFER_PITCH}
             </p>
-            <CtaButtons actions={["book", "plan", "enquire", "call"]} subject={property.name} tone="dark" className="mt-6" />
           </div>
         </div>
       </section>
@@ -179,11 +177,9 @@ export default function PropertyTypePage({
                   <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand" />
                   {SITE_ADDRESS}
                 </p>
+                <DirectionsLink className="mt-2 ml-6" />
                 <div className="hidden lg:block">
-                <p className="mt-6 text-sm font-semibold text-grove">
-                  Come and see it for yourself.
-                </p>
-                <CtaButtons actions={["inspect", "enquire", "call"]} subject={property.name} className="mt-4" />
+                <CtaButtons subject={property.name} className="mt-6" />
                 </div>
               </div>
             </Reveal>
@@ -227,16 +223,9 @@ export default function PropertyTypePage({
             ))}
           </div>
           <div className="mx-auto mt-6 max-w-7xl px-6 lg:hidden">
-                <p className="text-sm font-semibold text-grove">
-                  Come and see it for yourself.
-                </p>
-                <CtaButtons actions={["inspect", "enquire", "call"]} subject={property.name} className="mt-4" />
+                <CtaButtons subject={property.name} />
           </div>
         </section>
-      </SectionReveal>
-
-      <SectionReveal>
-        <InspectionSection subject={property.name} />
       </SectionReveal>
 
       <SectionReveal>
@@ -248,11 +237,7 @@ export default function PropertyTypePage({
       </SectionReveal>
 
       <SectionReveal>
-        <SignaturePillars />
-      </SectionReveal>
-
-      <SectionReveal>
-        <WhyInvestSection compact subject={property.name} />
+        <SignaturePillars withImage />
       </SectionReveal>
 
       <SectionReveal>
@@ -307,8 +292,9 @@ export default function PropertyTypePage({
         </section>
       </SectionReveal>
 
+
       <SectionReveal>
-        <LandDpcStrip visitUrl={visitUrl} />
+        <InspectionSection subject={property.name} />
       </SectionReveal>
 
       <SectionReveal>
@@ -386,20 +372,20 @@ export default function PropertyTypePage({
                 Visit Clobek Heritage Place.
               </h2>
               <p className="mt-3 text-sm text-white/70">
-                Book a site visit or ask us about the {property.name}.
+                Book a site visit or call to ask us about any of the property types.
               </p>
               <p className="mt-4 inline-flex items-start gap-2 text-sm font-semibold text-white sm:text-base">
                 <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#e4bd67]" />
                 <span>
                   <span className="text-[#e4bd67]">Location:</span> {SITE_ADDRESS}
+                  <DirectionsLink tone="dark" block className="mt-2" />
                 </span>
               </p>
             </div>
-            <CtaButtons actions={["book", "inspect", "enquire", "call"]} subject={property.name} tone="dark" />
+            <CtaButtons subject={property.name} tone="dark" />
           </div>
         </section>
       </SectionReveal>
-      <CountdownBar visitUrl={visitUrl} />
     </main>
   );
 }

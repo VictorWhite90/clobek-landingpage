@@ -47,3 +47,12 @@ export const OFFER_PITCH = `Save 10% and pay just ${DEPOSIT_PERCENT}% initial de
 export function propertyHeadline(name: string) {
   return `Buy a prime Plot + DPC in Abuja, Off Airport Road, Inside Lugbe's premium estate for ${name}`;
 }
+
+// Link-preview text used when a page is shared on WhatsApp and social media.
+export const SHARE_TITLE =
+  "Buy a prime Plot in Abuja, off Airport Road, inside Lugbe's premium estate.";
+
+export function shareDescription(priceMillions: number, from = false) {
+  const deposit = Math.round(paymentPlan(priceMillions).deposit / 10_000) / 100;
+  return `Pay ${from ? "from just" : "just"} ₦${deposit}M initial deposit and the balance over ${INSTALMENT_MONTHS} months. Only for ${OFFER_SLOTS} slots. Book your inspection today.`;
+}

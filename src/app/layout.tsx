@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Fraunces } from "next/font/google";
 import "./globals.css";
 import ButtonInView from "@/components/ButtonInView";
-import { OFFER_PITCH } from "@/lib/pricing";
+import { SHARE_TITLE, shareDescription } from "@/lib/pricing";
+import { propertyTypes } from "@/lib/property-types";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,9 +22,10 @@ const fraunces = Fraunces({
   axes: ["opsz", "SOFT", "WONK"],
 });
 
-const SHARE_TITLE =
-  "Buy a prime Plot + DPC in Abuja, Off Airport Road, Inside Lugbe's premium estate";
-const SHARE_DESCRIPTION = OFFER_PITCH;
+const SHARE_DESCRIPTION = shareDescription(
+  Math.min(...propertyTypes.map((p) => p.price)),
+  true,
+);
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://clobekheritageplace.live"),

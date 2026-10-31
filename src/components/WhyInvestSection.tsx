@@ -131,7 +131,7 @@ export default function WhyInvestSection({
               Don&apos;t just take our word for it. Visit our estates, see the
               work for yourself, and decide with confidence.
             </p>
-            <CtaButtons actions={["inspect", "enquire", "call"]} subject={subject} />
+            <CtaButtons subject={subject} />
           </div>
         </Reveal>
       </div>

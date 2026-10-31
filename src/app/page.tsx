@@ -6,8 +6,10 @@ import {
   MessageCircle,
   ArrowUpRight,
 } from "lucide-react";
+import { DirectionsLink, SiteMap } from "@/components/Directions";
+import { SITE_ADDRESS } from "@/lib/location";
 import Reveal from "@/components/Reveal";
-import CountdownBar from "@/components/CountdownBar";
+import CtaButtons from "@/components/CtaButtons";
 import { ScrollProgress, SectionReveal } from "@/components/ScrollEffects";
 import WhyInvestSection from "@/components/WhyInvestSection";
 import InspectionSection from "@/components/InspectionSection";
@@ -25,9 +27,6 @@ const PHONE_DISPLAY = "+234 802 982 3593";
 const PHONE_TEL = "tel:+2348029823593";
 const WHATSAPP_URL =
   "https://wa.me/2348029823593?text=Hello%20Clobek%20Heritage%20Place%2C%20I%27m%20interested%20in%20the%20Lugbe%20estate.";
-const WHATSAPP_VISIT_URL =
-  "https://wa.me/2348029823593?text=Hello%20Clobek%20Heritage%20Place%2C%20I%27d%20like%20to%20book%20a%20site%20visit%20to%20the%20Lugbe%20estate.";
-const SITE_ADDRESS = "Plot 1946, Sabon-Lugbe East Extension Layout, Lugbe, Abuja FCT";
 
 const startingPrice = Math.min(...propertyTypes.map((property) => property.price));
 const startingOriginal = originalPrice(
@@ -134,14 +133,15 @@ export default function Home() {
         <ScrollProgress />
         <section id="home" className="relative min-h-[calc(100vh-73px)] overflow-hidden bg-ink text-white">
           <Image
-            src="/images/newbgimage.jpg"
-            alt="Clobek Heritage Place properties"
+            src="/images/clobeck1/heritage-aerial-wide.jpg"
+            alt="Aerial view of the flat, fenced plots at Clobek Heritage Place, inside Clobek Crown Estate, Lugbe"
             fill
             priority
+            sizes="100vw"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-ink/64 via-ink/22 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-ink/35 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-ink/75 via-ink/40 to-ink/10" />
+          <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ink/70 to-transparent" />
 
           <div className="relative mx-auto flex min-h-[calc(100vh-73px)] max-w-7xl flex-col justify-end px-6 py-14 sm:py-18 lg:py-16">
             <Reveal>
@@ -162,24 +162,7 @@ export default function Home() {
                     <strong>{formatNairaShort(discountedNaira(startingPrice))}</strong>.
                   </p>
                 </div>
-                <div className="mt-7 flex flex-wrap items-center gap-4">
-                  <a
-                    href={PHONE_TEL}
-                    className="inline-flex items-center gap-2 btn-fx btn-solid rounded-full bg-brand px-7 py-3.5 text-sm font-semibold text-white shadow-xl shadow-brand/30"
-                  >
-                    Call Us Now
-                    <Phone className="h-4 w-4" />
-                  </a>
-                  <a
-                    href={WHATSAPP_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-white/35 bg-white/12 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-black/10 backdrop-blur transition hover:bg-white/20"
-                  >
-                    Chat on WhatsApp
-                    <ArrowUpRight className="h-4 w-4" />
-                  </a>
-                </div>
+                <CtaButtons tone="dark" className="mt-7" />
               </div>
             </Reveal>
           </div>
@@ -277,6 +260,7 @@ export default function Home() {
         </SectionReveal>
 
         <SectionReveal>
+          <span id="payment-plan" aria-hidden="true" />
           <section id="house-types" className="py-4 sm:py-16">
             <div className="mx-auto max-w-7xl px-6">
               <Reveal>
@@ -376,27 +360,8 @@ export default function Home() {
                     <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand" />
                     {SITE_ADDRESS}
                   </p>
-                  <p className="mt-6 text-sm font-semibold text-grove">
-                    Come and see it for yourself.
-                  </p>
-                  <div className="mt-4 flex flex-wrap gap-3">
-                    <a
-                      href={WHATSAPP_VISIT_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 btn-fx btn-solid rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/20"
-                    >
-                      Book a Site Visit
-                      <MessageCircle className="h-4 w-4" />
-                    </a>
-                    <a
-                      href={PHONE_TEL}
-                      className="inline-flex items-center gap-2 btn-fx btn-line rounded-full border border-ink/15 px-6 py-3 text-sm font-semibold text-ink"
-                    >
-                      Call {PHONE_DISPLAY}
-                      <Phone className="h-4 w-4" />
-                    </a>
-                  </div>
+                  <DirectionsLink className="mt-2 ml-6" />
+                  <CtaButtons className="mt-6" />
                 </div>
               </Reveal>
               <Reveal>
@@ -521,10 +486,11 @@ export default function Home() {
                 Contact Clobek Heritage Place
               </h2>
               <div className="mt-8 space-y-4 text-muted">
-                <p className="flex items-center justify-center gap-2">
-                  <MapPin className="h-4 w-4 text-brand" />
+                <p className="flex items-start justify-center gap-2">
+                  <MapPin className="mt-1 h-4 w-4 shrink-0 text-brand" />
                   {SITE_ADDRESS}
                 </p>
+                <DirectionsLink />
                 <p className="flex items-center justify-center gap-2">
                   <Phone className="h-4 w-4 text-brand" />
                   <span className="font-semibold text-ink">Call Now:</span>
@@ -546,10 +512,12 @@ export default function Home() {
                 </p>
               </div>
             </div>
+            <div className="mx-auto mt-10 max-w-5xl px-6">
+              <SiteMap />
+            </div>
           </section>
         </SectionReveal>
       </main>
-      <CountdownBar />
 
       <footer className="border-t border-ink/10 bg-grove py-8 sm:py-12 text-center text-white/65">
         <p className="font-serif text-2xl text-white">

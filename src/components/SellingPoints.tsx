@@ -69,7 +69,9 @@ const highlights = [
   },
 ];
 
-export function SignaturePillars() {
+// `withImage` adds the aerial site photo under the heading (property pages,
+// where the "Reasons to invest" section that carried it is not shown).
+export function SignaturePillars({ withImage = false }: { withImage?: boolean }) {
   return (
     <section aria-label="Why Clobek Heritage Place is different" className="border-b border-ink/10 bg-white">
       <div className="mx-auto max-w-7xl px-5 pt-10 sm:px-8 sm:pt-14">
@@ -78,14 +80,28 @@ export function SignaturePillars() {
           Why Clobek Heritage Place is{" "}
           <span className="italic text-brand">different and unique.</span>
         </h2>
+        {withImage && (
+          <figure className="group sheen relative mt-6 aspect-[4/3] overflow-hidden border border-ink/10 shadow-xl shadow-ink/10 sm:aspect-[21/9]">
+            <Image
+              src="/images/clobeck1/heritage-aerial-wide.jpg"
+              alt="Aerial view of the flat Clobek Heritage Place site, surrounded by a built-up neighbourhood"
+              fill
+              sizes="(min-width: 1280px) 1216px, 100vw"
+              className="object-cover img-fx"
+            />
+            <figcaption className="absolute bottom-0 left-0 bg-ink/75 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-white">
+              Clobek Heritage Place · Aerial view
+            </figcaption>
+          </figure>
+        )}
       </div>
       <ul className="mx-auto mt-6 grid max-w-7xl grid-cols-2 gap-px bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
         {highlights.map(({ icon: Icon, title, detail }) => (
           <li key={title} className="group flex items-start gap-3 bg-white px-4 py-4 transition-colors duration-500 hover:bg-champagne sm:px-5 sm:py-5">
             <Icon className="mt-0.5 h-5 w-5 shrink-0 text-brand transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-0.5 group-hover:scale-125" strokeWidth={1.7} />
             <span>
-              <span className="block text-sm font-semibold text-ink">{title}</span>
-              <span className="mt-0.5 block text-xs leading-4 text-muted">{detail}</span>
+              <span className="block text-[15px] font-semibold leading-5 text-ink sm:text-base">{title}</span>
+              <span className="mt-1 block text-sm leading-5 text-muted sm:text-[15px] sm:leading-6">{detail}</span>
             </span>
           </li>
         ))}

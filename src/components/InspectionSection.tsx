@@ -1,5 +1,6 @@
 import Reveal from "@/components/Reveal";
 import CtaButtons from "@/components/CtaButtons";
+import { DirectionsLink } from "@/components/Directions";
 
 
 export default function InspectionSection({
@@ -27,7 +28,8 @@ export default function InspectionSection({
             <p className="mt-4 text-sm leading-6 text-muted">
               Speak with us today for current availability and pricing, and book a private inspection of the estate in Lugbe, Abuja.
             </p>
-            <CtaButtons actions={["inspect", "enquire", "call"]} subject={subject} className="mt-7" />
+            <DirectionsLink className="mt-4" />
+            <CtaButtons subject={subject} className="mt-6" />
           </div>
         </div>
       </Reveal>

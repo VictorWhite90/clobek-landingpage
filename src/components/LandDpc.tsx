@@ -1,15 +1,12 @@
 import Image from "next/image";
-import { ArrowRight, Hammer, LandPlot, Layers, MapPin } from "lucide-react";
+import { Hammer, LandPlot, Layers, MapPin } from "lucide-react";
+import { DirectionsLink } from "@/components/Directions";
+import { SITE_ADDRESS } from "@/lib/location";
 
 // Explains what "Plot + DPC" means: the plot plus a damp-proof course
 // foundation the developer builds for the buyer.
 export function LandDpcFeature({ size }: { size: number }) {
   const steps = [
-    {
-      icon: LandPlot,
-      title: "Your plot",
-      detail: `Approx. ${size} sqm plot inside Clobek Crown Estate, Lugbe's premium estate`,
-    },
     {
       icon: Layers,
       title: "Your DPC",
@@ -20,16 +17,18 @@ export function LandDpcFeature({ size }: { size: number }) {
       title: "Your build",
       detail: "Start right away, or phase it over up to 3 years",
     },
+    {
+      icon: LandPlot,
+      title: "Your plot",
+      detail: `Approx. ${size} sqm plot inside Clobek Crown Estate, Lugbe's premium estate`,
+    },
   ];
 
   return (
     <section aria-label="What Plot + DPC includes" className="bg-white">
-      <div className="mx-auto grid max-w-7xl items-center gap-8 px-5 py-12 sm:px-8 sm:py-16 lg:grid-cols-[1fr_0.9fr] lg:gap-14">
+      <div className="mx-auto grid max-w-7xl gap-8 px-5 py-12 sm:px-8 sm:py-16 lg:grid-cols-[1fr_0.9fr] lg:gap-x-14 lg:gap-y-8">
         <div>
-          <p className="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand/5 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-brand">
-            Plot <span className="text-ink/40">+</span> DPC
-          </p>
-          <h2 className="mt-4 font-serif text-3xl leading-tight text-ink sm:text-4xl">
+          <h2 className="font-serif text-3xl leading-tight text-ink sm:text-4xl">
             More than a plot.{" "}
             <span className="italic text-brand">Your foundation is already laid.</span>
           </h2>
@@ -49,15 +48,8 @@ export function LandDpcFeature({ size }: { size: number }) {
               </li>
             ))}
           </ol>
-          <p className="mt-8 flex items-start gap-2 border-t border-ink/10 pt-5 text-sm font-semibold text-ink sm:text-base">
-            <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-brand" />
-            <span>
-              <span className="text-brand">Location:</span> Plot 1946, Sabon-Lugbe
-              East Extension Layout, Lugbe, Abuja FCT
-            </span>
-          </p>
         </div>
-        <figure className="group sheen relative aspect-[4/3] overflow-hidden border border-ink/10 shadow-xl shadow-ink/10">
+        <figure className="group sheen relative aspect-[4/3] self-center lg:col-start-2 lg:row-span-2 lg:row-start-1 overflow-hidden border border-ink/10 shadow-xl shadow-ink/10">
           <Image
             src="/images/clobeck1/heritage-site-3.jpg"
             alt="DPC foundation blockwork on a plot at Clobek Heritage Place"
@@ -69,44 +61,13 @@ export function LandDpcFeature({ size }: { size: number }) {
             Real site · DPC in progress
           </figcaption>
         </figure>
-      </div>
-    </section>
-  );
-}
-
-export function LandDpcStrip({ visitUrl }: { visitUrl: string }) {
-  return (
-    <section aria-label="Plot + DPC" className="bg-white">
-      <div className="mx-auto max-w-7xl px-5 py-5 sm:px-8 sm:py-7">
-        <div className="flex items-center gap-4 sm:gap-8">
-          <span className="h-px flex-1 bg-gradient-to-r from-transparent to-ink/20" />
-          <p className="flex items-center gap-3 font-serif text-3xl font-bold text-ink sm:gap-4 sm:text-5xl">
-            Plot
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand text-xl font-bold text-white sm:h-12 sm:w-12 sm:text-2xl">
-              +
-            </span>
-            <span className="font-bold italic text-brand">DPC</span>
-          </p>
-          <span className="h-px flex-1 bg-gradient-to-l from-transparent to-ink/20" />
-        </div>
-        <p className="mx-auto mt-4 flex max-w-xl items-start justify-center gap-2 text-center text-sm font-semibold text-ink sm:text-base">
-          <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand sm:h-5 sm:w-5" />
+        {/* Below the photo on mobile; under the steps on desktop. */}
+        <p className="flex items-start gap-2 border-t border-ink/10 pt-5 text-sm font-semibold text-ink sm:text-base lg:col-start-1 lg:row-start-2">
+          <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-brand" />
           <span>
-            <span className="text-brand">Location:</span> Plot 1946, Sabon-Lugbe
-            East Extension Layout, Lugbe, Abuja FCT
+            <span className="text-brand">Location:</span> {SITE_ADDRESS}
+            <DirectionsLink block className="mt-1.5" />
           </span>
-        </p>
-        <p className="mx-auto mt-3 max-w-xl text-center text-sm leading-6 text-muted sm:text-base">
-          Every price covers your plot and its foundation, built for you.
-          <br className="hidden sm:block" />{" "}
-          <a
-            href={visitUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="link-fx inline-flex items-center gap-1 font-semibold text-grove underline decoration-brand/40 underline-offset-4 hover:text-brand"
-          >
-            Come see it for yourself. Book an inspection <ArrowRight className="h-3.5 w-3.5" />
-          </a>
         </p>
       </div>
     </section>

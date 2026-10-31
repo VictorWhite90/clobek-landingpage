@@ -126,12 +126,10 @@ body {
   from {
     opacity: 0.001;
     transform: translateY(60px) scale(0.98);
-    filter: blur(8px);
   }
   to {
     opacity: 1;
     transform: none;
-    filter: none;
   }
 }
 
