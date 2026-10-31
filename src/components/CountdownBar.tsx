@@ -41,7 +41,7 @@ export default function CountdownBar({ visitUrl = VISIT_URL }: { visitUrl?: stri
       {/* Spacer so the fixed bar never covers the end of the page. */}
       <div aria-hidden="true" className="h-16" />
       <div className="fixed inset-x-0 bottom-0 z-50 border-t-4 border-brand bg-white text-ink shadow-[0_-12px_32px_rgba(31,33,25,0.22)]">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2.5 sm:px-8">
+        <div className="mx-auto flex max-w-7xl items-center justify-center gap-3 px-4 py-2.5 sm:justify-between sm:px-8">
           <div className="flex min-w-0 items-center gap-2 sm:gap-3">
             <span className="relative flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-40" />
@@ -69,10 +69,9 @@ export default function CountdownBar({ visitUrl = VISIT_URL }: { visitUrl?: stri
             href={visitUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-brand px-3 py-2 text-xs font-bold text-white shadow-lg shadow-brand/30 transition hover:bg-brand-dark sm:px-5 sm:text-sm"
+            className="hidden shrink-0 items-center gap-1.5 rounded-full bg-brand px-5 py-2 text-sm font-bold text-white shadow-lg shadow-brand/30 transition hover:bg-brand-dark sm:inline-flex"
           >
-            <span className="hidden sm:inline">Book an inspection</span>
-            <span className="sm:hidden">Book now</span>
+            Book an inspection
             <ArrowRight className="h-4 w-4" />
           </a>
         </div>

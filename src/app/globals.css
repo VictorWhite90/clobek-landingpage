@@ -202,7 +202,8 @@ body {
 }
 
 /* Buttons: lift, light sweep on solid buttons, colour wipe on outlined ones,
-   and the icon slides forward. */
+   and the icon slides forward. On touch screens the same effect plays once
+   as each button scrolls into view (see ButtonInView), since there is no hover. */
 .btn-fx {
   position: relative;
   isolation: isolate;
@@ -214,18 +215,8 @@ body {
     border-color 0.4s ease,
     background-color 0.4s ease;
 }
-.btn-fx:hover {
-  translate: 0 -2px;
-}
-.btn-fx:active {
-  translate: 0 0;
-  transition-duration: 0.1s;
-}
 .btn-fx svg {
   transition: translate 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.btn-fx:hover svg {
-  translate: 3px 0;
 }
 .btn-fx.btn-solid::after {
   content: "";
@@ -240,13 +231,6 @@ body {
   );
   translate: -120% 0;
 }
-.btn-fx.btn-solid:hover::after {
-  translate: 120% 0;
-  transition: translate 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.btn-fx.btn-solid:hover {
-  box-shadow: 0 14px 30px -10px rgba(218, 119, 86, 0.65);
-}
 .btn-fx.btn-line::before {
   content: "";
   position: absolute;
@@ -258,12 +242,98 @@ body {
   transform-origin: left;
   transition: scale 0.55s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.btn-fx.btn-line:hover::before {
-  scale: 1 1;
+
+@media (hover: hover) {
+  .btn-fx:hover {
+    translate: 0 -2px;
+  }
+  .btn-fx:active {
+    translate: 0 0;
+    transition-duration: 0.1s;
+  }
+  .btn-fx:hover svg {
+    translate: 3px 0;
+  }
+  .btn-fx.btn-solid:hover::after {
+    translate: 120% 0;
+    transition: translate 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .btn-fx.btn-solid:hover {
+    box-shadow: 0 14px 30px -10px rgba(218, 119, 86, 0.65);
+  }
+  .btn-fx.btn-line:hover::before {
+    scale: 1 1;
+  }
+  .btn-fx.btn-line:hover {
+    color: #fff;
+    border-color: var(--color-brand);
+  }
 }
-.btn-fx.btn-line:hover {
-  color: #fff;
-  border-color: var(--color-brand);
+
+@keyframes btn-sheen {
+  from {
+    translate: -120% 0;
+  }
+  to {
+    translate: 120% 0;
+  }
+}
+
+@keyframes btn-wipe {
+  0% {
+    scale: 0 1;
+    transform-origin: left;
+  }
+  40%,
+  50% {
+    scale: 1 1;
+    transform-origin: left;
+  }
+  51% {
+    scale: 1 1;
+    transform-origin: right;
+  }
+  100% {
+    scale: 0 1;
+    transform-origin: right;
+  }
+}
+
+@keyframes btn-wipe-text {
+  25%,
+  70% {
+    color: #fff;
+    border-color: var(--color-brand);
+  }
+}
+
+@keyframes btn-nudge {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  40% {
+    translate: 4px 0;
+  }
+}
+
+@media (hover: none) and (prefers-reduced-motion: no-preference) {
+  .btn-fx.in-view.btn-solid::after {
+    animation: btn-sheen 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: var(--btn-delay, 0s);
+  }
+  .btn-fx.in-view.btn-line {
+    animation: btn-wipe-text 1.4s ease both;
+    animation-delay: var(--btn-delay, 0s);
+  }
+  .btn-fx.in-view.btn-line::before {
+    animation: btn-wipe 1.4s cubic-bezier(0.65, 0, 0.35, 1) both;
+    animation-delay: var(--btn-delay, 0s);
+  }
+  .btn-fx.in-view svg {
+    animation: btn-nudge 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: calc(var(--btn-delay, 0s) + 0.2s);
+  }
 }
 
 /* Text links: underline draws in from the left. */
@@ -315,7 +385,6 @@ body {
 }
 
 @media (hover: none), (prefers-reduced-motion: reduce) {
-  .btn-fx:hover,
   .card-fx:hover {
     translate: none;
   }
