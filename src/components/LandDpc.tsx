@@ -26,7 +26,7 @@ export function LandDpcFeature({ size }: { size: number }) {
 
   return (
     <section aria-label="What Plot + DPC includes" className="bg-white">
-      <div className="mx-auto grid max-w-7xl gap-8 px-5 py-12 sm:px-8 sm:py-16 lg:grid-cols-[1fr_0.9fr] lg:gap-x-14 lg:gap-y-8">
+      <div className="mx-auto grid max-w-7xl gap-8 px-5 pb-6 pt-12 sm:px-8 sm:pb-8 sm:pt-16 lg:grid-cols-[1fr_0.9fr] lg:gap-x-14 lg:gap-y-8">
         <div>
           <h2 className="font-serif text-3xl leading-tight text-ink sm:text-4xl">
             More than a plot.{" "}

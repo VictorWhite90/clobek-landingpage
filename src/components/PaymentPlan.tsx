@@ -29,18 +29,18 @@ export default function PaymentPlan({
 
   const items = [
     {
-      label: "Discounted price · Plot + DPC",
-      value: formatNairaShort(plan.total),
-      was: formatNairaShort(Math.round(original * 1_000_000)),
-      accent: true,
-    },
-    {
       label: `${DEPOSIT_PERCENT}% deposit today`,
       value: formatNairaFull(plan.deposit),
     },
     {
       label: `${count} ${cadence === "monthly" ? "monthly" : "quarterly"} payments`,
       value: `${formatNairaFull(amount)} / ${cadence === "monthly" ? "month" : "quarter"}`,
+    },
+    {
+      label: "Discounted price · Plot + DPC",
+      value: formatNairaShort(plan.total),
+      was: formatNairaShort(Math.round(original * 1_000_000)),
+      accent: true,
     },
   ];
 

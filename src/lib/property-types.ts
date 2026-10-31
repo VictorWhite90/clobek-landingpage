@@ -9,6 +9,8 @@ export type PropertyType = {
   // Pre-offer price shown struck through; defaults to price.
   originalPrice?: number;
   image: string;
+  // Real land/site photo for the hero; each property shows a different one.
+  heroImage: { src: string; alt: string; caption: string };
   gallery: {
     src: string;
     alt: string;
@@ -27,6 +29,11 @@ export const propertyTypes: PropertyType[] = [
     price: 22,
     originalPrice: 23.2,
     image: "/images/3-bedroom-terrace.jpeg",
+    heroImage: {
+      src: "/images/clobeck1/heritage-aerial-wide.jpg",
+      alt: "Aerial view of the flat, fenced plots at Clobek Heritage Place, inside Clobek Crown Estate, Lugbe",
+      caption: "Aerial view · Clobek Heritage Place, Lugbe",
+    },
     gallery: [
       {
         src: "/images/3-bedroom-terrace.jpeg",
@@ -55,6 +62,11 @@ export const propertyTypes: PropertyType[] = [
     price: 27,
     originalPrice: 28.5,
     image: "/images/3-bedroom-terrace-bq-2.jpeg",
+    heroImage: {
+      src: "/images/clobeck1/heritage-site-3-hd.jpg",
+      alt: "DPC blockwork and starter bars on plots at Clobek Heritage Place, with homes behind",
+      caption: "Real site · DPC in progress",
+    },
     gallery: [
       {
         src: "/images/3-bedroom-terrace-bq-2.jpeg",
@@ -83,6 +95,11 @@ export const propertyTypes: PropertyType[] = [
     price: 31.5,
     originalPrice: 33.2,
     image: "/images/4-bedroom-terrace-bq.jpeg",
+    heroImage: {
+      src: "/images/clobeck1/heritage-plots-overhead.jpg",
+      alt: "Overhead drone view of the marked-out plots at Clobek Heritage Place",
+      caption: "From above · The plots",
+    },
     gallery: [
       {
         src: "/images/clobek-block-spare.jpg",
@@ -111,6 +128,11 @@ export const propertyTypes: PropertyType[] = [
     price: 37,
     originalPrice: 39.1,
     image: "/images/clobek-rowhouse-a.jpg",
+    heroImage: {
+      src: "/images/clobeck1/heritage-site-2-hd.jpg",
+      alt: "Workers building DPC foundations at Clobek Heritage Place",
+      caption: "Real site · Work in progress",
+    },
     gallery: [
       {
         src: "/images/clobek-rowhouse-a.jpg",
@@ -134,6 +156,11 @@ export const propertyTypes: PropertyType[] = [
     price: 43,
     originalPrice: 45.4,
     image: "/images/clobek-duplex.jpg",
+    heroImage: {
+      src: "/images/clobeck1/heritage-dpc-overhead.jpg",
+      alt: "Overhead drone view of a DPC foundation being built on a plot at Clobek Heritage Place",
+      caption: "From above · DPC on the plots",
+    },
     gallery: [
       {
         src: "/images/clobek-duplex.jpg",
@@ -152,6 +179,11 @@ export const propertyTypes: PropertyType[] = [
     price: 47,
     originalPrice: 49.6,
     image: "/images/5-bedroom-detached-duplex-bq.jpeg",
+    heroImage: {
+      src: "/images/clobeck1/heritage-site-1-wide.jpg",
+      alt: "Blockwork and starter bars at Clobek Heritage Place, inside a built-up neighbourhood",
+      caption: "Real site · Blockwork & starter bars",
+    },
     gallery: [
       {
         src: "/images/5-bedroom-detached-duplex-bq.jpeg",

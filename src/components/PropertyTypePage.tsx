@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import CtaButtons from "@/components/CtaButtons";
+import ShareButton from "@/components/ShareButton";
 import { DirectionsLink } from "@/components/Directions";
 import { SITE_ADDRESS } from "@/lib/location";
 import { ScrollProgress, SectionReveal } from "@/components/ScrollEffects";
@@ -15,7 +16,7 @@ import { PriceTag } from "@/components/Offer";
 import PaymentPlan from "@/components/PaymentPlan";
 import { LandDpcFeature } from "@/components/LandDpc";
 import { SignaturePillars } from "@/components/SellingPoints";
-import { OFFER_PITCH } from "@/lib/pricing";
+import { OFFER_PITCH, propertyHeadline } from "@/lib/pricing";
 import {
   getPropertyPath,
   originalPrice,
@@ -51,6 +52,22 @@ function getWhatsAppUrl(property: PropertyType, intent: "enquire" | "visit") {
   return `https://wa.me/2348029823593?text=${encodeURIComponent(message)}`;
 }
 
+// Photo of the team working on site for "The difference". If the hero already
+// uses it, fall back to the overhead DPC shot so the page never repeats a photo.
+function pillarsImage(property: PropertyType) {
+  const workers = {
+    src: "/images/clobeck1/heritage-site-2-hd.jpg",
+    alt: "Workers building DPC foundations at Clobek Heritage Place",
+    caption: "Real site · Work in progress",
+  };
+  const dpc = {
+    src: "/images/clobeck1/heritage-dpc-overhead.jpg",
+    alt: "Overhead drone view of a DPC foundation being built on a plot at Clobek Heritage Place",
+    caption: "From above · DPC on the plots",
+  };
+  return property.heroImage.src === workers.src ? dpc : workers;
+}
+
 export default function PropertyTypePage({
   property,
 }: {
@@ -74,14 +91,20 @@ export default function PropertyTypePage({
             <ArrowLeft className="h-4 w-4" />
             Clobek Heritage Place
           </Link>
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-10 items-center gap-2 bg-grove px-4 text-sm font-semibold text-white transition hover:bg-brand"
-          >
-            Enquire <ArrowUpRight className="h-4 w-4" />
-          </a>
+          <div className="flex items-center gap-2">
+            <ShareButton
+              headline={`${propertyHeadline(property.name)}.`}
+              path={getPropertyPath(property.slug)}
+            />
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-10 items-center gap-2 bg-grove px-4 text-sm font-semibold text-white transition hover:bg-brand"
+            >
+              Enquire <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
         </nav>
       </header>
 
@@ -91,15 +114,15 @@ export default function PropertyTypePage({
           <div className="relative mx-auto w-full max-w-[620px] pb-10 lg:mr-auto lg:ml-0">
             <div className="relative aspect-[1.38] overflow-hidden rounded-[24px] border-[8px] border-white shadow-2xl shadow-black/30 sm:rounded-[30px] sm:border-[10px]">
               <Image
-                src="/images/clobeck1/heritage-aerial-wide.jpg"
-                alt="Aerial view of the flat, fenced plots at Clobek Heritage Place, inside Clobek Crown Estate, Lugbe"
+                src={property.heroImage.src}
+                alt={property.heroImage.alt}
                 fill
                 priority
                 sizes="(min-width: 1024px) 48vw, 100vw"
                 className="object-cover"
               />
               <span className="absolute left-4 top-4 bg-[#092b21]/85 px-3 py-2 text-[11px] font-semibold text-white backdrop-blur-sm">
-                AERIAL VIEW · CLOBEK HERITAGE PLACE, LUGBE
+                {property.heroImage.caption.toUpperCase()}
               </span>
             </div>
             <div className="absolute -bottom-1 right-2 flex min-w-[225px] items-center gap-5 rounded-xl bg-white px-5 py-4 text-ink shadow-xl sm:bottom-0 sm:right-[-22px] sm:px-6 sm:py-5">
@@ -158,7 +181,7 @@ export default function PropertyTypePage({
       </SectionReveal>
 
       <SectionReveal>
-        <section className="bg-white py-4 sm:py-16">
+        <section className="bg-white pb-4 pt-6 sm:pb-16 sm:pt-8">
           <div className="mx-auto grid max-w-7xl gap-6 px-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-10">
             <Reveal>
               <div>
@@ -237,7 +260,7 @@ export default function PropertyTypePage({
       </SectionReveal>
 
       <SectionReveal>
-        <SignaturePillars withImage />
+        <SignaturePillars image={pillarsImage(property)} />
       </SectionReveal>
 
       <SectionReveal>

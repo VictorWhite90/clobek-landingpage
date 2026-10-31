@@ -69,9 +69,13 @@ const highlights = [
   },
 ];
 
-// `withImage` adds the aerial site photo under the heading (property pages,
-// where the "Reasons to invest" section that carried it is not shown).
-export function SignaturePillars({ withImage = false }: { withImage?: boolean }) {
+// `image` adds a site photo under the heading (property pages, where the
+// "Reasons to invest" section is not shown).
+export function SignaturePillars({
+  image,
+}: {
+  image?: { src: string; alt: string; caption: string };
+}) {
   return (
     <section aria-label="Why Clobek Heritage Place is different" className="border-b border-ink/10 bg-white">
       <div className="mx-auto max-w-7xl px-5 pt-10 sm:px-8 sm:pt-14">
@@ -80,17 +84,17 @@ export function SignaturePillars({ withImage = false }: { withImage?: boolean })
           Why Clobek Heritage Place is{" "}
           <span className="italic text-brand">different and unique.</span>
         </h2>
-        {withImage && (
+        {image && (
           <figure className="group sheen relative mt-6 aspect-[4/3] overflow-hidden border border-ink/10 shadow-xl shadow-ink/10 sm:aspect-[21/9]">
             <Image
-              src="/images/clobeck1/heritage-aerial-wide.jpg"
-              alt="Aerial view of the flat Clobek Heritage Place site, surrounded by a built-up neighbourhood"
+              src={image.src}
+              alt={image.alt}
               fill
               sizes="(min-width: 1280px) 1216px, 100vw"
               className="object-cover img-fx"
             />
             <figcaption className="absolute bottom-0 left-0 bg-ink/75 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-white">
-              Clobek Heritage Place · Aerial view
+              {image.caption}
             </figcaption>
           </figure>
         )}
