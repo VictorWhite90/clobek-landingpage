@@ -2,7 +2,7 @@
 
 import { Share2 } from "lucide-react";
 
-// Shares the page with the headline as the first line of the message, so the
+// Shares the page with the headline (and offer line) before the link, so the
 // WhatsApp chat list shows the headline instead of a bare link.
 export default function ShareButton({ headline, path }: { headline: string; path: string }) {
   const share = async () => {

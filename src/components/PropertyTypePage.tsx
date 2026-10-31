@@ -16,7 +16,7 @@ import { PriceTag } from "@/components/Offer";
 import PaymentPlan from "@/components/PaymentPlan";
 import { LandDpcFeature } from "@/components/LandDpc";
 import { SignaturePillars } from "@/components/SellingPoints";
-import { OFFER_PITCH, propertyHeadline } from "@/lib/pricing";
+import { OFFER_PITCH, SHARE_TITLE, shareDescription } from "@/lib/pricing";
 import {
   getPropertyPath,
   originalPrice,
@@ -93,7 +93,7 @@ export default function PropertyTypePage({
           </Link>
           <div className="flex items-center gap-2">
             <ShareButton
-              headline={`${propertyHeadline(property.name)}.`}
+              headline={`${SHARE_TITLE}\n${shareDescription(property.price)}`}
               path={getPropertyPath(property.slug)}
             />
             <a
