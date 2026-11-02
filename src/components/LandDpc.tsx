@@ -3,9 +3,21 @@ import { Hammer, LandPlot, Layers, MapPin } from "lucide-react";
 import { DirectionsLink } from "@/components/Directions";
 import { SITE_ADDRESS } from "@/lib/location";
 
+const defaultImage = {
+  src: "/images/clobeck1/heritage-site-3.jpg",
+  alt: "DPC foundation blockwork on a plot at Clobek Heritage Place",
+  caption: "Real site · DPC in progress",
+};
+
 // Explains what "Plot + DPC" means: the plot plus a damp-proof course
 // foundation the developer builds for the buyer.
-export function LandDpcFeature({ size }: { size: number }) {
+export function LandDpcFeature({
+  size,
+  image = defaultImage,
+}: {
+  size: number;
+  image?: { src: string; alt: string; caption: string };
+}) {
   const steps = [
     {
       icon: Layers,
@@ -51,14 +63,14 @@ export function LandDpcFeature({ size }: { size: number }) {
         </div>
         <figure className="group sheen relative aspect-[4/3] self-center lg:col-start-2 lg:row-span-2 lg:row-start-1 overflow-hidden border border-ink/10 shadow-xl shadow-ink/10">
           <Image
-            src="/images/clobeck1/heritage-site-3.jpg"
-            alt="DPC foundation blockwork on a plot at Clobek Heritage Place"
+            src={image.src}
+            alt={image.alt}
             fill
             sizes="(min-width: 1024px) 40vw, 100vw"
             className="object-cover img-fx"
           />
           <figcaption className="absolute bottom-0 left-0 bg-ink/75 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-white">
-            Real site · DPC in progress
+            {image.caption}
           </figcaption>
         </figure>
         {/* Below the photo on mobile; under the steps on desktop. */}

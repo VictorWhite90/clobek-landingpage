@@ -11,11 +11,77 @@ export type PropertyType = {
   image: string;
   // Real land/site photo for the hero; each property shows a different one.
   heroImage: { src: string; alt: string; caption: string };
+  // Clip for "Site Progress"; falls back to the shared aerial footage.
+  siteVideo?: SiteVideo;
+  // Photo for "More than a plot"; falls back to the shared DPC shot.
+  foundationImage?: SitePhoto;
+  // Site progress photos for this property; falls back to the shared set.
+  sitePhotos?: SitePhoto[];
   gallery: {
     src: string;
     alt: string;
     caption: string;
   }[];
+};
+
+type SitePhoto = { src: string; alt: string; caption: string };
+
+export type SiteVideo = {
+  src: string;
+  poster: string;
+  label: string;
+  caption: string;
+  width: number;
+  height: number;
+};
+
+// Phone clips walking the plots, one per bedroom count.
+const fourBedVideo: SiteVideo = {
+  src: "/videos/clobek-heritage-4-bed-site.mp4",
+  poster: "/videos/clobek-heritage-4-bed-site-poster.jpg",
+  label: "Walk-through of DPC blockwork and column bars at Clobek Heritage Place",
+  caption: "Real site footage · Walk-through",
+  width: 368,
+  height: 432,
+};
+
+const fiveBedVideo: SiteVideo = {
+  src: "/videos/clobek-heritage-5-bed-site.mp4",
+  poster: "/videos/clobek-heritage-5-bed-site-poster.jpg",
+  label: "Walk-through of finished DPC walls at Clobek Heritage Place",
+  caption: "Real site footage · Walk-through",
+  width: 432,
+  height: 368,
+};
+
+// New site progress photos. Every page shows all five, each once: the hero,
+// "More than a plot" and three in "Site Progress".
+const site = {
+  blockwork: {
+    src: "/images/site-progress/4-bed-blockwork.jpeg",
+    alt: "Workers laying DPC blockwork at Clobek Heritage Place",
+    caption: "Real site · Blockwork under way",
+  },
+  trenches: {
+    src: "/images/site-progress/4-bed-foundation-trenches.jpeg",
+    alt: "Foundation trenches and column reinforcement at Clobek Heritage Place, with the built-up estate behind",
+    caption: "Real site · Foundation & columns",
+  },
+  workers: {
+    src: "/images/site-progress/4-bed-workers.jpeg",
+    alt: "Workers building DPC walls at Clobek Heritage Place",
+    caption: "Real site · Work in progress",
+  },
+  walls: {
+    src: "/images/site-progress/5-bed-dpc-walls.jpeg",
+    alt: "Finished DPC block walls at Clobek Heritage Place",
+    caption: "Real site · DPC walls up",
+  },
+  starterBars: {
+    src: "/images/site-progress/5-bed-starter-bars.jpeg",
+    alt: "DPC blockwork and starter bars at Clobek Heritage Place, with the built-up estate behind",
+    caption: "Real site · DPC & starter bars",
+  },
 };
 
 export const propertyTypes: PropertyType[] = [
@@ -95,11 +161,10 @@ export const propertyTypes: PropertyType[] = [
     price: 31.5,
     originalPrice: 33.2,
     image: "/images/4-bedroom-terrace-bq.jpeg",
-    heroImage: {
-      src: "/images/clobeck1/heritage-plots-overhead.jpg",
-      alt: "Overhead drone view of the marked-out plots at Clobek Heritage Place",
-      caption: "From above · The plots",
-    },
+    heroImage: site.trenches,
+    siteVideo: fourBedVideo,
+    foundationImage: site.starterBars,
+    sitePhotos: [site.blockwork, site.workers, site.walls],
     gallery: [
       {
         src: "/images/clobek-block-spare.jpg",
@@ -128,11 +193,10 @@ export const propertyTypes: PropertyType[] = [
     price: 37,
     originalPrice: 39.1,
     image: "/images/clobek-rowhouse-a.jpg",
-    heroImage: {
-      src: "/images/clobeck1/heritage-site-2-hd.jpg",
-      alt: "Workers building DPC foundations at Clobek Heritage Place",
-      caption: "Real site · Work in progress",
-    },
+    heroImage: site.workers,
+    siteVideo: fourBedVideo,
+    foundationImage: site.walls,
+    sitePhotos: [site.blockwork, site.trenches, site.starterBars],
     gallery: [
       {
         src: "/images/clobek-rowhouse-a.jpg",
@@ -156,11 +220,10 @@ export const propertyTypes: PropertyType[] = [
     price: 43,
     originalPrice: 45.4,
     image: "/images/clobek-duplex.jpg",
-    heroImage: {
-      src: "/images/clobeck1/heritage-dpc-overhead.jpg",
-      alt: "Overhead drone view of a DPC foundation being built on a plot at Clobek Heritage Place",
-      caption: "From above · DPC on the plots",
-    },
+    heroImage: site.walls,
+    siteVideo: fiveBedVideo,
+    foundationImage: site.workers,
+    sitePhotos: [site.starterBars, site.blockwork, site.trenches],
     gallery: [
       {
         src: "/images/clobek-duplex.jpg",
@@ -179,11 +242,10 @@ export const propertyTypes: PropertyType[] = [
     price: 47,
     originalPrice: 49.6,
     image: "/images/5-bedroom-detached-duplex-bq.jpeg",
-    heroImage: {
-      src: "/images/clobeck1/heritage-site-1-wide.jpg",
-      alt: "Blockwork and starter bars at Clobek Heritage Place, inside a built-up neighbourhood",
-      caption: "Real site · Blockwork & starter bars",
-    },
+    heroImage: site.starterBars,
+    siteVideo: fiveBedVideo,
+    foundationImage: site.trenches,
+    sitePhotos: [site.walls, site.workers, site.blockwork],
     gallery: [
       {
         src: "/images/5-bedroom-detached-duplex-bq.jpeg",

@@ -21,8 +21,18 @@ import {
   originalPrice,
   propertyTypes,
   type PropertyType,
+  type SiteVideo,
 } from "@/lib/property-types";
 
+
+const aerialVideo: SiteVideo = {
+  src: "/videos/clobek-heritage-dpc-aerial.mp4",
+  poster: "/videos/clobek-heritage-dpc-aerial-poster.jpg",
+  label: "Aerial drone footage of DPC works on the Clobek Heritage Place site",
+  caption: "Real site footage · DPC works",
+  width: 16,
+  height: 9,
+};
 
 const sitePhotos = [
   {
@@ -76,6 +86,10 @@ export default function PropertyTypePage({
     (option) => option.slug !== property.slug,
   );
   const whatsappUrl = getWhatsAppUrl(property, "enquire");
+  const photos = property.sitePhotos ?? sitePhotos;
+  const video = property.siteVideo ?? aerialVideo;
+  // Phone clips are low-res and not widescreen, so cap their width.
+  const isPhoneClip = video !== aerialVideo;
 
   return (
     <main className="min-h-screen flex-1 bg-white text-ink">
@@ -170,7 +184,7 @@ export default function PropertyTypePage({
       </section>
 
       <SectionReveal>
-        <LandDpcFeature size={property.size} />
+        <LandDpcFeature size={property.size} image={property.foundationImage} />
       </SectionReveal>
 
       <SectionReveal>
@@ -200,28 +214,33 @@ export default function PropertyTypePage({
               </div>
             </Reveal>
             <Reveal>
-              <figure className="relative aspect-video overflow-hidden border border-ink/10 bg-ink shadow-xl shadow-ink/10">
+              <figure
+                className={`relative overflow-hidden border border-ink/10 bg-ink shadow-xl shadow-ink/10 ${
+                  isPhoneClip ? "mx-auto w-full max-w-md" : ""
+                }`}
+                style={{ aspectRatio: `${video.width} / ${video.height}` }}
+              >
                 <video
-                  src="/videos/clobek-heritage-dpc-aerial.mp4"
-                  poster="/videos/clobek-heritage-dpc-aerial-poster.jpg"
+                  src={video.src}
+                  poster={video.poster}
                   autoPlay
                   muted
                   loop
                   playsInline
                   preload="metadata"
-                  aria-label="Aerial drone footage of DPC works on the Clobek Heritage Place site"
+                  aria-label={video.label}
                   className="h-full w-full object-cover"
                 />
                 <figcaption className="absolute bottom-0 left-0 flex items-center gap-2 bg-ink/70 px-3 py-1.5 text-[11px] font-semibold tracking-wide text-white uppercase">
                   <span className="h-2 w-2 rounded-full bg-brand" />
-                  Real site footage · DPC works
+                  {video.caption}
                 </figcaption>
               </figure>
             </Reveal>
           </div>
 
           <div className="mx-auto mt-6 grid max-w-7xl gap-4 px-6 sm:grid-cols-3">
-            {sitePhotos.map((photo) => (
+            {photos.map((photo) => (
               <Reveal key={photo.src}>
                 <figure className="relative aspect-[4/3] group sheen overflow-hidden border border-ink/10 shadow-lg shadow-ink/5">
                   <Image
