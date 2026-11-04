@@ -6,6 +6,7 @@ import {
   MapPin,
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import HeroShowcase from "@/components/HeroShowcase";
 import CtaButtons from "@/components/CtaButtons";
 import { DirectionsLink } from "@/components/Directions";
 import { SITE_ADDRESS } from "@/lib/location";
@@ -118,21 +119,24 @@ export default function PropertyTypePage({
       <section className="relative overflow-hidden bg-grove text-white">
         <div className="absolute inset-0 opacity-[0.12] [background-image:linear-gradient(rgba(255,255,255,.16)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.16)_1px,transparent_1px)] [background-size:48px_48px]" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 py-8 sm:px-8 sm:py-16 lg:min-h-[590px] lg:grid-cols-[0.95fr_1fr] lg:gap-14">
-          <div className="relative mx-auto w-full max-w-[620px] pb-10 lg:mr-auto lg:ml-0">
-            <div className="relative aspect-[1.38] overflow-hidden rounded-[24px] border-[8px] border-white shadow-2xl shadow-black/30 sm:rounded-[30px] sm:border-[10px]">
-              <Image
-                src={property.heroImage.src}
-                alt={property.heroImage.alt}
-                fill
-                priority
-                sizes="(min-width: 1024px) 48vw, 100vw"
-                className="object-cover"
-              />
-              <span className="absolute left-4 top-4 bg-[#092b21]/85 px-3 py-2 text-[11px] font-semibold text-white backdrop-blur-sm">
-                {property.heroImage.caption.toUpperCase()}
-              </span>
-            </div>
-            <div className="absolute -bottom-1 right-2 flex min-w-[225px] items-center gap-5 rounded-xl bg-white px-5 py-4 text-ink shadow-xl sm:bottom-0 sm:right-[-22px] sm:px-6 sm:py-5">
+          <div className="relative mx-auto w-full max-w-[620px] pb-16 sm:pb-10 lg:mr-auto lg:ml-0">
+            <HeroShowcase
+              slides={[
+                {
+                  src: property.image,
+                  alt: `Architectural impression of the ${property.name} at Clobek Heritage Place`,
+                  title: "The vision",
+                  caption: "Artist's impression · Your finished home",
+                },
+                {
+                  src: property.heroImage.src,
+                  alt: property.heroImage.alt,
+                  title: "The land today",
+                  caption: property.heroImage.caption,
+                },
+              ]}
+            />
+            <div className="absolute -bottom-1 right-2 z-30 flex min-w-[225px] items-center gap-5 rounded-xl bg-white px-5 py-4 text-ink shadow-xl sm:bottom-0 sm:right-[-22px] sm:px-6 sm:py-5">
               <div>
                 <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-grove/65">
                   Plot + DPC
@@ -208,9 +212,6 @@ export default function PropertyTypePage({
                   {SITE_ADDRESS}
                 </p>
                 <DirectionsLink className="mt-2 ml-6" />
-                <div className="hidden lg:block">
-                <CtaButtons subject={property.name} className="mt-6" />
-                </div>
               </div>
             </Reveal>
             <Reveal>
@@ -256,9 +257,6 @@ export default function PropertyTypePage({
                 </figure>
               </Reveal>
             ))}
-          </div>
-          <div className="mx-auto mt-6 max-w-7xl px-6 lg:hidden">
-                <CtaButtons subject={property.name} />
           </div>
         </section>
       </SectionReveal>

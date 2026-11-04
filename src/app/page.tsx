@@ -283,9 +283,9 @@ export default function Home() {
               <div className="mt-6 sm:mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {propertyTypes.map((house) => (
                   <Reveal key={house.slug}>
-                    <div className="card-fx group h-full overflow-hidden border border-ink/10 bg-white shadow-lg shadow-ink/5">
+                    <div className="card-fx group flex h-full flex-col overflow-hidden border border-ink/10 bg-white shadow-lg shadow-ink/5">
                       <div className="h-1.5 bg-gradient-to-r from-brand to-grove" />
-                      <div className="relative h-72 w-full group sheen overflow-hidden">
+                      <div className="relative h-60 w-full group sheen overflow-hidden sm:h-72">
                         <Image
                           src={house.image}
                           alt={`${house.name} artist's impression`}
@@ -299,33 +299,34 @@ export default function Home() {
                           className="absolute inset-0"
                         />
                       </div>
-                      <div className="flex items-start justify-between gap-4 p-7">
-                        <div>
-                          <h3 className="font-serif text-2xl leading-tight text-ink">
-                            <Link
-                              href={getPropertyPath(house.slug)}
-                              className="transition hover:text-brand"
-                            >
-                              {house.name}
-                            </Link>
-                          </h3>
-                          <p className="mt-2 text-sm font-medium text-muted">
-                            Approx. {house.size} sqm
-                          </p>
-                        </div>
-                        <div className="shrink-0 text-right">
-                              <p>
-                            <PriceTag price={house.price} original={originalPrice(house)} size="sm" />
-                          </p>
-                          <p className="mt-1 text-xs font-bold tracking-wide text-ink uppercase">
-                            Plot + DPC
-                          </p>
-                          <p className="mt-0.5 text-sm font-semibold text-muted">
-                            T&amp;Cs apply
-                          </p>
+                      <div className="flex flex-1 flex-col p-5 sm:p-7">
+                        <h3 className="font-serif text-2xl leading-tight text-ink">
                           <Link
                             href={getPropertyPath(house.slug)}
-                            className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-grove transition hover:text-brand"
+                            className="transition hover:text-brand"
+                          >
+                            {house.name}
+                          </Link>
+                        </h3>
+                        <p className="mt-2 mb-5 text-sm font-medium text-muted">
+                          Approx. {house.size} sqm
+                          <span className="mx-2 text-ink/25">·</span>
+                          <span className="text-xs font-bold tracking-wide text-ink uppercase">
+                            Plot + DPC
+                          </span>
+                        </p>
+                        <div className="mt-auto flex items-end justify-between gap-4 border-t border-ink/10 pt-4">
+                          <div>
+                            <p>
+                              <PriceTag price={house.price} original={originalPrice(house)} size="sm" />
+                            </p>
+                            <p className="mt-1 text-xs font-semibold text-muted">
+                              T&amp;Cs apply
+                            </p>
+                          </div>
+                          <Link
+                            href={getPropertyPath(house.slug)}
+                            className="inline-flex shrink-0 items-center gap-2 bg-grove px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-brand"
                           >
                             View details
                             <ArrowUpRight className="h-4 w-4" />
