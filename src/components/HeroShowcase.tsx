@@ -16,7 +16,7 @@ export type HeroSlide = {
 // Strips start in an uneven order so the edge reads like a skyline, not a wipe.
 const STRIPS = 7;
 const RISE_ORDER = [3, 1, 5, 0, 4, 6, 2];
-const HOLD_MS = 6500;
+const HOLD_MS = 4000;
 
 export default function HeroShowcase({ slides }: { slides: HeroSlide[] }) {
   const [active, setActive] = useState(0);
@@ -117,7 +117,7 @@ export default function HeroShowcase({ slides }: { slides: HeroSlide[] }) {
               const style = {
                 "--l": `${(strip * 100) / STRIPS}%`,
                 "--r": `${((STRIPS - 1 - strip) * 100) / STRIPS}%`,
-                "--d": `${RISE_ORDER[strip] * 95}ms`,
+                "--d": `${RISE_ORDER[strip] * 60}ms`,
               } as CSSProperties;
               return (
                 <div key={strip} className="hero-strip absolute inset-0" style={style}>

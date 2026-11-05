@@ -9,7 +9,7 @@ function whatsapp(message: string) {
 }
 
 // The standard set of buttons used in every section, in this order.
-const STANDARD: CtaAction[] = ["call", "book", "enquire", "plan"];
+const STANDARD: CtaAction[] = ["book", "call", "enquire", "plan"];
 
 // The calls to action used across the site. The first is shown as the primary
 // button. On phones they sit two per row.
@@ -18,11 +18,14 @@ export default function CtaButtons({
   subject = "Clobek Heritage Place",
   tone = "light",
   className = "",
+  // Set false when a standalone primary button sits nearby (e.g. BookVisitButton).
+  highlightFirst = true,
 }: {
   actions?: CtaAction[];
   subject?: string;
   tone?: "light" | "dark";
   className?: string;
+  highlightFirst?: boolean;
 }) {
   const config: Record<CtaAction, { label: string; short?: string; href: string; icon: LucideIcon }> = {
     book: {
@@ -63,7 +66,7 @@ export default function CtaButtons({
             href={href}
             {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
             className={`btn-fx inline-flex min-h-11 items-center gap-2 whitespace-nowrap rounded-full px-5 text-sm font-semibold ${
-              i === 0 ? `${primary} font-bold` : secondary
+              i === 0 && highlightFirst ? `${primary} font-bold` : secondary
             }`}
           >
             {short ? (
@@ -79,5 +82,28 @@ export default function CtaButtons({
         );
       })}
     </div>
+  );
+}
+
+// The headline call to action: a large "Book a site visit" button with a soft
+// pulsing glow, so it stands out from the regular buttons.
+export function BookVisitButton({
+  subject = "Clobek Heritage Place",
+  className = "",
+}: {
+  subject?: string;
+  className?: string;
+}) {
+  return (
+    <a
+      href={whatsapp(`Hello Clobek Heritage Place, I'd like to book a site visit to see the ${subject}.`)}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`btn-fx btn-solid book-pulse inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-full bg-brand px-8 text-base font-bold text-white shadow-xl shadow-brand/30 sm:w-auto sm:min-h-16 sm:px-10 sm:text-lg ${className}`}
+    >
+      <CalendarCheck className="h-5 w-5 sm:h-6 sm:w-6" />
+      Book a site visit
+      <ArrowRight className="h-5 w-5" />
+    </a>
   );
 }

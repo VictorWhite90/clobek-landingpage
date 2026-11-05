@@ -7,7 +7,7 @@ import {
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import HeroShowcase from "@/components/HeroShowcase";
-import CtaButtons from "@/components/CtaButtons";
+import CtaButtons, { BookVisitButton } from "@/components/CtaButtons";
 import ShareButton from "@/components/ShareButton";
 import { DirectionsLink } from "@/components/Directions";
 import { SITE_ADDRESS } from "@/lib/location";
@@ -156,14 +156,21 @@ export default function PropertyTypePage({
                 Inside Lugbe&apos;s premium estate for {property.name}.
               </span>
             </h1>
-            <div className="mt-4 inline-flex items-start gap-2 rounded-xl border border-[#e4bd67]/40 bg-[#e4bd67]/10 px-4 py-3 text-sm font-semibold text-white sm:text-base">
+            <BookVisitButton subject={property.name} className="mt-6" />
+            <div className="mt-5 inline-flex items-start gap-2 rounded-xl border border-[#e4bd67]/40 bg-[#e4bd67]/10 px-4 py-3 text-sm font-semibold text-white sm:text-base">
               <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#e4bd67]" />
               <span>
                 <span className="text-[#e4bd67]">Location:</span> {SITE_ADDRESS}
                 <DirectionsLink tone="dark" block className="mt-2" />
               </span>
             </div>
-            <CtaButtons subject={property.name} tone="dark" className="mt-6" />
+            <CtaButtons
+              actions={["call", "enquire", "plan"]}
+              highlightFirst={false}
+              subject={property.name}
+              tone="dark"
+              className="mt-5"
+            />
             <p
               className="rise mt-5 max-w-lg text-base leading-7 text-white/80"
               style={{ animationDelay: "0.6s" }}

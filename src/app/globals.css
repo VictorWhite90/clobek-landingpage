@@ -177,7 +177,7 @@ body {
 .hero-strip {
   /* Overlap neighbours by a pixel so no seams show between strips. */
   clip-path: inset(0 max(0px, calc(var(--r) - 1px)) 0 max(0px, calc(var(--l) - 1px)));
-  animation: hero-rise 1.25s cubic-bezier(0.76, 0, 0.24, 1) var(--d) both;
+  animation: hero-rise 0.9s cubic-bezier(0.76, 0, 0.24, 1) var(--d) both;
 }
 
 .hero-strip-edge {
@@ -187,11 +187,11 @@ body {
   height: 2px;
   background: #e4bd67;
   box-shadow: 0 0 14px 2px rgba(228, 189, 103, 0.7);
-  animation: hero-edge 1.25s cubic-bezier(0.76, 0, 0.24, 1) var(--d) both;
+  animation: hero-edge 0.9s cubic-bezier(0.76, 0, 0.24, 1) var(--d) both;
 }
 
 .hero-drift {
-  animation: hero-drift 9s cubic-bezier(0.2, 0.6, 0.3, 1) both;
+  animation: hero-drift 6s cubic-bezier(0.2, 0.6, 0.3, 1) both;
 }
 
 /* The slide being covered holds where its drift left off. */
@@ -206,7 +206,7 @@ body {
 }
 
 .hero-caption {
-  animation: hero-caption-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+  animation: hero-caption-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -229,6 +229,25 @@ body {
 @keyframes fade-in {
   from {
     opacity: 0;
+  }
+}
+
+/* Glow ring that breathes around the main "Book a site visit" button. */
+@keyframes book-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(218, 119, 86, 0.55), 0 18px 40px -14px rgba(218, 119, 86, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(218, 119, 86, 0), 0 18px 40px -14px rgba(218, 119, 86, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(218, 119, 86, 0), 0 18px 40px -14px rgba(218, 119, 86, 0.6);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .book-pulse {
+    animation: book-pulse 2.2s ease-out infinite;
   }
 }
 
