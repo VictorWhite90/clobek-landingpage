@@ -17,7 +17,7 @@ import { PriceTag } from "@/components/Offer";
 import PaymentPlan from "@/components/PaymentPlan";
 import { LandDpcFeature } from "@/components/LandDpc";
 import { SignaturePillars } from "@/components/SellingPoints";
-import { OFFER_PITCH, SHARE_TITLE, shareDescription } from "@/lib/pricing";
+import { DEPOSIT_PERCENT, OFFER_SLOTS, SHARE_TITLE, shareDescription } from "@/lib/pricing";
 import {
   getPropertyPath,
   originalPrice,
@@ -156,13 +156,27 @@ export default function PropertyTypePage({
                 Inside Lugbe&apos;s premium estate for {property.name}.
               </span>
             </h1>
-            <BookVisitButton subject={property.name} className="mt-6" />
-            <div className="mt-5 inline-flex items-start gap-2 rounded-xl border border-[#e4bd67]/40 bg-[#e4bd67]/10 px-4 py-3 text-sm font-semibold text-white sm:text-base">
-              <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#e4bd67]" />
-              <span>
-                <span className="text-[#e4bd67]">Location:</span> {SITE_ADDRESS}
-                <DirectionsLink tone="dark" block className="mt-2" />
-              </span>
+            <BookVisitButton subject={property.name} className="mt-6 sm:mt-7" />
+            <p className="mt-3 text-xs font-semibold tracking-wide text-white/70 sm:text-sm">
+              Save 10% <span className="mx-1.5 text-[#e4bd67]">·</span> {DEPOSIT_PERCENT}% initial
+              deposit <span className="mx-1.5 text-[#e4bd67]">·</span> Only {OFFER_SLOTS} slots
+            </p>
+
+            <div className="mt-6 overflow-hidden rounded-2xl border border-white/12 bg-white/[0.04] backdrop-blur-sm">
+              <div className="flex items-start gap-3 px-4 py-4 sm:px-5">
+                <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#e4bd67]/15">
+                  <MapPin className="h-[18px] w-[18px] text-[#e4bd67]" />
+                </span>
+                <div className="min-w-0">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#e4bd67]">
+                    Location
+                  </p>
+                  <p className="mt-1 text-sm font-medium leading-5 text-white sm:text-base">
+                    {SITE_ADDRESS}
+                  </p>
+                  <DirectionsLink tone="dark" block className="mt-2" />
+                </div>
+              </div>
             </div>
             <CtaButtons
               actions={["call", "enquire", "plan"]}
@@ -171,12 +185,6 @@ export default function PropertyTypePage({
               tone="dark"
               className="mt-5"
             />
-            <p
-              className="rise mt-5 max-w-lg text-base leading-7 text-white/80"
-              style={{ animationDelay: "0.6s" }}
-            >
-              {OFFER_PITCH}
-            </p>
           </div>
         </div>
       </section>
