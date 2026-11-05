@@ -8,6 +8,7 @@ import {
 import Reveal from "@/components/Reveal";
 import HeroShowcase from "@/components/HeroShowcase";
 import CtaButtons from "@/components/CtaButtons";
+import ShareButton from "@/components/ShareButton";
 import { DirectionsLink } from "@/components/Directions";
 import { SITE_ADDRESS } from "@/lib/location";
 import { ScrollProgress, SectionReveal } from "@/components/ScrollEffects";
@@ -16,7 +17,7 @@ import { PriceTag } from "@/components/Offer";
 import PaymentPlan from "@/components/PaymentPlan";
 import { LandDpcFeature } from "@/components/LandDpc";
 import { SignaturePillars } from "@/components/SellingPoints";
-import { OFFER_PITCH } from "@/lib/pricing";
+import { OFFER_PITCH, SHARE_TITLE, shareDescription } from "@/lib/pricing";
 import {
   getPropertyPath,
   originalPrice,
@@ -53,15 +54,6 @@ const sitePhotos = [
   },
 ];
 
-function getWhatsAppUrl(property: PropertyType, intent: "enquire" | "visit") {
-  const message =
-    intent === "visit"
-      ? `Hello Clobek Heritage Place, I'd like to book a site visit to see the ${property.name}.`
-      : `Hello Clobek Heritage Place, I'm interested in the ${property.name}. Please send me more details.`;
-
-  return `https://wa.me/2348029823593?text=${encodeURIComponent(message)}`;
-}
-
 // Photo of the team working on site for "The difference". If the hero already
 // uses it, fall back to the overhead DPC shot so the page never repeats a photo.
 function pillarsImage(property: PropertyType) {
@@ -86,7 +78,6 @@ export default function PropertyTypePage({
   const otherOptions = propertyTypes.filter(
     (option) => option.slug !== property.slug,
   );
-  const whatsappUrl = getWhatsAppUrl(property, "enquire");
   const photos = property.sitePhotos ?? sitePhotos;
   const video = property.siteVideo ?? aerialVideo;
   // Phone clips are low-res and not widescreen, so cap their width.
@@ -105,14 +96,10 @@ export default function PropertyTypePage({
             <ArrowLeft className="h-4 w-4" />
             Clobek Heritage Place
           </Link>
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-10 items-center gap-2 bg-grove px-4 text-sm font-semibold text-white transition hover:bg-brand"
-          >
-            Enquire <ArrowUpRight className="h-4 w-4" />
-          </a>
+          <ShareButton
+            headline={`${SHARE_TITLE}\n${shareDescription(property.price)}`}
+            path={getPropertyPath(property.slug)}
+          />
         </nav>
       </header>
 
