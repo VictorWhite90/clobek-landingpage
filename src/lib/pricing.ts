@@ -9,7 +9,7 @@ export const INSTALMENT_MONTHS = 18;
 export const STANDARD_DEPOSIT_PERCENT = 35;
 export const STANDARD_MONTHS = 9;
 
-export const OFFER_ENDS = "15 November";
+export const OFFER_ENDS = "26 November";
 export const OFFER_SLOTS = 10;
 
 export const INSTALMENT_QUARTERS = INSTALMENT_MONTHS / 3;
