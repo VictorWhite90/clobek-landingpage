@@ -4,7 +4,7 @@ export type CtaAction = "book" | "inspect" | "enquire" | "call" | "plan";
 
 const PHONE_TEL = "tel:+2348029823593";
 
-function whatsapp(message: string) {
+export function whatsapp(message: string) {
   return `https://wa.me/2348029823593?text=${encodeURIComponent(message)}`;
 }
 
@@ -88,29 +88,6 @@ export default function CtaButtons({
         );
       })}
     </div>
-  );
-}
-
-// The headline call to action: a large "Book a site visit" button with a soft
-// pulsing glow, so it stands out from the regular buttons.
-export function BookVisitButton({
-  subject = "Clobek Heritage Place",
-  className = "",
-}: {
-  subject?: string;
-  className?: string;
-}) {
-  return (
-    <a
-      href={whatsapp(`Hello Clobek Heritage Place, I'd like to book a site visit to see the ${subject}.`)}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`btn-fx btn-solid book-pulse inline-flex min-h-12 items-center justify-center gap-2.5 rounded-full bg-brand px-6 text-[15px] font-bold text-white shadow-xl shadow-brand/30 sm:min-h-16 sm:gap-3 sm:px-10 sm:text-lg ${className}`}
-    >
-      <CalendarCheck className="h-[18px] w-[18px] sm:h-6 sm:w-6" />
-      Book a site visit
-      <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
-    </a>
   );
 }
 

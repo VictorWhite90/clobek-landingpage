@@ -7,7 +7,8 @@ import {
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import HeroShowcase from "@/components/HeroShowcase";
-import CtaButtons, { BookVisitButton } from "@/components/CtaButtons";
+import CtaButtons from "@/components/CtaButtons";
+import BookVisitButton from "@/components/BookVisitButton";
 import ShareButton from "@/components/ShareButton";
 import { DirectionsLink } from "@/components/Directions";
 import { SITE_ADDRESS } from "@/lib/location";
